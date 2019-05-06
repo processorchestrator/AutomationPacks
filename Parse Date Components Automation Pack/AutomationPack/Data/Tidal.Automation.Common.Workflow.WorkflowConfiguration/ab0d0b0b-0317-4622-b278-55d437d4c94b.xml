@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>ab0d0b0b-0317-4622-b278-55d437d4c94b</Id>
+  <DisplayName>Parse Date</DisplayName>
+  <VersionNumber>11</VersionNumber>
+  <CreatedTime>2019-04-23T19:19:46.0853002Z</CreatedTime>
+  <ModifiedTime>2019-04-23T19:49:45.8467527Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>5ed0898e-15f5-4a70-890b-efbc51deca72</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>12396624-cb35-4219-a107-e1522fbb44e1</Id>
+        <DisplayName>Split Date from Time</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>77a9573e-088f-4e83-907f-73433244a08e</Id>
+            <ActivityNodeId>12396624-cb35-4219-a107-e1522fbb44e1</ActivityNodeId>
+            <CompletedId>28293f89-9359-4aca-8434-ab5141c59c87</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SplitStringActivityConfiguration" xml:space="preserve">
+          <Id>12396624-cb35-4219-a107-e1522fbb44e1</Id>
+          <DisplayName>Split Date from Time</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>376228c3-7897-4803-b3db-57604f8221f5</ContainingProcessId>
+          <InputString>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Date String</DisplayPath>
+                <LinkChain />
+                <ObjectId>6db1b51d-36aa-44fe-9387-04c12c7fcdcb</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </InputString>
+          <IsCharDelimiter>true</IsCharDelimiter>
+          <CharDelimiters>
+            <HardcodedValue> </HardcodedValue>
+          </CharDelimiters>
+          <ReturnEmptyString>false</ReturnEmptyString>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>4ba6abfd-e288-4629-88fc-513a2c6cbafd</Id>
+        <DisplayName>Parse Date Components</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>beccd8ae-e1af-462b-b177-f72d4a8b779f</Id>
+            <ActivityNodeId>4ba6abfd-e288-4629-88fc-513a2c6cbafd</ActivityNodeId>
+            <CompletedId>06f992bb-1fb1-4c06-a4c8-fec664cad95e</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SplitStringActivityConfiguration" xml:space="preserve">
+          <Id>4ba6abfd-e288-4629-88fc-513a2c6cbafd</Id>
+          <DisplayName>Parse Date Components</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>376228c3-7897-4803-b3db-57604f8221f5</ContainingProcessId>
+          <InputString>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Split Date from Time.Results Table.First Row.Value</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>ResultTable</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>FirstRow</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Value</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>12396624-cb35-4219-a107-e1522fbb44e1</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </InputString>
+          <IsCharDelimiter>true</IsCharDelimiter>
+          <CharDelimiters>
+            <HardcodedValue>/</HardcodedValue>
+          </CharDelimiters>
+          <ReturnEmptyString>false</ReturnEmptyString>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ForEachNode">
+        <Id>71c131b6-9950-42b4-91de-fb7d4fd7a358</Id>
+        <DisplayName>For Each Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="SwitchNode">
+            <Id>c32c4ef4-5ecc-48ed-a8c0-813d8906989b</Id>
+            <DisplayName>Index</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>3b6a243d-234e-4187-b56c-e929f58ee47c</Id>
+                <DisplayName>0</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>2b8de312-9478-4c9a-915f-b68757b591b5</Id>
+                    <DisplayName>Set Month</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>980a5205-7422-4717-acc8-f7f63fba2134</Id>
+                        <ActivityNodeId>2b8de312-9478-4c9a-915f-b68757b591b5</ActivityNodeId>
+                        <CompletedId>7fe8d398-165a-4a2e-8f8d-12a37744de1d</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>2b8de312-9478-4c9a-915f-b68757b591b5</Id>
+                      <DisplayName>Set Month</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>376228c3-7897-4803-b3db-57604f8221f5</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Output.Month</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>da3c1147-0d78-4d14-80db-6e09ce62a630</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Block.Item.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>71c131b6-9950-42b4-91de-fb7d4fd7a358</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>8c3e1407-8eaa-4750-b79a-93271656278f</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>4b3493c9-4957-4cd7-af3a-817fa6f035d9</Id>
+                      <Expression xsi:type="SubstitutableNumber">
+                        <HardcodedValue>0</HardcodedValue>
+                      </Expression>
+                      <Comparison>Equals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Local.Indx</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>00744066-d115-4d20-b687-6fc629814d7b</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>a766c722-8584-4896-9ac5-8e87385cb62a</Id>
+                <DisplayName>1</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>d366e376-c39b-4c46-bba2-e071612b111a</Id>
+                    <DisplayName>Set Day</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>69db10f8-7c18-454d-9fcf-8099364410ff</Id>
+                        <ActivityNodeId>d366e376-c39b-4c46-bba2-e071612b111a</ActivityNodeId>
+                        <CompletedId>a3e275ae-a997-461d-9b2f-60fe643349dc</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>d366e376-c39b-4c46-bba2-e071612b111a</Id>
+                      <DisplayName>Set Day</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>376228c3-7897-4803-b3db-57604f8221f5</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Output.Day</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>e3c3f334-19b7-4970-94df-650072971ac9</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Block.Item.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>71c131b6-9950-42b4-91de-fb7d4fd7a358</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>6ec49e48-1e87-4fa6-b235-773396d645fe</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>8a2dc3a0-1759-4322-a51b-3c55c39a6d43</Id>
+                      <Expression xsi:type="SubstitutableNumber">
+                        <HardcodedValue>1</HardcodedValue>
+                      </Expression>
+                      <Comparison>Equals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Local.Indx</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>00744066-d115-4d20-b687-6fc629814d7b</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>1f6b818a-dea8-4235-8bdd-591cb68fdc71</Id>
+                <DisplayName>2</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>d6ef552c-6ea0-4224-9dcf-d328af451a86</Id>
+                    <DisplayName>Set Year</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>896861a2-9936-44f7-8768-e9b4ceb1a5df</Id>
+                        <ActivityNodeId>d6ef552c-6ea0-4224-9dcf-d328af451a86</ActivityNodeId>
+                        <CompletedId>4729b1ca-38a5-4def-adde-1e85149034a0</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>d6ef552c-6ea0-4224-9dcf-d328af451a86</Id>
+                      <DisplayName>Set Year</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>376228c3-7897-4803-b3db-57604f8221f5</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Output.Year</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>5ea5dbcf-064f-4ce8-aa07-0ebb333f9565</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Block.Item.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>71c131b6-9950-42b4-91de-fb7d4fd7a358</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>f78000bd-420d-4d34-9044-f1a7732d3ed2</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>732368e7-1253-44f5-92eb-b20d28c0f637</Id>
+                      <Expression xsi:type="SubstitutableNumber">
+                        <HardcodedValue>2</HardcodedValue>
+                      </Expression>
+                      <Comparison>Equals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Local.Indx</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>00744066-d115-4d20-b687-6fc629814d7b</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>6a9a593b-8214-4a39-85a3-440f1162fab5</Id>
+            <DisplayName>Increment Index</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>aea4ed1e-5dad-4544-ab30-3f9695644c2a</Id>
+                <ActivityNodeId>6a9a593b-8214-4a39-85a3-440f1162fab5</ActivityNodeId>
+                <CompletedId>7231889d-203e-4853-b189-f71003f032bf</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+              <Id>6a9a593b-8214-4a39-85a3-440f1162fab5</Id>
+              <DisplayName>Increment Index</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>376228c3-7897-4803-b3db-57604f8221f5</ContainingProcessId>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Local.Indx</DisplayPath>
+                <LinkChain />
+                <ObjectId>00744066-d115-4d20-b687-6fc629814d7b</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableNumber">
+                <FormattedCode>{0} + 1</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Local.Indx</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>00744066-d115-4d20-b687-6fc629814d7b</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <ForEachSource xsi:type="PropertyReference">
+          <DisplayPath>Workflow.Split String.Results Table.Rows</DisplayPath>
+          <LinkChain>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>ResultTable</PropertyName>
+            </Link>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>TIARows</PropertyName>
+            </Link>
+          </LinkChain>
+          <ObjectId>4ba6abfd-e288-4629-88fc-513a2c6cbafd</ObjectId>
+          <ObjectType>ActivityInstance</ObjectType>
+        </ForEachSource>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>376228c3-7897-4803-b3db-57604f8221f5</ProcessId>
+</WorkflowConfiguration>
