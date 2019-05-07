@@ -4,16 +4,24 @@
   <DisplayName>Test Automation Pack</DisplayName>
   <VersionNumber>-1</VersionNumber>
   <CreatedTime>2019-03-19T15:04:22.615137Z</CreatedTime>
-  <ModifiedTime>2019-05-07T17:32:41.3533232Z</ModifiedTime>
+  <ModifiedTime>2019-05-07T20:20:31.16927Z</ModifiedTime>
   <CompanyName>Trial</CompanyName>
-  <Version>1.0.0.1</Version>
+  <Version>1.0.0.2</Version>
   <ExportProductVersion>3.5.1.0</ExportProductVersion>
-  <PublishDate>2019-05-07T17:32:41.2893193Z</PublishDate>
+  <PublishDate>2019-05-07T20:20:31.0622718Z</PublishDate>
   <ImportDate>2019-04-23T18:53:59.462796Z</ImportDate>
   <DescriptionUrl />
   <Copyright>Trial 2019</Copyright>
   <ObjectEntries />
-  <AutomationPacks />
+  <AutomationPacks>
+    <AutomatioPackInfo>
+      <Id>9c7bd411-dd51-42d8-85e5-5362de9de9b8</Id>
+      <Company>Trial</Company>
+      <DisplayName>SR#686480521 [EY]</DisplayName>
+      <Version>1.0.0.2</Version>
+      <Description />
+    </AutomatioPackInfo>
+  </AutomationPacks>
   <Adapters>
     <AdapterInfo>
       <Id>042b6e8a-90b1-4518-aa3e-398399e1b195</Id>
@@ -29,8 +37,25 @@
       <Version>3.5.1.0</Version>
       <Description>Provides activity to call Web Service methods.</Description>
     </AdapterInfo>
+    <AdapterInfo>
+      <Id>c433762b-9ba6-4059-a616-85d8f3f236c3</Id>
+      <Company>Cisco</Company>
+      <DisplayName>Cisco Prime Service Catalog Adapter</DisplayName>
+      <Version>3.5.1.0</Version>
+      <Description>Provides activities to access Cisco Prime Service Catalog service items and service requests.</Description>
+    </AdapterInfo>
   </Adapters>
-  <PageEntries />
+  <PageEntries>
+    <PageEntry>
+      <TypeName>Tidal.Automation.WinForms.ImportAutomationPack.ExecutePowerShellScriptImportTask, Tidal.Automation.WinForms.Objects</TypeName>
+      <Parameters>
+        <ImportCustomTaskParameter>
+          <ParameterName>Script</ParameterName>
+          <ParameterValue>Write-Output "Hello, World"</ParameterValue>
+        </ImportCustomTaskParameter>
+      </Parameters>
+    </PageEntry>
+  </PageEntries>
   <PrerequisiteEntries />
   <ReplaceUnexportableObject>true</ReplaceUnexportableObject>
   <CommunityAP>false</CommunityAP>
