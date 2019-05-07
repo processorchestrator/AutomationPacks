@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>528555bb-6e89-4acd-bcd6-c11e7111679e</Id>
+  <DisplayName>Wait for Process Instance Completion</DisplayName>
+  <VersionNumber>5</VersionNumber>
+  <CreatedTime>2019-04-11T14:49:42.4587775Z</CreatedTime>
+  <ModifiedTime>2019-04-11T16:28:24.9884712Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>342cacc0-1c0b-4f31-ae87-31a75441bf46</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="StartProcessNode">
+        <Id>380e9655-419a-469f-851b-5e1782143271</Id>
+        <DisplayName>Get Process Instance State</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>c3514bff-0f78-4081-82cc-eb4da6b4a69b</Id>
+            <ProcessNodeId>380e9655-419a-469f-851b-5e1782143271</ProcessNodeId>
+            <CompletedId>a57fdeed-db9e-4064-bdb9-b2d064a6611c</CompletedId>
+          </ActivityNode>
+        </Children>
+        <ProcessId>bb17dff3-6701-446c-9118-174eee1bcfbe</ProcessId>
+        <InputVariableTable>
+          <VariableAssignmentsAsArray>
+            <InputVariableAssignment>
+              <InputVariableId>b60afd83-487f-4657-af93-2743250fbe29</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.Process Instance Id</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>0a2790d9-0ec0-4ea8-be00-a78a8bc33504</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </VariableValue>
+            </InputVariableAssignment>
+          </VariableAssignmentsAsArray>
+        </InputVariableTable>
+        <Asynchronous>false</Asynchronous>
+        <InheritTarget>true</InheritTarget>
+        <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+        <InheritPriorityClass>true</InheritPriorityClass>
+        <RuntimeUserId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </RuntimeUserId>
+        <KnowledgeBaseId>00000000-0000-0000-0000-000000000000</KnowledgeBaseId>
+        <StartPointId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </StartPointId>
+        <StartPointName>
+          <FormattedCode />
+        </StartPointName>
+        <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+          <FormattedCode />
+          <HardcodedValue>
+            <Id>00000000-0000-0000-0000-000000000000</Id>
+            <ObjectType>RuntimeUser</ObjectType>
+          </HardcodedValue>
+        </RuntimeUserObject>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>d89b54cc-3e0f-4069-9119-485ba271cf6e</Id>
+        <DisplayName>Set Process Instance State</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>28ec4d21-5405-4f76-815d-39ed5f699771</Id>
+            <ActivityNodeId>d89b54cc-3e0f-4069-9119-485ba271cf6e</ActivityNodeId>
+            <CompletedId>76a72ded-6aa6-4b32-b63a-60c0427ac111</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+          <Id>d89b54cc-3e0f-4069-9119-485ba271cf6e</Id>
+          <DisplayName>Set Process Instance State</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>5fe8c95f-8a6b-49d8-9c62-80d5b5febd16</ContainingProcessId>
+          <VariableToSet>
+            <DisplayPath>Process.Variables.Local.State</DisplayPath>
+            <LinkChain />
+            <ObjectId>a9ebb1f2-e586-4e80-b2a3-f83b70f5bb3b</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </VariableToSet>
+          <NewValue xsi:type="SubstitutableString">
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Get Process Instance State.State</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="ProcessOutputVariableLink">
+                    <LaunchingActivityId>380e9655-419a-469f-851b-5e1782143271</LaunchingActivityId>
+                    <OutputVariableId>cfae106a-2789-4a2a-a91e-09edcb4d2a6c</OutputVariableId>
+                  </Link>
+                </LinkChain>
+                <ObjectId>380e9655-419a-469f-851b-5e1782143271</ObjectId>
+                <ObjectType>WorkflowNode</ObjectType>
+              </VariableReference>
+            </References>
+          </NewValue>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="WhileNode">
+        <Id>a8a95d45-a415-4c04-97d4-ee2719365d7b</Id>
+        <DisplayName>While Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="StartProcessNode">
+            <Id>fd216d84-6d7a-45ad-8cdf-199e627cfe34</Id>
+            <DisplayName>Get Process Instance State</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>ce6a1b50-0615-432a-bd18-575eb63e50df</Id>
+                <ProcessNodeId>fd216d84-6d7a-45ad-8cdf-199e627cfe34</ProcessNodeId>
+                <CompletedId>0771cd0c-d4ce-4318-9f42-e5b9b5acc64b</CompletedId>
+              </ActivityNode>
+            </Children>
+            <ProcessId>bb17dff3-6701-446c-9118-174eee1bcfbe</ProcessId>
+            <InputVariableTable>
+              <VariableAssignmentsAsArray>
+                <InputVariableAssignment>
+                  <InputVariableId>b60afd83-487f-4657-af93-2743250fbe29</InputVariableId>
+                  <VariableValue xsi:type="SubstitutableString">
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Input.Process Instance Id</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>0a2790d9-0ec0-4ea8-be00-a78a8bc33504</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </VariableValue>
+                </InputVariableAssignment>
+              </VariableAssignmentsAsArray>
+            </InputVariableTable>
+            <Asynchronous>false</Asynchronous>
+            <InheritTarget>true</InheritTarget>
+            <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+            <InheritPriorityClass>true</InheritPriorityClass>
+            <RuntimeUserId>
+              <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+            </RuntimeUserId>
+            <KnowledgeBaseId>00000000-0000-0000-0000-000000000000</KnowledgeBaseId>
+            <StartPointId>
+              <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+            </StartPointId>
+            <StartPointName>
+              <FormattedCode />
+            </StartPointName>
+            <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>00000000-0000-0000-0000-000000000000</Id>
+                <ObjectType>RuntimeUser</ObjectType>
+              </HardcodedValue>
+            </RuntimeUserObject>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>7eb85d78-a9ac-4404-8159-1eff668424df</Id>
+            <DisplayName>Set Process Instance State</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>2b393564-39c6-4757-a14f-346280b945fa</Id>
+                <ActivityNodeId>7eb85d78-a9ac-4404-8159-1eff668424df</ActivityNodeId>
+                <CompletedId>54b2b424-6fce-4020-b441-b71befb8f73a</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+              <Id>7eb85d78-a9ac-4404-8159-1eff668424df</Id>
+              <DisplayName>Set Process Instance State</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>5fe8c95f-8a6b-49d8-9c62-80d5b5febd16</ContainingProcessId>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Local.State</DisplayPath>
+                <LinkChain />
+                <ObjectId>a9ebb1f2-e586-4e80-b2a3-f83b70f5bb3b</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Get Process Instance State.State</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="ProcessOutputVariableLink">
+                        <LaunchingActivityId>fd216d84-6d7a-45ad-8cdf-199e627cfe34</LaunchingActivityId>
+                        <OutputVariableId>cfae106a-2789-4a2a-a91e-09edcb4d2a6c</OutputVariableId>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>fd216d84-6d7a-45ad-8cdf-199e627cfe34</ObjectId>
+                    <ObjectType>WorkflowNode</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <Condition>
+          <Id>70c15755-6ee1-492f-985c-42785889bb93</Id>
+          <Operator>Or</Operator>
+          <Conditions>
+            <ConditionDefinition xsi:type="VariableConditionDefinition">
+              <Id>7b608810-dd1c-4925-a4ae-05c4093e91f8</Id>
+              <Expression xsi:type="SubstitutableString">
+                <HardcodedValue>Running</HardcodedValue>
+              </Expression>
+              <Comparison>Equals</Comparison>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Local.State</DisplayPath>
+                <LinkChain />
+                <ObjectId>a9ebb1f2-e586-4e80-b2a3-f83b70f5bb3b</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </ConditionDefinition>
+          </Conditions>
+        </Condition>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>5fe8c95f-8a6b-49d8-9c62-80d5b5febd16</ProcessId>
+</WorkflowConfiguration>

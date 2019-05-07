@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>b4981503-0e3c-4904-b765-c99c77ca93f5</Id>
+  <DisplayName>Accenture - Test Deadlock Issue</DisplayName>
+  <VersionNumber>10</VersionNumber>
+  <CreatedTime>2019-04-11T15:39:22.06652Z</CreatedTime>
+  <ModifiedTime>2019-04-11T16:42:37.4416904Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>ed79a1fc-2d54-4fad-8975-75dd977d9bc9</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="StartProcessNode">
+        <Id>6c7c0dc1-a69c-418c-bca8-37983675f5d1</Id>
+        <DisplayName>Run Process</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>bfed7c2f-95c1-4047-bd60-fcc953efde93</Id>
+            <ProcessNodeId>6c7c0dc1-a69c-418c-bca8-37983675f5d1</ProcessNodeId>
+            <CompletedId>d47ccc33-74d2-44a2-adf6-3d2d3ae6b5b3</CompletedId>
+          </ActivityNode>
+        </Children>
+        <ProcessId>9ae95fb4-4f3f-4257-acc0-1b5dad224e8c</ProcessId>
+        <InputVariableTable>
+          <VariableAssignmentsAsArray>
+            <InputVariableAssignment>
+              <InputVariableId>c0975988-484f-4723-8abc-34e5aeae6a7a</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <FormattedCode>{{
+}}</FormattedCode>
+              </VariableValue>
+            </InputVariableAssignment>
+            <InputVariableAssignment>
+              <InputVariableId>e79a36ac-b07f-40d5-8f22-80d23f4d349c</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <HardcodedValue>Test Process</HardcodedValue>
+              </VariableValue>
+            </InputVariableAssignment>
+          </VariableAssignmentsAsArray>
+        </InputVariableTable>
+        <Asynchronous>false</Asynchronous>
+        <InheritTarget>true</InheritTarget>
+        <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+        <InheritPriorityClass>true</InheritPriorityClass>
+        <RuntimeUserId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </RuntimeUserId>
+        <KnowledgeBaseId>00000000-0000-0000-0000-000000000000</KnowledgeBaseId>
+        <StartPointId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </StartPointId>
+        <StartPointName>
+          <FormattedCode />
+        </StartPointName>
+        <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+          <FormattedCode />
+          <HardcodedValue>
+            <Id>00000000-0000-0000-0000-000000000000</Id>
+            <ObjectType>RuntimeUser</ObjectType>
+          </HardcodedValue>
+        </RuntimeUserObject>
+      </ActivityNode>
+      <ActivityNode xsi:type="StartProcessNode">
+        <Id>9985267a-8edd-4d77-8758-b0250e1933ab</Id>
+        <DisplayName>Wait for Process Instance Completion</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>18f5f564-afe0-4480-bdc6-924ac13add32</Id>
+            <ProcessNodeId>9985267a-8edd-4d77-8758-b0250e1933ab</ProcessNodeId>
+            <CompletedId>ea3d82f8-e123-4816-aa1d-e5d1a8598709</CompletedId>
+          </ActivityNode>
+        </Children>
+        <ProcessId>5fe8c95f-8a6b-49d8-9c62-80d5b5febd16</ProcessId>
+        <InputVariableTable>
+          <VariableAssignmentsAsArray>
+            <InputVariableAssignment>
+              <InputVariableId>0a2790d9-0ec0-4ea8-be00-a78a8bc33504</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Run Process.Start Process Instance Id</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="ProcessOutputVariableLink">
+                        <LaunchingActivityId>6c7c0dc1-a69c-418c-bca8-37983675f5d1</LaunchingActivityId>
+                        <OutputVariableId>e759ef79-e2d8-429f-af12-8ae2ac9eee0c</OutputVariableId>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>6c7c0dc1-a69c-418c-bca8-37983675f5d1</ObjectId>
+                    <ObjectType>WorkflowNode</ObjectType>
+                  </VariableReference>
+                </References>
+              </VariableValue>
+            </InputVariableAssignment>
+          </VariableAssignmentsAsArray>
+        </InputVariableTable>
+        <Asynchronous>false</Asynchronous>
+        <InheritTarget>true</InheritTarget>
+        <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+        <InheritPriorityClass>true</InheritPriorityClass>
+        <RuntimeUserId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </RuntimeUserId>
+        <KnowledgeBaseId>00000000-0000-0000-0000-000000000000</KnowledgeBaseId>
+        <StartPointId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </StartPointId>
+        <StartPointName>
+          <FormattedCode />
+        </StartPointName>
+        <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+          <FormattedCode />
+          <HardcodedValue>
+            <Id>00000000-0000-0000-0000-000000000000</Id>
+            <ObjectType>RuntimeUser</ObjectType>
+          </HardcodedValue>
+        </RuntimeUserObject>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>2be27c51-1189-4b1e-856e-3f5e0e2f0ac8</ProcessId>
+</WorkflowConfiguration>

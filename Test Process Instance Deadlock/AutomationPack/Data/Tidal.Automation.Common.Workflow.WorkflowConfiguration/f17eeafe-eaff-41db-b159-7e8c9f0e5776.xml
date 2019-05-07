@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>f17eeafe-eaff-41db-b159-7e8c9f0e5776</Id>
+  <DisplayName>Start Process</DisplayName>
+  <VersionNumber>25</VersionNumber>
+  <CreatedTime>2019-04-11T14:50:21.8444274Z</CreatedTime>
+  <ModifiedTime>2019-04-11T16:26:10.1687935Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>ee69ede7-fae6-408e-892a-21d50553b799</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>3152b969-7412-4436-a59d-474b8dff18d4</Id>
+        <DisplayName>Web HTTP Request - Get Process Instance State</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>50e07068-1bd3-4557-ae53-7feaf1adc1fe</Id>
+            <ActivityNodeId>3152b969-7412-4436-a59d-474b8dff18d4</ActivityNodeId>
+            <CompletedId>0c8a098c-c37c-4f6e-bc91-ad72231cd2b8</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="WebHttpTargetAwareRequestActivityConfiguration" xml:space="preserve">
+          <Id>3152b969-7412-4436-a59d-474b8dff18d4</Id>
+          <DisplayName>Web HTTP Request - Get Process Instance State</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>fc4e26bb-ec1f-4d04-bc6e-54b0fa69bf1d</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>9ae95fb4-4f3f-4257-acc0-1b5dad224e8c</ContainingProcessId>
+          <UseCredentials>true</UseCredentials>
+          <RelativeUrl>
+            <FormattedCode>Processes/{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Process Name</DisplayPath>
+                <LinkChain />
+                <ObjectId>e79a36ac-b07f-40d5-8f22-80d23f4d349c</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </RelativeUrl>
+          <ContentType>
+            <HardcodedValue>application/json; charset=utf-8</HardcodedValue>
+          </ContentType>
+          <Method>
+            <HardcodedValue>POST</HardcodedValue>
+          </Method>
+          <UserAgent>
+            <HardcodedValue />
+          </UserAgent>
+          <Request>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Input Variables</DisplayPath>
+                <LinkChain />
+                <ObjectId>c0975988-484f-4723-8abc-34e5aeae6a7a</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Request>
+          <ProtocolVersion>Version11</ProtocolVersion>
+          <AllowAutoRedirect>true</AllowAutoRedirect>
+          <Timeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>100</HardcodedValue>
+            </Period>
+          </Timeout>
+          <Accept>
+            <HardcodedValue />
+          </Accept>
+          <AcceptCookies>true</AcceptCookies>
+          <Headers />
+          <OutputFormat>Json</OutputFormat>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>88af74b7-e07a-4e04-aee7-8ede95091f6b</Id>
+        <DisplayName>JSON Path Query</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>2f38556d-7a6d-4c1d-a844-2d62389ac9d2</Id>
+            <ActivityNodeId>88af74b7-e07a-4e04-aee7-8ede95091f6b</ActivityNodeId>
+            <CompletedId>16d2dd5e-e64f-4532-912f-4d166b6ee0d2</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="JsonPathQueryActivityConfiguration" xml:space="preserve">
+          <Id>88af74b7-e07a-4e04-aee7-8ede95091f6b</Id>
+          <DisplayName>JSON Path Query</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>9ae95fb4-4f3f-4257-acc0-1b5dad224e8c</ContainingProcessId>
+          <SourceJson>
+            <FormattedCode>{{
+   "ProcessInstance" : {0}
+}}
+</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Web HTTP Request - Get Process Instance State.Response</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Response</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>3152b969-7412-4436-a59d-474b8dff18d4</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceJson>
+          <Queries>
+            <JsonPathQueryDefinition>
+              <DisplayName>Start Process Instance Id</DisplayName>
+              <Query>
+                <HardcodedValue>$.ProcessInstance[0].InstanceId</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </JsonPathQueryDefinition>
+          </Queries>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>4a17171d-f221-40fd-8e8f-fbd915e2d0ed</Id>
+        <DisplayName>Set Variable</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>6f30c24b-60e1-4881-b288-fe35e1f26682</Id>
+            <ActivityNodeId>4a17171d-f221-40fd-8e8f-fbd915e2d0ed</ActivityNodeId>
+            <CompletedId>974db1ec-0a3b-4e5e-b535-90f9ec5d6461</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+          <Id>4a17171d-f221-40fd-8e8f-fbd915e2d0ed</Id>
+          <DisplayName>Set Variable</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>9ae95fb4-4f3f-4257-acc0-1b5dad224e8c</ContainingProcessId>
+          <VariableToSet>
+            <DisplayPath>Process.Variables.Output.Start Process Instance Id</DisplayPath>
+            <LinkChain />
+            <ObjectId>e759ef79-e2d8-429f-af12-8ae2ac9eee0c</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </VariableToSet>
+          <NewValue xsi:type="SubstitutableString">
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.JSON Path Query.Results.Start Process Instance Id</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Results</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Start Process Instance Id</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>88af74b7-e07a-4e04-aee7-8ede95091f6b</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </NewValue>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>9ae95fb4-4f3f-4257-acc0-1b5dad224e8c</ProcessId>
+</WorkflowConfiguration>

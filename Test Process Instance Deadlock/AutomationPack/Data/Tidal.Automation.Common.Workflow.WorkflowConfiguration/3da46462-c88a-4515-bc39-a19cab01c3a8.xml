@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>3da46462-c88a-4515-bc39-a19cab01c3a8</Id>
+  <DisplayName>Get Process Instance State</DisplayName>
+  <VersionNumber>44</VersionNumber>
+  <CreatedTime>2019-04-10T16:17:11.1172416Z</CreatedTime>
+  <ModifiedTime>2019-04-11T15:45:07.0044097Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>894a3775-d528-4c2e-a929-7d2076f4e89d</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>91e25bc7-2065-4b28-bead-fcb4af9c1b1e</Id>
+        <DisplayName>Web HTTP Request - Get Process Instance State</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>b8bcea0a-2706-480e-9bb3-564d86a91cc7</Id>
+            <ActivityNodeId>91e25bc7-2065-4b28-bead-fcb4af9c1b1e</ActivityNodeId>
+            <CompletedId>f9a7bfe9-3565-4822-ae8f-f681e05d5fe7</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="WebHttpTargetAwareRequestActivityConfiguration" xml:space="preserve">
+          <Id>91e25bc7-2065-4b28-bead-fcb4af9c1b1e</Id>
+          <DisplayName>Web HTTP Request - Get Process Instance State</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>c52b13d6-0d39-4fab-acda-c24f0f469ac5</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>bb17dff3-6701-446c-9118-174eee1bcfbe</ContainingProcessId>
+          <UseCredentials>true</UseCredentials>
+          <RelativeUrl>
+            <FormattedCode>ProcessInstance</FormattedCode>
+          </RelativeUrl>
+          <ContentType>
+            <HardcodedValue>text/xml; charset=utf-8</HardcodedValue>
+          </ContentType>
+          <Method>
+            <HardcodedValue>POST</HardcodedValue>
+          </Method>
+          <UserAgent>
+            <HardcodedValue />
+          </UserAgent>
+          <Request>
+            <FormattedCode>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;tem:GetInstanceStatuses&gt;
+         &lt;!--Optional:--&gt;
+         &lt;tem:instanceIds&gt;
+            &lt;arr:guid&gt;{0}&lt;/arr:guid&gt;
+         &lt;/tem:instanceIds&gt;
+      &lt;/tem:GetInstanceStatuses&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Process Instance ID</DisplayPath>
+                <LinkChain />
+                <ObjectId>b60afd83-487f-4657-af93-2743250fbe29</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Request>
+          <ProtocolVersion>Version11</ProtocolVersion>
+          <AllowAutoRedirect>true</AllowAutoRedirect>
+          <Timeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>100</HardcodedValue>
+            </Period>
+          </Timeout>
+          <Accept>
+            <HardcodedValue />
+          </Accept>
+          <AcceptCookies>true</AcceptCookies>
+          <Headers>
+            <Header>
+              <Name>
+                <HardcodedValue>SOAPAction</HardcodedValue>
+              </Name>
+              <HeaderValue xsi:type="SubstitutableString">
+                <HardcodedValue>http://tempuri.org/IProcessInstanceNorthbound/GetInstanceStatuses</HardcodedValue>
+              </HeaderValue>
+            </Header>
+          </Headers>
+          <OutputFormat>Xml</OutputFormat>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>da5fdd30-9abf-4036-8df5-7c820e685a63</Id>
+        <DisplayName>XPath Query</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>549f8253-973a-4f69-b247-615bc1d3ec80</Id>
+            <ActivityNodeId>da5fdd30-9abf-4036-8df5-7c820e685a63</ActivityNodeId>
+            <CompletedId>01f8126b-8ee2-45d9-bf34-6262979c54d7</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="XPathQueryActivityConfiguration" xml:space="preserve">
+          <Id>da5fdd30-9abf-4036-8df5-7c820e685a63</Id>
+          <DisplayName>XPath Query</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>bb17dff3-6701-446c-9118-174eee1bcfbe</ContainingProcessId>
+          <SourceXml>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Web HTTP Request - Get Process Instance State.Response</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Response</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>91e25bc7-2065-4b28-bead-fcb4af9c1b1e</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </SourceXml>
+          <Namespaces>
+            <XPathNamespaceDefinition>
+              <Prefix>
+                <HardcodedValue>s</HardcodedValue>
+              </Prefix>
+              <Uri>
+                <HardcodedValue>http://schemas.xmlsoap.org/soap/envelope/</HardcodedValue>
+              </Uri>
+            </XPathNamespaceDefinition>
+            <XPathNamespaceDefinition>
+              <Prefix>
+                <HardcodedValue>a</HardcodedValue>
+              </Prefix>
+              <Uri>
+                <HardcodedValue>http://www.cisco.com/</HardcodedValue>
+              </Uri>
+            </XPathNamespaceDefinition>
+            <XPathNamespaceDefinition>
+              <Prefix>
+                <HardcodedValue>ns</HardcodedValue>
+              </Prefix>
+              <Uri>
+                <HardcodedValue>http://tempuri.org/</HardcodedValue>
+              </Uri>
+            </XPathNamespaceDefinition>
+          </Namespaces>
+          <Queries>
+            <XPathQueryDefinition>
+              <DisplayName>State</DisplayName>
+              <Query>
+                <HardcodedValue>//s:Envelope/s:Body/ns:GetInstanceStatusesResponse/ns:GetInstanceStatusesResult/a:InstanceStatus/a:InstanceState</HardcodedValue>
+              </Query>
+              <ReturnType>String</ReturnType>
+              <DefaultBehavior>Fail</DefaultBehavior>
+            </XPathQueryDefinition>
+          </Queries>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>19ac0373-b8e0-4c17-a62b-d752ea5e37b0</Id>
+        <DisplayName>Set Variable</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>c6808eb6-8c15-4a09-bc16-7ac199c6178b</Id>
+            <ActivityNodeId>19ac0373-b8e0-4c17-a62b-d752ea5e37b0</ActivityNodeId>
+            <CompletedId>9bbcfe68-1be6-4de1-9020-57383cc0cd55</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+          <Id>19ac0373-b8e0-4c17-a62b-d752ea5e37b0</Id>
+          <DisplayName>Set Variable</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>bb17dff3-6701-446c-9118-174eee1bcfbe</ContainingProcessId>
+          <VariableToSet>
+            <DisplayPath>Process.Variables.Output.State</DisplayPath>
+            <LinkChain />
+            <ObjectId>cfae106a-2789-4a2a-a91e-09edcb4d2a6c</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </VariableToSet>
+          <NewValue xsi:type="SubstitutableString">
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.XPath Query.Results.State</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Results</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>State</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>da5fdd30-9abf-4036-8df5-7c820e685a63</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </NewValue>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>bb17dff3-6701-446c-9118-174eee1bcfbe</ProcessId>
+</WorkflowConfiguration>

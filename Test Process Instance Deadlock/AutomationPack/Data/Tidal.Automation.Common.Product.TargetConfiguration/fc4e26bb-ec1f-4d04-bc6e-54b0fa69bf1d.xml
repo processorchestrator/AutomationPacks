@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<TargetConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="WebTargetConfiguration" xml:space="preserve">
+  <Id>fc4e26bb-ec1f-4d04-bc6e-54b0fa69bf1d</Id>
+  <DisplayName>Cisco Process Orchestrator REST Web Service</DisplayName>
+  <VersionNumber>4</VersionNumber>
+  <CreatedTime>2019-04-11T15:19:36.2462624Z</CreatedTime>
+  <ModifiedTime>2019-04-11T15:22:07.9400849Z</ModifiedTime>
+  <Owner xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
+  </Owner>
+  <CopiedFrom>c52b13d6-0d39-4fab-acda-c24f0f469ac5</CopiedFrom>
+  <DefaultRuntimeUserId>bcead37c-b920-4e5d-a3ec-481e0ed7aedd</DefaultRuntimeUserId>
+  <TypeExtensionId>86e5a024-9ad5-462c-819b-c0e479e34d17</TypeExtensionId>
+  <BaseURL>http://localhost:51527/api/v1/</BaseURL>
+  <IgnoreCertificateErrors>false</IgnoreCertificateErrors>
+  <ProxyAuthentication>None</ProxyAuthentication>
+  <ProxySpecifiedCredentialId>00000000-0000-0000-0000-000000000000</ProxySpecifiedCredentialId>
+  <Expect100Continue>true</Expect100Continue>
+</TargetConfiguration>

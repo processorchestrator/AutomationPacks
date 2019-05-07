@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<TargetConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="WebTargetConfiguration" xml:space="preserve">
+  <Id>c52b13d6-0d39-4fab-acda-c24f0f469ac5</Id>
+  <DisplayName>Cisco Process Orchestrator SOAP Web Service</DisplayName>
+  <VersionNumber>5</VersionNumber>
+  <CreatedTime>2019-04-10T16:15:53.5196753Z</CreatedTime>
+  <ModifiedTime>2019-04-11T15:21:16.7175867Z</ModifiedTime>
+  <Owner xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
+  </Owner>
+  <DefaultRuntimeUserId>bcead37c-b920-4e5d-a3ec-481e0ed7aedd</DefaultRuntimeUserId>
+  <TypeExtensionId>86e5a024-9ad5-462c-819b-c0e479e34d17</TypeExtensionId>
+  <BaseURL>http://localhost:61527/WS/</BaseURL>
+  <IgnoreCertificateErrors>false</IgnoreCertificateErrors>
+  <ProxyAuthentication>None</ProxyAuthentication>
+  <ProxySpecifiedCredentialId>00000000-0000-0000-0000-000000000000</ProxySpecifiedCredentialId>
+  <Expect100Continue>true</Expect100Continue>
+</TargetConfiguration>
