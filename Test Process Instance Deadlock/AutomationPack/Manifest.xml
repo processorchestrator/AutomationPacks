@@ -4,11 +4,11 @@
   <DisplayName>Test Process Instance Deadlock</DisplayName>
   <VersionNumber>-1</VersionNumber>
   <CreatedTime>2019-04-11T17:46:05.3116669Z</CreatedTime>
-  <ModifiedTime>2019-05-07T12:37:46.9418203Z</ModifiedTime>
+  <ModifiedTime>2019-05-07T16:54:33.7643429Z</ModifiedTime>
   <CompanyName>Cisco</CompanyName>
-  <Version>1.0.0.3</Version>
+  <Version>1.0.0.4</Version>
   <ExportProductVersion>3.5.1.0</ExportProductVersion>
-  <PublishDate>2019-05-07T12:37:46.8447348Z</PublishDate>
+  <PublishDate>2019-05-07T16:54:33.7509668Z</PublishDate>
   <ImportDate>0001-01-01T00:00:00Z</ImportDate>
   <DescriptionUrl />
   <Copyright>Cisco 2019</Copyright>
@@ -71,5 +71,4 @@
   </StyleCheckerIds>
   <AlwaysArchive>false</AlwaysArchive>
   <Patches />
-  <RepositoryId>00000000-0000-0000-0000-000000000000</RepositoryId>
 </AutomationPackConfiguration>
