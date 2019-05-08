@@ -4,11 +4,11 @@
   <DisplayName>SR#686480521 [EY]</DisplayName>
   <VersionNumber>-1</VersionNumber>
   <CreatedTime>2019-04-09T19:45:53.4023277Z</CreatedTime>
-  <ModifiedTime>2019-05-06T18:57:27.8441672Z</ModifiedTime>
+  <ModifiedTime>2019-05-08T17:03:37.6546743Z</ModifiedTime>
   <CompanyName>Trial</CompanyName>
-  <Version>1.0.0.2</Version>
+  <Version>1.0.0.3</Version>
   <ExportProductVersion>3.5.1.0</ExportProductVersion>
-  <PublishDate>2019-05-06T18:57:27.8305394Z</PublishDate>
+  <PublishDate>2019-05-08T17:03:37.636669Z</PublishDate>
   <ImportDate>0001-01-01T00:00:00Z</ImportDate>
   <DescriptionUrl />
   <Copyright>Trial 2019</Copyright>
@@ -63,5 +63,4 @@
   </StyleCheckerIds>
   <AlwaysArchive>false</AlwaysArchive>
   <Patches />
-  <RepositoryId>00000000-0000-0000-0000-000000000000</RepositoryId>
 </AutomationPackConfiguration>
