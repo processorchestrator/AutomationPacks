@@ -4,7 +4,7 @@
   <DisplayName>Parse Date</DisplayName>
   <VersionNumber>-1</VersionNumber>
   <CreatedTime>2019-04-23T19:19:46.1834452Z</CreatedTime>
-  <ModifiedTime>2019-04-23T19:49:45.6740526Z</ModifiedTime>
+  <ModifiedTime>2019-05-09T19:18:18.9528715Z</ModifiedTime>
   <RuntimeUserObject xsi:type="SubstitutableObjectReference">
     <FormattedCode />
     <HardcodedValue>
@@ -56,7 +56,6 @@
     <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
       <Id>6db1b51d-36aa-44fe-9387-04c12c7fcdcb</Id>
       <DisplayName>Date String</DisplayName>
-      <CustomizationSetting>Yes</CustomizationSetting>
       <string>4/23/2019 2:13:30 PM</string>
       <Scope>
         <Family>ProcessInstanceIn</Family>
@@ -68,7 +67,6 @@
     <VariableConfiguration xsi:type="NumberVariableConfiguration" xml:space="preserve">
       <Id>e3c3f334-19b7-4970-94df-650072971ac9</Id>
       <DisplayName>Day</DisplayName>
-      <CustomizationSetting>Yes</CustomizationSetting>
       <double>0</double>
       <Scope>
         <Family>ProcessInstanceOut</Family>
@@ -80,7 +78,6 @@
     <VariableConfiguration xsi:type="NumberVariableConfiguration" xml:space="preserve">
       <Id>da3c1147-0d78-4d14-80db-6e09ce62a630</Id>
       <DisplayName>Month</DisplayName>
-      <CustomizationSetting>Yes</CustomizationSetting>
       <double>0</double>
       <Scope>
         <Family>ProcessInstanceOut</Family>
@@ -92,7 +89,6 @@
     <VariableConfiguration xsi:type="NumberVariableConfiguration" xml:space="preserve">
       <Id>5ea5dbcf-064f-4ce8-aa07-0ebb333f9565</Id>
       <DisplayName>Year</DisplayName>
-      <CustomizationSetting>Yes</CustomizationSetting>
       <double>0</double>
       <Scope>
         <Family>ProcessInstanceOut</Family>
@@ -105,7 +101,6 @@
       <Id>00744066-d115-4d20-b687-6fc629814d7b</Id>
       <DisplayName>Index</DisplayName>
       <ModifiedTime>2019-04-23T19:49:38.3060367Z</ModifiedTime>
-      <CustomizationSetting>Yes</CustomizationSetting>
       <double>0</double>
       <Scope>
         <Family>ProcessInstanceLocal</Family>
@@ -115,7 +110,7 @@
       <CustomPropertiesString />
     </VariableConfiguration>
   </VariableDefinitions>
-  <Notes />
+  <Notes>This workflow output the year, month, day from the input date time string.</Notes>
   <GeneralHelp xsi:type="CustomHelpAlias">
     <Alias />
   </GeneralHelp>
