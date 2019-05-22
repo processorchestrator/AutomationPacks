@@ -6,7 +6,7 @@
   <CreatedTime>2019-04-12T20:50:36.5022498Z</CreatedTime>
   <ModifiedTime>2019-05-06T19:11:39.731316Z</ModifiedTime>
   <CompanyName>Cisco</CompanyName>
-  <Version>1.0.0.7</Version>
+  <Version>1.0.0.8</Version>
   <ExportProductVersion>3.5.1.0</ExportProductVersion>
   <PublishDate>2019-05-06T19:11:39.7176885Z</PublishDate>
   <ImportDate>0001-01-01T00:00:00Z</ImportDate>
@@ -14,13 +14,6 @@
   <Copyright>Cisco 2019</Copyright>
   <ObjectEntries />
   <AutomationPacks>
-    <AutomatioPackInfo>
-      <Id>4bf83767-bb0c-4235-9537-d06e6299f2ea</Id>
-      <Company>Cisco Systems, Inc.</Company>
-      <DisplayName>Core</DisplayName>
-      <Version>3.5.1.98</Version>
-      <Description>This automation pack will import the default content to support other automation packs.</Description>
-    </AutomatioPackInfo>
   </AutomationPacks>
   <Adapters>
     <AdapterInfo>
