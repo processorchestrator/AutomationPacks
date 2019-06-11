@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>c1ed8ab2-f692-4a23-8930-f928286a63fc</Id>
+  <DisplayName>Publish AMQP Messages Process</DisplayName>
+  <VersionNumber>-1</VersionNumber>
+  <CreatedTime>2018-04-12T14:57:49.8860039Z</CreatedTime>
+  <ModifiedTime>2018-04-12T15:22:36.9670391Z</ModifiedTime>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+    <SingleTargetReference>
+      <FormattedCode />
+      <HardcodedValue>
+        <Id>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</Id>
+        <ObjectType>Target</ObjectType>
+      </HardcodedValue>
+    </SingleTargetReference>
+  </TargetLoadBalancer>
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>f2b42453-f1a6-45dd-81c8-34bbd7ce0e77</WorkflowId>
+  <CategoryIds />
+  <TriggerOwner>465e878a-8489-4f61-8919-59f9eaa635e5</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="AdHocEventDefinition">
+        <Id>00143aca-bb1c-4de6-90a2-c3d83f73cd7b</Id>
+        <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
+        <Identities />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>2c26f776-d091-4fd8-a0d2-35879f7ed93a</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>4dd075f7-187e-4d97-9948-65ff46f86c23</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="StartProcessEventDefinition">
+        <Id>62974f4f-1fee-472e-89a4-6dd9cc051c02</Id>
+        <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
+        <ProcessIds />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>d12161ae-c8e9-4443-830d-64510f95704e</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>3c060815-cae8-41a2-b4d5-314f7070fcc6</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="ScheduleDefinition">
+        <Id>3052c53c-caa8-438e-b0b3-a69b6a811485</Id>
+        <DisplayName>Schedule</DisplayName>
+        <CalendarId>def7c247-c1b7-4f7f-a2b4-a75dad116764</CalendarId>
+        <TimeOfDay>PT10H23M34S</TimeOfDay>
+        <TimeZoneId>29c480f4-f660-81e2-2655-a68cf04d91da</TimeZoneId>
+        <NumberOfRuns>10</NumberOfRuns>
+        <Interval>PT1S</Interval>
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>1780b86e-e644-459b-8dd2-4593c6ead34c</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>2b9cca5b-f76b-45c2-ba76-4135f399abce</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions>
+    <VariableConfiguration xsi:type="NumberVariableConfiguration" xml:space="preserve">
+      <Id>6a601652-7045-4557-bf43-726f3b277942</Id>
+      <DisplayName>Number of Messages</DisplayName>
+      <double>5</double>
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>c1ed8ab2-f692-4a23-8930-f928286a63fc</ControllingItemId>
+      </Scope>
+      <VariableTypeId>97f5f9a7-d76c-90c6-fcef-e0362ff3b2d2</VariableTypeId>
+      <CustomPropertiesString />
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="NumberVariableConfiguration" xml:space="preserve">
+      <Id>3f92ce87-cab2-45f9-9e79-4e9bcd2c5b26</Id>
+      <DisplayName>Loop Index</DisplayName>
+      <double>0</double>
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>c1ed8ab2-f692-4a23-8930-f928286a63fc</ControllingItemId>
+      </Scope>
+      <VariableTypeId>97f5f9a7-d76c-90c6-fcef-e0362ff3b2d2</VariableTypeId>
+      <CustomPropertiesString />
+    </VariableConfiguration>
+  </VariableDefinitions>
+  <Notes />
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.BuiltinAdapter.Common.MasterTargetConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>af449107-3bd4-c9a3-e2ab-5f4acf12ac03</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.CloudPortal.Common.User.CloudPortalUserConfiguration, Tidal.Automation.CloudPortal.Common</string>
+    <string>Tidal.Automation.WebService.Common.ClientCertificateUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.CloudCenter.Users.CloudCenterApiAccessCredentialsConfiguration, Tidal.Automation.CloudCenter.Common</string>
+    <string>Tidal.Automation.WebService.Common.OAuthUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.OpenStack.Common.User.OpenStackUserConfiguration, Tidal.Automation.OpenStack.Common</string>
+    <string>Tidal.Automation.Ssh.Common.PublicKeyAdminUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.GitAdapter.Common.GitRepositoryRuntimeUserConfiguration, Tidal.Automation.GitAdapter.Common</string>
+    <string>Tidal.Automation.Ssh.Common.IOSUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.BuiltinAdapter.Common.GenericRuntimeUserConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+    <string>Tidal.Automation.Azure.Common.AzureAccessKeyConfiguration, Tidal.Automation.Azure.Common</string>
+    <string>Tidal.Automation.Snmp.Common.SnmpUserConfiguration, Tidal.Automation.Snmp.Common</string>
+    <string>Tidal.Automation.vCloud.Common.Users.vCloudUserConfiguration, Tidal.Automation.vCloud.Common</string>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+</ProcessConfiguration>
