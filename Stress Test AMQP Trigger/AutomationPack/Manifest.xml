@@ -34,7 +34,7 @@ These 2 processes publish or listen for messages from all AMQP brokers exist on 
       <Id>4bf83767-bb0c-4235-9537-d06e6299f2ea</Id>
       <Company>Cisco Systems, Inc.</Company>
       <DisplayName>Core</DisplayName>
-      <Version>3.2.0.122</Version>
+      <Version>3.5.1.98</Version>
       <Description>This automation pack will import the default content to support other automation packs.</Description>
     </AutomatioPackInfo>
   </AutomationPacks>
