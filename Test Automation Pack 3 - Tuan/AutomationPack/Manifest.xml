@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
     <Id>6a91594c-3c7d-4ab0-8a4e-e4a1c9b359bf</Id>
     <DisplayName>Test Automation Pack 3 - Tuan</DisplayName>
-    <VersionNumber>3</VersionNumber>
+    <VersionNumber>-1</VersionNumber>
     <CreatedTime>2019-05-29T15:02:02.8410048Z</CreatedTime>
     <ModifiedTime>2019-05-29T15:04:43.9245808Z</ModifiedTime>
     <CompanyName>Trial</CompanyName>
