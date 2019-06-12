@@ -22,7 +22,7 @@ These 2 processes publish or listen for messages from all AMQP brokers exist on 
   <CreatedTime>2018-03-21T14:20:58.4945596Z</CreatedTime>
   <ModifiedTime>2018-04-12T15:35:07.1091288Z</ModifiedTime>
   <CompanyName>Trial</CompanyName>
-  <Version>1.0.0.2</Version>
+  <Version>1.0.0.0</Version>
   <ExportProductVersion>3.5.1.98</ExportProductVersion>
   <PublishDate>2018-04-12T15:35:07.0935917Z</PublishDate>
   <ImportDate>2018-04-12T14:57:49.9485836Z</ImportDate>
