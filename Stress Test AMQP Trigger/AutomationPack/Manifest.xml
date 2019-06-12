@@ -18,7 +18,7 @@
 These 2 processes publish or listen for messages from all AMQP brokers exist on the environment.  So, make sure there is only 1 AMQP broker available.  And the specified exchange, queue, &amp; binding are preconfigured on that environment.
 
 </Description>
-  <VersionNumber>-1</VersionNumber>
+  <VersionNumber>5</VersionNumber>
   <CreatedTime>2018-03-21T14:20:58.4945596Z</CreatedTime>
   <ModifiedTime>2018-04-12T15:35:07.1091288Z</ModifiedTime>
   <CompanyName>Trial</CompanyName>
