@@ -3,7 +3,7 @@
   <Id>d04037c3-6908-4863-9a25-35feffe23d5f</Id>
   <DisplayName>Test Automation Pack - Tuan (Updated)</DisplayName>
   <Description></Description>
-  <VersionNumber>1</VersionNumber>
+  <VersionNumber>-1</VersionNumber>
   <CreatedTime>2019-05-22T14:17:52.1401427Z</CreatedTime>
   <ModifiedTime>2019-05-22T14:28:33.1152896Z</ModifiedTime>
   <CompanyName>Trial</CompanyName>
@@ -12,7 +12,7 @@
   <PublishDate>2019-05-22T14:28:33.0639532Z</PublishDate>
   <ImportDate>0001-01-01T00:00:00Z</ImportDate>
   <DescriptionUrl />
-  <Copyright>CSIT 2019</Copyright>
+  <Copyright>Trial 2019</Copyright>
   <ObjectEntries>
     <ObjectEntry>
       <ObjectId>51eaf4ed-95e0-4fd7-8293-9c7aeb16a940</ObjectId>
