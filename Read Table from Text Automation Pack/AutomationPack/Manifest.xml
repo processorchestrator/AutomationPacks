@@ -2,7 +2,7 @@
 <AutomationPackConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>6234a6d8-e9ee-49a9-9fab-a38df7b0d3dd</Id>
   <DisplayName>Read Table from Text Automation Pack</DisplayName>
-  <VersionNumber>5</VersionNumber>
+  <VersionNumber>-1</VersionNumber>
   <CreatedTime>2018-04-03T14:04:45.0406931Z</CreatedTime>
   <ModifiedTime>2018-04-03T14:05:02.079636Z</ModifiedTime>
   <CompanyName>Trial</CompanyName>
