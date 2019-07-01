@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>854c20ab-4d92-4fac-84e5-d1e352409268</Id>
+  <DisplayName>Query VMs</DisplayName>
+  <CreatedTime>2019-07-01T13:11:48.7973079Z</CreatedTime>
+  <ModifiedTime>2019-07-01T13:11:48.7973079Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>53d10542-c6d0-49a2-b9ab-f395dc3cbc8c</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>d650c09e-0313-4e09-aaa3-c31612cb5cdb</Id>
+        <DisplayName>Query VMs</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>03778142-16bf-4c82-b863-3fcec389a3be</Id>
+            <ActivityNodeId>d650c09e-0313-4e09-aaa3-c31612cb5cdb</ActivityNodeId>
+            <CompletedId>300f3723-d9c4-4e17-8997-40b3e178bdca</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="VMwareQueryVMsActivityConfiguration" xml:space="preserve">
+          <Id>d650c09e-0313-4e09-aaa3-c31612cb5cdb</Id>
+          <DisplayName>Query VMs</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>b3bd5407-9995-4bba-8f0c-749f43b59988</ContainingProcessId>
+          <VTask>
+            <MainText>Query VMs</MainText>
+          </VTask>
+          <TimeOutPeriod>
+            <DisplayUnits>Minutes</DisplayUnits>
+            <Period>
+              <HardcodedValue>5</HardcodedValue>
+            </Period>
+          </TimeOutPeriod>
+          <HostName>
+            <HardcodedValue>*</HardcodedValue>
+          </HostName>
+          <VirtualMachineName>
+            <HardcodedValue>*cpo*</HardcodedValue>
+          </VirtualMachineName>
+          <DatacenterName>
+            <HardcodedValue>*</HardcodedValue>
+          </DatacenterName>
+          <VMFilter>VirtualMachinesAndTemplates</VMFilter>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>b3bd5407-9995-4bba-8f0c-749f43b59988</ProcessId>
+</WorkflowConfiguration>
