@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<RuntimeUserConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GitRepositoryRuntimeUserConfiguration" xml:space="preserve">
+  <Id>8e63fc2a-b162-42d3-9615-f6cd74621766</Id>
+  <DisplayName>ProcessOrchestrator</DisplayName>
+  <VersionNumber>2</VersionNumber>
+  <CreatedTime>2019-07-01T12:36:33.1224611Z</CreatedTime>
+  <ModifiedTime>2019-07-01T12:36:58.0891656Z</ModifiedTime>
+  <EncryptedPassword>
+    <EncryptedForm />
+  </EncryptedPassword>
+</RuntimeUserConfiguration>
