@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>f2b42453-f1a6-45dd-81c8-34bbd7ce0e77</Id>
+  <DisplayName>Publish AMQP Messages Process</DisplayName>
+  <CreatedTime>2019-07-01T12:53:15.8291371Z</CreatedTime>
+  <ModifiedTime>2019-07-01T12:53:15.8291371Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>96257468-c397-4005-9715-2c2735ff7b24</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>e042cfde-5064-40dd-b0c2-7ef8870600d9</Id>
+        <DisplayName>Sleep</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>bcb4b2fd-5a2a-495c-bd21-b49ce0994c9a</Id>
+            <ActivityNodeId>e042cfde-5064-40dd-b0c2-7ef8870600d9</ActivityNodeId>
+            <CompletedId>29d13a54-6369-4dcc-86c4-ba53d619d63c</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SleepActivityConfiguration" xml:space="preserve">
+          <Id>e042cfde-5064-40dd-b0c2-7ef8870600d9</Id>
+          <DisplayName>Sleep</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>c1ed8ab2-f692-4a23-8930-f928286a63fc</ContainingProcessId>
+          <Seconds>
+            <HardcodedValue>60</HardcodedValue>
+          </Seconds>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>c1ed8ab2-f692-4a23-8930-f928286a63fc</ProcessId>
+</WorkflowConfiguration>

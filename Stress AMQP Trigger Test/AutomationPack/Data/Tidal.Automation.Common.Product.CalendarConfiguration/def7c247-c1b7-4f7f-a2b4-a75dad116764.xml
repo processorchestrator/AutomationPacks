@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<CalendarConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="DateListCalendarConfiguration" xml:space="preserve">
+  <Id>def7c247-c1b7-4f7f-a2b4-a75dad116764</Id>
+  <DisplayName>Tony Today</DisplayName>
+  <CreatedTime>2019-07-01T12:53:15.7197418Z</CreatedTime>
+  <ModifiedTime>2019-07-01T12:53:15.7197418Z</ModifiedTime>
+  <Enabled>true</Enabled>
+  <DateList>
+    <dateTime>2018-04-12T00:00:00Z</dateTime>
+  </DateList>
+</CalendarConfiguration>
