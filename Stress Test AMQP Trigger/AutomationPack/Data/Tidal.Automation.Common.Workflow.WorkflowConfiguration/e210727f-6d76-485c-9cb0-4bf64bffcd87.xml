@@ -2,8 +2,8 @@
 <WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>e210727f-6d76-485c-9cb0-4bf64bffcd87</Id>
   <DisplayName>Monitor AMQP Message Process</DisplayName>
-  <CreatedTime>2018-04-12T14:57:49.5892282Z</CreatedTime>
-  <ModifiedTime>2018-04-12T14:57:49.5892282Z</ModifiedTime>
+  <CreatedTime>2019-07-01T12:53:15.7509785Z</CreatedTime>
+  <ModifiedTime>2019-07-01T12:53:15.7509785Z</ModifiedTime>
   <FirstActivity xsi:type="RootNode">
     <Id>c1169487-6dd5-4110-a9ad-ce634eff5865</Id>
     <DisplayName />

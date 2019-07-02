@@ -2,8 +2,8 @@
 <TargetGroupConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ByTypeTargetGroupConfiguration" xml:space="preserve">
   <Id>854c7f91-489f-4fc6-a57d-eb3b343a496d</Id>
   <DisplayName>AMQP Brokers</DisplayName>
-  <CreatedTime>2018-04-12T14:57:49.2766266Z</CreatedTime>
-  <ModifiedTime>2018-04-12T14:57:49.2766266Z</ModifiedTime>
+  <CreatedTime>2019-07-01T12:53:15.7353474Z</CreatedTime>
+  <ModifiedTime>2019-07-01T12:53:15.7353474Z</ModifiedTime>
   <Enabled>true</Enabled>
   <TargetType>Tidal.Automation.Amqp.Common.AMQPServerTargetConfiguration, Tidal.Automation.Amqp.Common</TargetType>
   <TargetTypeExtensionId>556782be-bab6-9f13-820c-f3c3ad45de94</TargetTypeExtensionId>

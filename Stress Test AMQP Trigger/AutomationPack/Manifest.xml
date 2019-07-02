@@ -18,14 +18,14 @@
 These 2 processes publish or listen for messages from all AMQP brokers exist on the environment.  So, make sure there is only 1 AMQP broker available.  And the specified exchange, queue, &amp; binding are preconfigured on that environment.
 
 </Description>
-  <VersionNumber>5</VersionNumber>
+  <VersionNumber>-1</VersionNumber>
   <CreatedTime>2018-03-21T14:20:58.4945596Z</CreatedTime>
-  <ModifiedTime>2018-04-12T15:35:07.1091288Z</ModifiedTime>
+  <ModifiedTime>2019-07-02T20:53:30.3460234Z</ModifiedTime>
   <CompanyName>Trial</CompanyName>
   <Version>1.0.0.0</Version>
-  <ExportProductVersion>3.5.1.98</ExportProductVersion>
-  <PublishDate>2018-04-12T15:35:07.0935917Z</PublishDate>
-  <ImportDate>2018-04-12T14:57:49.9485836Z</ImportDate>
+  <ExportProductVersion>3.5.1.0</ExportProductVersion>
+  <PublishDate>2019-07-02T20:53:30.2950693Z</PublishDate>
+  <ImportDate>2019-07-01T12:53:15.8759792Z</ImportDate>
   <DescriptionUrl />
   <Copyright>Cisco Systems, Inc. 2018</Copyright>
   <ObjectEntries />
@@ -90,5 +90,5 @@ These 2 processes publish or listen for messages from all AMQP brokers exist on 
   </StyleCheckerIds>
   <AlwaysArchive>false</AlwaysArchive>
   <Patches />
-  <RepositoryId>00000000-0000-0000-0000-000000000000</RepositoryId>
+  <EncodedMessage>JxGAI5ecHBJ+OgD0h4FrSQ==</EncodedMessage>
 </AutomationPackConfiguration>

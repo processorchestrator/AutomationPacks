@@ -2,8 +2,8 @@
 <ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>7494e277-d725-4a84-9cdd-c49db24549a6</Id>
   <DisplayName>Monitor AMQP Message Process</DisplayName>
-  <CreatedTime>2018-04-12T14:57:49.667257Z</CreatedTime>
-  <ModifiedTime>2018-04-12T14:57:49.667257Z</ModifiedTime>
+  <CreatedTime>2019-07-01T12:53:15.7509785Z</CreatedTime>
+  <ModifiedTime>2019-07-01T12:53:15.7509785Z</ModifiedTime>
   <RuntimeUserObject xsi:type="SubstitutableObjectReference">
     <FormattedCode />
     <HardcodedValue>
@@ -24,7 +24,7 @@
   <AuditSuccesses>true</AuditSuccesses>
   <WorkflowId>e210727f-6d76-485c-9cb0-4bf64bffcd87</WorkflowId>
   <CategoryIds />
-  <TriggerOwner>465e878a-8489-4f61-8919-59f9eaa635e5</TriggerOwner>
+  <TriggerOwner>f727ec2b-98eb-4575-baa3-b158a2c4c935</TriggerOwner>
   <Triggers>
     <TriggerDefinition>
       <Event xsi:type="AdHocEventDefinition">

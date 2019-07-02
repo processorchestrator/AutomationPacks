@@ -2,9 +2,8 @@
 <WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>f2b42453-f1a6-45dd-81c8-34bbd7ce0e77</Id>
   <DisplayName>Publish AMQP Messages Process</DisplayName>
-  <VersionNumber>8</VersionNumber>
-  <CreatedTime>2018-04-12T14:57:49.8391395Z</CreatedTime>
-  <ModifiedTime>2018-04-12T15:22:37.0764095Z</ModifiedTime>
+  <CreatedTime>2019-07-01T12:53:15.8291371Z</CreatedTime>
+  <ModifiedTime>2019-07-01T12:53:15.8291371Z</ModifiedTime>
   <FirstActivity xsi:type="RootNode">
     <Id>96257468-c397-4005-9715-2c2735ff7b24</Id>
     <DisplayName />
