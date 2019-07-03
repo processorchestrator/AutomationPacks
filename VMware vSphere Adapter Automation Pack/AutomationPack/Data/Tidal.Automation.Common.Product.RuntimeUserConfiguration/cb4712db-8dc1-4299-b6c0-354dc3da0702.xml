@@ -3,9 +3,8 @@
   <Id>cb4712db-8dc1-4299-b6c0-354dc3da0702</Id>
   <DisplayName>TIDALSOFT\TTran</DisplayName>
   <Description>Credentials to access vCenter</Description>
-  <VersionNumber>2</VersionNumber>
-  <CreatedTime>2019-07-01T13:11:48.7338561Z</CreatedTime>
-  <ModifiedTime>2019-07-01T13:14:42.2578464Z</ModifiedTime>
+  <CreatedTime>2019-07-02T19:28:19.5184899Z</CreatedTime>
+  <ModifiedTime>2019-07-02T19:28:19.5184899Z</ModifiedTime>
   <EncryptedPassword>
     <EncryptedForm />
   </EncryptedPassword>
