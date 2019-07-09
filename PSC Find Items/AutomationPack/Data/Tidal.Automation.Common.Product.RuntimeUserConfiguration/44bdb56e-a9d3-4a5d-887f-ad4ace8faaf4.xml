@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<RuntimeUserConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GenericRuntimeUserConfiguration" xml:space="preserve">
+  <Id>44bdb56e-a9d3-4a5d-887f-ad4ace8faaf4</Id>
+  <DisplayName>admin</DisplayName>
+  <CreatedTime>2019-07-09T11:31:39.7388693Z</CreatedTime>
+  <ModifiedTime>2019-07-09T11:31:39.7388693Z</ModifiedTime>
+  <EncryptedPassword>
+    <EncryptedForm />
+  </EncryptedPassword>
+</RuntimeUserConfiguration>
