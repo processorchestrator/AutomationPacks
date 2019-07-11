@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<TargetGroupConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ByTypeTargetGroupConfiguration" xml:space="preserve">
+  <Id>83cc2e12-b48e-41ca-b3f4-3d71c3f94868</Id>
+  <DisplayName>Operation Targets</DisplayName>
+  <CreatedTime>2019-07-11T18:20:54.0291506Z</CreatedTime>
+  <ModifiedTime>2019-07-11T18:20:54.0291506Z</ModifiedTime>
+  <Enabled>true</Enabled>
+  <TargetType>Tidal.Automation.Common.Product.TargetConfiguration, Tidal.Automation.Common.Product</TargetType>
+  <TargetTypeExtensionId>b7962418-e7c5-4272-9ba3-fa220fe1901c</TargetTypeExtensionId>
+  <TargetCriteria />
+</TargetGroupConfiguration>
