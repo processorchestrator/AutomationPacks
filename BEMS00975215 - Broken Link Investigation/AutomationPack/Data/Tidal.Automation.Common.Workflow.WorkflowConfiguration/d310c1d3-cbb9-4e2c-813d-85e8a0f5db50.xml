@@ -2,9 +2,8 @@
 <WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>d310c1d3-cbb9-4e2c-813d-85e8a0f5db50</Id>
   <DisplayName>Create Operation Target</DisplayName>
-  <VersionNumber>9</VersionNumber>
-  <CreatedTime>2019-07-11T16:14:41.1406283Z</CreatedTime>
-  <ModifiedTime>2019-07-11T18:38:10.2011845Z</ModifiedTime>
+  <CreatedTime>2019-07-11T20:22:21.4269938Z</CreatedTime>
+  <ModifiedTime>2019-07-11T20:22:21.4269938Z</ModifiedTime>
   <FirstActivity xsi:type="RootNode">
     <Id>73f0da84-ae5e-448e-b648-362e9f91076a</Id>
     <DisplayName />

@@ -2,9 +2,8 @@
 <ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>efb76b78-b13b-4231-992f-82dbbfa4e696</Id>
   <DisplayName>VM Operation</DisplayName>
-  <VersionNumber>-1</VersionNumber>
-  <CreatedTime>2019-07-11T12:34:08.976866Z</CreatedTime>
-  <ModifiedTime>2019-07-11T19:27:24.4027288Z</ModifiedTime>
+  <CreatedTime>2019-07-11T20:22:21.2551353Z</CreatedTime>
+  <ModifiedTime>2019-07-11T20:22:21.2551353Z</ModifiedTime>
   <RuntimeUserObject xsi:type="SubstitutableObjectReference">
     <FormattedCode />
     <HardcodedValue>
@@ -23,6 +22,7 @@
       <Event xsi:type="AdHocEventDefinition">
         <Id>6ba8b249-ebe0-4507-905b-1186210255b1</Id>
         <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
         <Identities />
       </Event>
       <Condition xsi:type="RootConditionDefinition">
@@ -35,6 +35,7 @@
       <Event xsi:type="StartProcessEventDefinition">
         <Id>a5ffc078-c506-4a27-916d-8a175bfe86cc</Id>
         <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
         <ProcessIds />
       </Event>
       <Condition xsi:type="RootConditionDefinition">

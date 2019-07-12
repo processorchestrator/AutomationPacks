@@ -2,9 +2,8 @@
 <WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>2e096d99-6e68-4983-b543-5b8ed1fc5236</Id>
   <DisplayName>Perform VM Operation</DisplayName>
-  <VersionNumber>5</VersionNumber>
-  <CreatedTime>2019-07-11T18:59:07.3702298Z</CreatedTime>
-  <ModifiedTime>2019-07-11T19:29:11.081066Z</ModifiedTime>
+  <CreatedTime>2019-07-11T20:22:20.8957426Z</CreatedTime>
+  <ModifiedTime>2019-07-11T20:22:20.8957426Z</ModifiedTime>
   <FirstActivity xsi:type="RootNode">
     <Id>135ee2b7-91ab-491b-956e-6aa519eef6bb</Id>
     <DisplayName />

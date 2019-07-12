@@ -2,9 +2,8 @@
 <TypeExtensionConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>b7962418-e7c5-4272-9ba3-fa220fe1901c</Id>
   <DisplayName>Operation Target Type</DisplayName>
-  <VersionNumber>-1</VersionNumber>
-  <CreatedTime>2019-07-11T13:18:01.7849914Z</CreatedTime>
-  <ModifiedTime>2019-07-11T16:56:04.1525626Z</ModifiedTime>
+  <CreatedTime>2019-07-11T20:22:20.5676302Z</CreatedTime>
+  <ModifiedTime>2019-07-11T20:22:20.5676302Z</ModifiedTime>
   <ConfigurationType>Tidal.Automation.Common.Product.TargetConfiguration, Tidal.Automation.Common.Product</ConfigurationType>
   <BaseTypeExtensionId>b21b034c-ad99-0a4b-c23a-058167087ad9</BaseTypeExtensionId>
   <Creatable>true</Creatable>

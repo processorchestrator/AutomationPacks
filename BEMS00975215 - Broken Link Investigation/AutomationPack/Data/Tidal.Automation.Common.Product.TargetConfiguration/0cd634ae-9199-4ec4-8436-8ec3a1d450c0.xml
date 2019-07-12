@@ -2,9 +2,8 @@
 <TargetConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="WebTargetConfiguration" xml:space="preserve">
   <Id>0cd634ae-9199-4ec4-8436-8ec3a1d450c0</Id>
   <DisplayName>Cisco Process Orchestrator REST Web Service Target</DisplayName>
-  <VersionNumber>2</VersionNumber>
-  <CreatedTime>2019-07-11T16:09:56.2185333Z</CreatedTime>
-  <ModifiedTime>2019-07-11T16:10:13.0158894Z</ModifiedTime>
+  <CreatedTime>2019-07-11T20:22:20.3957457Z</CreatedTime>
+  <ModifiedTime>2019-07-11T20:22:20.3957457Z</ModifiedTime>
   <Owner xsi:type="SidIdentity">
     <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
   </Owner>

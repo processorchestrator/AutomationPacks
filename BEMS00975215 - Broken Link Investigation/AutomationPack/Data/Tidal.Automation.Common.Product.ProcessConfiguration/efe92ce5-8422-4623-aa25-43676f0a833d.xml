@@ -2,9 +2,8 @@
 <ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>efe92ce5-8422-4623-aa25-43676f0a833d</Id>
   <DisplayName>Create Operation Target</DisplayName>
-  <VersionNumber>-1</VersionNumber>
-  <CreatedTime>2019-07-11T16:14:41.1874835Z</CreatedTime>
-  <ModifiedTime>2019-07-11T18:38:10.1386825Z</ModifiedTime>
+  <CreatedTime>2019-07-11T20:22:21.4738692Z</CreatedTime>
+  <ModifiedTime>2019-07-11T20:22:21.4738692Z</ModifiedTime>
   <RuntimeUserObject xsi:type="SubstitutableObjectReference">
     <FormattedCode />
     <HardcodedValue>
@@ -23,6 +22,7 @@
       <Event xsi:type="AdHocEventDefinition">
         <Id>50e0f961-d4c8-4858-abdb-e0e4c34cab9a</Id>
         <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
         <Identities />
       </Event>
       <Condition xsi:type="RootConditionDefinition">
@@ -35,6 +35,7 @@
       <Event xsi:type="StartProcessEventDefinition">
         <Id>dde85ee8-c23f-4746-951c-0c4d8228e1c8</Id>
         <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
         <ProcessIds />
       </Event>
       <Condition xsi:type="RootConditionDefinition">
