@@ -4,12 +4,21 @@
   <DisplayName>SR#686480521 [EY]</DisplayName>
   <VersionNumber>-1</VersionNumber>
   <CreatedTime>2019-04-09T19:45:53.4023277Z</CreatedTime>
-  <ModifiedTime>2019-07-03T12:18:41.6555027Z</ModifiedTime>
+  <CreatedBy xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
+  </CreatedBy>
+  <ModifiedTime>2019-07-23T19:57:35.5914181Z</ModifiedTime>
+  <ModifiedBy xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
+  </ModifiedBy>
+  <Owner xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
+  </Owner>
   <CompanyName>Trial</CompanyName>
   <Version>1.0.0.1</Version>
   <ExportProductVersion>3.5.1.0</ExportProductVersion>
   <PublishDate>2019-07-03T12:18:41.5145302Z</PublishDate>
-  <ImportDate>2019-07-03T12:17:09.2391575Z</ImportDate>
+  <ImportDate>2019-07-23T19:57:35.2004067Z</ImportDate>
   <DescriptionUrl />
   <Copyright>Trial 2019</Copyright>
   <ObjectEntries />
@@ -63,4 +72,6 @@
   </StyleCheckerIds>
   <AlwaysArchive>false</AlwaysArchive>
   <Patches />
+  <RepositoryUrl>https://github.com/processorchestrator/AutomationPacks/tree/master/SR#686480521 [EY]</RepositoryUrl>
+  <EncodedMessage>JxGAI5ecHBJ+OgD0h4FrSQ==</EncodedMessage>
 </AutomationPackConfiguration>

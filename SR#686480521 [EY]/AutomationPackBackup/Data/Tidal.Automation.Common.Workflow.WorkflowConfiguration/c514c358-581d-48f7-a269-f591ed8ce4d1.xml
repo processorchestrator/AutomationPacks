@@ -2,8 +2,17 @@
 <WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>c514c358-581d-48f7-a269-f591ed8ce4d1</Id>
   <DisplayName>EY - Test Process</DisplayName>
-  <CreatedTime>2019-07-03T12:17:08.8570393Z</CreatedTime>
-  <ModifiedTime>2019-07-03T12:17:08.8570393Z</ModifiedTime>
+  <CreatedTime>2019-07-23T19:57:34.8445191Z</CreatedTime>
+  <CreatedBy xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
+  </CreatedBy>
+  <ModifiedTime>2019-07-23T19:57:34.8445191Z</ModifiedTime>
+  <ModifiedBy xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
+  </ModifiedBy>
+  <Owner xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
+  </Owner>
   <FirstActivity xsi:type="RootNode">
     <Id>90d8d07f-d121-4571-a4d9-78dc3957c6be</Id>
     <DisplayName />
