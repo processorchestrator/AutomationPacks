@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<TargetConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CloudPortalServerTargetConfiguration" xml:space="preserve">
+  <Id>07d6aa1c-dc33-44fd-854c-18547584b574</Id>
+  <DisplayName>Cisco Prime Service Catalog Server PSC 11.2</DisplayName>
+  <Description>10.201.125.82
+admin\Control01</Description>
+  <VersionNumber>2</VersionNumber>
+  <CreatedTime>2019-07-01T22:12:45.9743039Z</CreatedTime>
+  <ModifiedTime>2019-07-01T22:29:38.0231579Z</ModifiedTime>
+  <Owner xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-209125451-689648040-410060929-16762</SecurityIdentifier>
+  </Owner>
+  <DefaultRuntimeUserId>d3a0e417-ba91-425b-aa64-16d9afbffcc8</DefaultRuntimeUserId>
+  <TypeExtensionId>c34beb2e-56f6-ab85-bda2-680867014c86</TypeExtensionId>
+  <ServiceLinkRuntimeUserId>d3a0e417-ba91-425b-aa64-16d9afbffcc8</ServiceLinkRuntimeUserId>
+  <ServerName>aus-sap-stress2.tidalsoft.local</ServerName>
+  <ServiceLinkServerServerName>aus-sap-stress2.tidalsoft.local</ServiceLinkServerServerName>
+  <UseSSL>false</UseSSL>
+  <ServiceLinkUseSSL>false</ServiceLinkUseSSL>
+  <IgnoreCertificateErrors>true</IgnoreCertificateErrors>
+  <ServiceLinkServerIgnoreCertificateErrors>true</ServiceLinkServerIgnoreCertificateErrors>
+  <ServiceLinkPort>6080</ServiceLinkPort>
+  <RequestCenterPort>8080</RequestCenterPort>
+  <ServerVersion>
+    <Major>11</Major>
+    <Minor>1</Minor>
+    <Revision>1</Revision>
+    <Full>11.1.1</Full>
+    <Build>Build 0319</Build>
+  </ServerVersion>
+  <PublicKeyGuid>00000000-0000-0000-0000-000000000000</PublicKeyGuid>
+</TargetConfiguration>

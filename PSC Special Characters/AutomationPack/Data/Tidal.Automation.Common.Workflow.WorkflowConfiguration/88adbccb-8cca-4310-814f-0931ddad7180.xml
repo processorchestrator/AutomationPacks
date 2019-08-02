@@ -1,0 +1,764 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>88adbccb-8cca-4310-814f-0931ddad7180</Id>
+  <DisplayName>Twn233922c: PSC - Special Characters</DisplayName>
+  <VersionNumber>8</VersionNumber>
+  <CreatedTime>2019-07-01T22:13:08.4899698Z</CreatedTime>
+  <ModifiedTime>2019-07-01T22:46:35.9883195Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>d766c94c-460c-49ac-99cb-0a31c2979d82</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>11ef5fe1-069a-4816-a2e8-a73a33504f77</Id>
+        <DisplayName>Create Service Item Ü</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>c53f889b-d432-497c-8561-3561d54da63c</Id>
+            <ActivityNodeId>11ef5fe1-069a-4816-a2e8-a73a33504f77</ActivityNodeId>
+            <CompletedId>3b0053e9-e018-4119-98c9-62f195da279d</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="CreateServiceItemActivityConfiguration" xml:space="preserve">
+          <Id>11ef5fe1-069a-4816-a2e8-a73a33504f77</Id>
+          <DisplayName>Create Service Item Ü</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>07d6aa1c-dc33-44fd-854c-18547584b574</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>c831bc46-56ab-4d02-9ef8-5dd33f8c626b</ContainingProcessId>
+          <RetryTimePeriod>
+            <DisplayUnits>Minutes</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Time Period (minutes)</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultRetryMinutes</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </RetryTimePeriod>
+          <RetryFrequency>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Frequency (seconds)</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultRetryFrequency</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </RetryFrequency>
+          <Timeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>100</HardcodedValue>
+            </Period>
+          </Timeout>
+          <ItemType>
+            <HardcodedValue>cpo</HardcodedValue>
+          </ItemType>
+          <ItemName>
+            <HardcodedValue>Create Service Item #</HardcodedValue>
+          </ItemName>
+          <BrowseServiceItemName>cpo</BrowseServiceItemName>
+          <ItemAttributes>
+            <ServiceItemPropertyInformation>
+              <Name>
+                <HardcodedValue>test</HardcodedValue>
+              </Name>
+              <Value xsi:type="SubstitutableString">
+                <HardcodedValue>Create Service Item Ü</HardcodedValue>
+              </Value>
+            </ServiceItemPropertyInformation>
+          </ItemAttributes>
+          <Subscriber>
+            <HardcodedValue />
+          </Subscriber>
+          <SubscriberOuName>
+            <HardcodedValue />
+          </SubscriberOuName>
+          <SubscriberRequisitionEntryId>
+            <HardcodedValue />
+          </SubscriberRequisitionEntryId>
+          <ChannelId>
+            <HardcodedValue />
+          </ChannelId>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>a3dc51e4-a5d0-450c-bd7b-a1d051dda17f</Id>
+        <DisplayName>Find Service Items</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>50921c33-dfdb-4643-abe4-1e92b6c1e92c</Id>
+            <ActivityNodeId>a3dc51e4-a5d0-450c-bd7b-a1d051dda17f</ActivityNodeId>
+            <CompletedId>3b2df65b-228a-42cb-ba52-f11aba10c803</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="FindServiceItemsActivityConfiguration" xml:space="preserve">
+          <Id>a3dc51e4-a5d0-450c-bd7b-a1d051dda17f</Id>
+          <DisplayName>Find Service Items</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>c831bc46-56ab-4d02-9ef8-5dd33f8c626b</ContainingProcessId>
+          <RetryTimePeriod>
+            <DisplayUnits>Minutes</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Time Period (minutes)</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultRetryMinutes</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </RetryTimePeriod>
+          <RetryFrequency>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Frequency (seconds)</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultRetryFrequency</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </RetryFrequency>
+          <Timeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>100</HardcodedValue>
+            </Period>
+          </Timeout>
+          <ItemType>
+            <HardcodedValue>cpo</HardcodedValue>
+          </ItemType>
+          <ItemName>
+            <FormattedCode />
+          </ItemName>
+          <BrowseServiceItemName>cpo</BrowseServiceItemName>
+          <Properties>
+            <ServiceItemProperty>
+              <Name>
+                <HardcodedValue>versionname</HardcodedValue>
+              </Name>
+            </ServiceItemProperty>
+            <ServiceItemProperty>
+              <Name>
+                <HardcodedValue>test</HardcodedValue>
+              </Name>
+            </ServiceItemProperty>
+            <ServiceItemProperty>
+              <Name>
+                <HardcodedValue>Install_date</HardcodedValue>
+              </Name>
+              <VariableType>DateTime</VariableType>
+            </ServiceItemProperty>
+            <ServiceItemProperty>
+              <Name>
+                <HardcodedValue>buildnumber</HardcodedValue>
+              </Name>
+              <VariableType>Number</VariableType>
+            </ServiceItemProperty>
+            <ServiceItemProperty>
+              <Name>
+                <HardcodedValue>Name</HardcodedValue>
+              </Name>
+            </ServiceItemProperty>
+          </Properties>
+          <SearchCriteria />
+          <Subscriber>
+            <HardcodedValue />
+          </Subscriber>
+          <SubscriberOuName>
+            <HardcodedValue />
+          </SubscriberOuName>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>0e6ccf4a-6b4b-480c-b287-60e4aee435f5</Id>
+        <DisplayName>Set Variable</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>197b0af9-1357-4bbd-8a4b-79b755073101</Id>
+            <ActivityNodeId>0e6ccf4a-6b4b-480c-b287-60e4aee435f5</ActivityNodeId>
+            <CompletedId>6b983736-be9a-4488-a897-6e2f5769bec8</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+          <Id>0e6ccf4a-6b4b-480c-b287-60e4aee435f5</Id>
+          <DisplayName>Set Variable</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>c831bc46-56ab-4d02-9ef8-5dd33f8c626b</ContainingProcessId>
+          <VariableToSet>
+            <DisplayPath>Process.Variables.Local.string</DisplayPath>
+            <LinkChain />
+            <ObjectId>bf8539ae-2c8b-44f7-925d-8cf2b4b92ed3</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </VariableToSet>
+          <NewValue xsi:type="SubstitutableString">
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Find Service Items.Service Items.First Row.test</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>ResultsTable</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>FirstRow</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>test</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>a3dc51e4-a5d0-450c-bd7b-a1d051dda17f</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </NewValue>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>003c25f1-8fa0-4122-82fa-b1e3c346f1e1</Id>
+        <DisplayName>Find Service Items (2)</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>1d2fcaf9-bf9a-4afe-9c9d-f120a8200671</Id>
+            <ActivityNodeId>003c25f1-8fa0-4122-82fa-b1e3c346f1e1</ActivityNodeId>
+            <CompletedId>cbc7d685-ba59-424f-9e33-159b610de629</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="FindServiceItemsActivityConfiguration" xml:space="preserve">
+          <Id>003c25f1-8fa0-4122-82fa-b1e3c346f1e1</Id>
+          <DisplayName>Find Service Items (2)</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>c831bc46-56ab-4d02-9ef8-5dd33f8c626b</ContainingProcessId>
+          <RetryTimePeriod>
+            <DisplayUnits>Minutes</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Time Period (minutes)</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultRetryMinutes</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </RetryTimePeriod>
+          <RetryFrequency>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Frequency (seconds)</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultRetryFrequency</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </RetryFrequency>
+          <Timeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>300</HardcodedValue>
+            </Period>
+          </Timeout>
+          <ItemType>
+            <HardcodedValue>cpo</HardcodedValue>
+          </ItemType>
+          <ItemName>
+            <FormattedCode />
+          </ItemName>
+          <BrowseServiceItemName>cpo</BrowseServiceItemName>
+          <Properties>
+            <ServiceItemProperty>
+              <Name>
+                <HardcodedValue>Install_date</HardcodedValue>
+              </Name>
+              <VariableType>DateTime</VariableType>
+            </ServiceItemProperty>
+            <ServiceItemProperty>
+              <Name>
+                <HardcodedValue>Name</HardcodedValue>
+              </Name>
+            </ServiceItemProperty>
+            <ServiceItemProperty>
+              <Name>
+                <HardcodedValue>versionname</HardcodedValue>
+              </Name>
+            </ServiceItemProperty>
+            <ServiceItemProperty>
+              <Name>
+                <HardcodedValue>test</HardcodedValue>
+              </Name>
+            </ServiceItemProperty>
+            <ServiceItemProperty>
+              <Name>
+                <HardcodedValue>buildnumber</HardcodedValue>
+              </Name>
+              <VariableType>Number</VariableType>
+            </ServiceItemProperty>
+          </Properties>
+          <SearchCriteria>
+            <ServiceItemSearchCriteria>
+              <Name>
+                <HardcodedValue>versionname</HardcodedValue>
+              </Name>
+              <Value xsi:type="SubstitutableString">
+                <HardcodedValue>asfsafsfs</HardcodedValue>
+              </Value>
+              <Comparison>Equal</Comparison>
+            </ServiceItemSearchCriteria>
+          </SearchCriteria>
+          <Subscriber>
+            <HardcodedValue />
+          </Subscriber>
+          <SubscriberOuName>
+            <HardcodedValue />
+          </SubscriberOuName>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="CompletedNode">
+        <Id>ea913073-300e-49b4-ba3b-135f0ec09749</Id>
+        <CompletedType>Succeeded</CompletedType>
+      </ActivityNode>
+      <ActivityNode xsi:type="ParallelNode">
+        <Id>f0d651e0-fdf3-4b2e-b065-8473d0cf5bfe</Id>
+        <DisplayName>Parallel Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>6d43b4cc-8963-41bc-8ce8-cce4ad5b8de0</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>effb8408-a78b-406d-8e2e-f62196edede1</Id>
+                <DisplayName>Create Service Item &amp;</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>454e4101-965f-43cc-9719-c14c93c6d3d8</Id>
+                    <ActivityNodeId>effb8408-a78b-406d-8e2e-f62196edede1</ActivityNodeId>
+                    <CompletedId>3f764783-1a39-4069-80e1-2275335762cb</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="CreateServiceItemActivityConfiguration" xml:space="preserve">
+                  <Id>effb8408-a78b-406d-8e2e-f62196edede1</Id>
+                  <DisplayName>Create Service Item &amp;</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+                    <SingleTargetReference>
+                      <FormattedCode />
+                      <HardcodedValue>
+                        <Id>07d6aa1c-dc33-44fd-854c-18547584b574</Id>
+                        <ObjectType>Target</ObjectType>
+                      </HardcodedValue>
+                    </SingleTargetReference>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>c831bc46-56ab-4d02-9ef8-5dd33f8c626b</ContainingProcessId>
+                  <RetryTimePeriod>
+                    <DisplayUnits>Minutes</DisplayUnits>
+                    <Period>
+                      <FormattedCode>{0}</FormattedCode>
+                      <References>
+                        <VariableReference xsi:type="PropertyReference">
+                          <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Time Period (minutes)</DisplayPath>
+                          <LinkChain>
+                            <Link xsi:type="PropertyNameLink">
+                              <PropertyName>DefaultRetryMinutes</PropertyName>
+                            </Link>
+                          </LinkChain>
+                          <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                          <ObjectType>Adapter</ObjectType>
+                        </VariableReference>
+                      </References>
+                    </Period>
+                  </RetryTimePeriod>
+                  <RetryFrequency>
+                    <DisplayUnits>Seconds</DisplayUnits>
+                    <Period>
+                      <FormattedCode>{0}</FormattedCode>
+                      <References>
+                        <VariableReference xsi:type="PropertyReference">
+                          <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Frequency (seconds)</DisplayPath>
+                          <LinkChain>
+                            <Link xsi:type="PropertyNameLink">
+                              <PropertyName>DefaultRetryFrequency</PropertyName>
+                            </Link>
+                          </LinkChain>
+                          <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                          <ObjectType>Adapter</ObjectType>
+                        </VariableReference>
+                      </References>
+                    </Period>
+                  </RetryFrequency>
+                  <Timeout>
+                    <DisplayUnits>Seconds</DisplayUnits>
+                    <Period>
+                      <HardcodedValue>100</HardcodedValue>
+                    </Period>
+                  </Timeout>
+                  <ItemType>
+                    <HardcodedValue>cpo</HardcodedValue>
+                  </ItemType>
+                  <ItemName>
+                    <HardcodedValue>WordPress&amp;</HardcodedValue>
+                  </ItemName>
+                  <BrowseServiceItemName>cpo</BrowseServiceItemName>
+                  <ItemAttributes>
+                    <ServiceItemPropertyInformation>
+                      <Name>
+                        <HardcodedValue>versionname</HardcodedValue>
+                      </Name>
+                      <Value xsi:type="SubstitutableString">
+                        <HardcodedValue>WordPress&amp;</HardcodedValue>
+                      </Value>
+                    </ServiceItemPropertyInformation>
+                  </ItemAttributes>
+                  <Subscriber>
+                    <HardcodedValue />
+                  </Subscriber>
+                  <SubscriberOuName>
+                    <HardcodedValue />
+                  </SubscriberOuName>
+                  <SubscriberRequisitionEntryId>
+                    <HardcodedValue />
+                  </SubscriberRequisitionEntryId>
+                  <ChannelId>
+                    <HardcodedValue />
+                  </ChannelId>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>e25fed54-3526-4b03-a606-38112af5ba55</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children />
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>5a21222e-be22-456c-bc74-34945285a606</Id>
+        <DisplayName>Sleep</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>43cfa4f9-a612-4ff4-85af-818ce843e048</Id>
+            <ActivityNodeId>5a21222e-be22-456c-bc74-34945285a606</ActivityNodeId>
+            <CompletedId>1eca1791-57a8-40f3-90bd-3e3ef7d7a8e7</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SleepActivityConfiguration" xml:space="preserve">
+          <Id>5a21222e-be22-456c-bc74-34945285a606</Id>
+          <DisplayName>Sleep</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>c831bc46-56ab-4d02-9ef8-5dd33f8c626b</ContainingProcessId>
+          <Seconds>
+            <HardcodedValue>10</HardcodedValue>
+          </Seconds>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>5e14b1e7-d612-44e3-aaf7-c72b6d82b34b</Id>
+        <DisplayName>Update Service Item</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>f0ec7141-d440-47b0-b511-0eac004ee49a</Id>
+            <ActivityNodeId>5e14b1e7-d612-44e3-aaf7-c72b6d82b34b</ActivityNodeId>
+            <CompletedId>eb55effe-5957-435c-9955-00eeb23829e6</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="UpdateServiceItemActivityConfiguration" xml:space="preserve">
+          <Id>5e14b1e7-d612-44e3-aaf7-c72b6d82b34b</Id>
+          <DisplayName>Update Service Item</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>c831bc46-56ab-4d02-9ef8-5dd33f8c626b</ContainingProcessId>
+          <RetryTimePeriod>
+            <DisplayUnits>Minutes</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Time Period (minutes)</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultRetryMinutes</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </RetryTimePeriod>
+          <RetryFrequency>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Frequency (seconds)</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultRetryFrequency</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </RetryFrequency>
+          <Timeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>100</HardcodedValue>
+            </Period>
+          </Timeout>
+          <ItemType>
+            <HardcodedValue>WordPress</HardcodedValue>
+          </ItemType>
+          <ItemName>
+            <HardcodedValue>WordPress</HardcodedValue>
+          </ItemName>
+          <BrowseServiceItemName>WordPress</BrowseServiceItemName>
+          <ItemAttributes>
+            <ServiceItemPropertyInformation>
+              <Name>
+                <HardcodedValue>DBHost</HardcodedValue>
+              </Name>
+              <Value xsi:type="SubstitutableString">
+                <HardcodedValue>&amp;</HardcodedValue>
+              </Value>
+            </ServiceItemPropertyInformation>
+          </ItemAttributes>
+          <Subscriber>
+            <HardcodedValue />
+          </Subscriber>
+          <SubscriberOuName>
+            <HardcodedValue />
+          </SubscriberOuName>
+          <SubscriberRequisitionEntryId>
+            <HardcodedValue />
+          </SubscriberRequisitionEntryId>
+          <ChannelId>
+            <HardcodedValue />
+          </ChannelId>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>b5dc40d6-1bb4-4055-a70a-ff4f95572204</Id>
+        <DisplayName>Delete Service Item</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>b6fdc6b5-0960-4cbb-82c0-d151689071ba</Id>
+            <ActivityNodeId>b5dc40d6-1bb4-4055-a70a-ff4f95572204</ActivityNodeId>
+            <CompletedId>31228850-350b-4cad-b18c-48fc5261d540</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="DeleteServiceItemActivityConfiguration" xml:space="preserve">
+          <Id>b5dc40d6-1bb4-4055-a70a-ff4f95572204</Id>
+          <DisplayName>Delete Service Item</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>c831bc46-56ab-4d02-9ef8-5dd33f8c626b</ContainingProcessId>
+          <RetryTimePeriod>
+            <DisplayUnits>Minutes</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Time Period (minutes)</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultRetryMinutes</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </RetryTimePeriod>
+          <RetryFrequency>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Cisco Prime Service Catalog Adapter.Retry Frequency (seconds)</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultRetryFrequency</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>c433762b-9ba6-4059-a616-85d8f3f236c3</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </RetryFrequency>
+          <Timeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>100</HardcodedValue>
+            </Period>
+          </Timeout>
+          <ItemType>
+            <HardcodedValue>WordPress</HardcodedValue>
+          </ItemType>
+          <ItemName>
+            <HardcodedValue>WordPress&amp;</HardcodedValue>
+          </ItemName>
+          <BrowseServiceItemName>WordPress</BrowseServiceItemName>
+          <ChannelId>
+            <HardcodedValue />
+          </ChannelId>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="SwitchNode">
+        <Id>ac4ddbee-d65c-4296-a259-9bb68dd3bfa1</Id>
+        <DisplayName>Condition Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>95106d21-9798-464c-a1a1-5085d58fb45d</Id>
+            <DisplayName>Condition Branch</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="CompletedNode">
+                <Id>05b89fcb-f99c-45e2-b313-c322c1b81284</Id>
+                <CompletedType>Succeeded</CompletedType>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>68c93377-4654-4472-9dc7-2d3b223e712e</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>614f00f5-6a9c-42ee-a10a-521ac28a24fe</Id>
+                  <Expression xsi:type="SubstitutableBoolean">
+                    <HardcodedValue>false</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Create Service Item.Instance Failed</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>InstanceFailed</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>effb8408-a78b-406d-8e2e-f62196edede1</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>d6c4f2f3-8f5b-4075-9aee-2198269c4e06</Id>
+            <DisplayName>Condition Branch</DisplayName>
+            <Children />
+            <Condition>
+              <Id>380b0853-fcb0-4da7-9115-08f66eee1a3e</Id>
+              <Conditions />
+            </Condition>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>c831bc46-56ab-4d02-9ef8-5dd33f8c626b</ProcessId>
+</WorkflowConfiguration>
