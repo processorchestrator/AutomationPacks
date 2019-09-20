@@ -1,0 +1,415 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>6d33dab7-3b30-439c-a29e-d7c3f19b9fc6</Id>
+  <DisplayName>Twn131715c: QE-MSSQL-Delete-Positive(Final)</DisplayName>
+  <CreatedTime>2019-09-20T21:16:39.516542Z</CreatedTime>
+  <ModifiedTime>2019-09-20T21:16:39.516542Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>ba22614b-bfc1-454d-b9e1-61f4f2c6b79e</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="SequenceNode">
+        <Id>950becad-6db8-4ebd-9e45-982078992015</Id>
+        <DisplayName>Positive Sequential Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>d8ee31f1-b918-48db-b1de-1bac07b186b9</Id>
+            <DisplayName>Delete from SQL Server</DisplayName>
+            <Children />
+            <Configuration xsi:type="DeleteSQLServerActivityConfiguration" xml:space="preserve">
+              <Id>d8ee31f1-b918-48db-b1de-1bac07b186b9</Id>
+              <DisplayName>Delete from SQL Server</DisplayName>
+              <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                <FormattedCode />
+                <HardcodedValue>
+                  <Id>00000000-0000-0000-0000-000000000000</Id>
+                  <ObjectType>RuntimeUser</ObjectType>
+                </HardcodedValue>
+              </RuntimeUserObject>
+              <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+              <ContainingProcessId>4060693d-b3db-4926-9369-587c2cafbb8e</ContainingProcessId>
+              <PermissionLevel>Modify</PermissionLevel>
+              <SqlCommandText>
+                <HardcodedValue>delete Test_Table</HardcodedValue>
+              </SqlCommandText>
+              <CommandTimeout>
+                <DisplayUnits>Seconds</DisplayUnits>
+                <Period>
+                  <HardcodedValue>0</HardcodedValue>
+                </Period>
+              </CommandTimeout>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>bac5ba14-eb88-4a93-b6e6-d1bf31db852d</Id>
+            <DisplayName>Select (verify inserted 0 data) </DisplayName>
+            <Children />
+            <Configuration xsi:type="SelectFromSqlServerActivityConfiguration" xml:space="preserve">
+              <Id>bac5ba14-eb88-4a93-b6e6-d1bf31db852d</Id>
+              <DisplayName>Select (verify inserted 0 data) </DisplayName>
+              <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                <FormattedCode />
+                <HardcodedValue>
+                  <Id>00000000-0000-0000-0000-000000000000</Id>
+                  <ObjectType>RuntimeUser</ObjectType>
+                </HardcodedValue>
+              </RuntimeUserObject>
+              <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+              <ContainingProcessId>4060693d-b3db-4926-9369-587c2cafbb8e</ContainingProcessId>
+              <PermissionLevel>Select</PermissionLevel>
+              <SqlCommandText>
+                <HardcodedValue>select * from Test_Table</HardcodedValue>
+              </SqlCommandText>
+              <CommandTimeout>
+                <DisplayUnits>Seconds</DisplayUnits>
+                <Period>
+                  <HardcodedValue>0</HardcodedValue>
+                </Period>
+              </CommandTimeout>
+              <Columns />
+              <RowNumberPerPage>
+                <HardcodedValue>100</HardcodedValue>
+              </RowNumberPerPage>
+              <ReturnAllColumns>false</ReturnAllColumns>
+              <RowLimit>
+                <HardcodedValue>200</HardcodedValue>
+              </RowLimit>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="SwitchNode">
+            <Id>aeecc302-6a25-4890-a320-9d70d5e00e55</Id>
+            <DisplayName>Check DB Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>c3fecb21-82cc-4f54-8686-1a3dab329419</Id>
+                <DisplayName>DB is Empty</DisplayName>
+                <Children />
+                <Condition>
+                  <Id>17a09ac8-b8d9-4153-a231-0716fd633158</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>1f69c388-e41b-4b11-a610-9b441ae5f3f5</Id>
+                      <Expression xsi:type="SubstitutableNumber">
+                        <HardcodedValue>0</HardcodedValue>
+                      </Expression>
+                      <Comparison>Equals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.Select (verify inserted) .Records Affected</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>RecordsAffected</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>bac5ba14-eb88-4a93-b6e6-d1bf31db852d</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>2e27ca26-b3a9-49af-9cbb-83591faa275f</Id>
+                <DisplayName>Data in Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>3c3b74ef-75a6-4db3-9c92-fafe09dcdd5a</Id>
+                    <DisplayName>Delete from SQL Server (2)</DisplayName>
+                    <Children />
+                    <Configuration xsi:type="DeleteSQLServerActivityConfiguration" xml:space="preserve">
+                      <Id>3c3b74ef-75a6-4db3-9c92-fafe09dcdd5a</Id>
+                      <DisplayName>Delete from SQL Server (2)</DisplayName>
+                      <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                        <FormattedCode />
+                        <HardcodedValue>
+                          <Id>00000000-0000-0000-0000-000000000000</Id>
+                          <ObjectType>RuntimeUser</ObjectType>
+                        </HardcodedValue>
+                      </RuntimeUserObject>
+                      <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+                      <ContainingProcessId>4060693d-b3db-4926-9369-587c2cafbb8e</ContainingProcessId>
+                      <PermissionLevel>Modify</PermissionLevel>
+                      <SqlCommandText>
+                        <HardcodedValue>delete Test_Table</HardcodedValue>
+                      </SqlCommandText>
+                      <CommandTimeout>
+                        <DisplayUnits>Seconds</DisplayUnits>
+                        <Period>
+                          <HardcodedValue>0</HardcodedValue>
+                        </Period>
+                      </CommandTimeout>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>5e6f1b57-c1cf-4295-a73b-ffbe95cab96b</Id>
+                  <Conditions />
+                </Condition>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>b6843f8f-331d-4944-a67f-c7fee414bb20</Id>
+            <DisplayName>Insert Into SQL Server</DisplayName>
+            <Children />
+            <Configuration xsi:type="InsertIntoSQLServerActivityConfiguration" xml:space="preserve">
+              <Id>b6843f8f-331d-4944-a67f-c7fee414bb20</Id>
+              <DisplayName>Insert Into SQL Server</DisplayName>
+              <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                <FormattedCode />
+                <HardcodedValue>
+                  <Id>00000000-0000-0000-0000-000000000000</Id>
+                  <ObjectType>RuntimeUser</ObjectType>
+                </HardcodedValue>
+              </RuntimeUserObject>
+              <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+              <ContainingProcessId>4060693d-b3db-4926-9369-587c2cafbb8e</ContainingProcessId>
+              <PermissionLevel>Modify</PermissionLevel>
+              <SqlCommandText>
+                <FormattedCode>INSERT INTO [TestDB].[dbo].[Test_Table]
+           ([LastName]
+           ,[FirstName]
+           ,[Num]
+           ,[Int])
+     VALUES
+           ('{0}'
+           ,'{1}'
+           ,20
+           ,999)</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Global Variables.Tony-Unicode</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>25fc7022-062f-4bd5-acde-db678f2ce1a9</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Global Variables.Tony-Empty String</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>e5431b41-6334-434f-9afe-01275907c8eb</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </SqlCommandText>
+              <CommandTimeout>
+                <DisplayUnits>Seconds</DisplayUnits>
+                <Period>
+                  <HardcodedValue>0</HardcodedValue>
+                </Period>
+              </CommandTimeout>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>2df7a641-d6e8-4795-98cb-b381b5ad84d4</Id>
+            <DisplayName>Select (verify inserted)</DisplayName>
+            <Children />
+            <Configuration xsi:type="SelectFromSqlServerActivityConfiguration" xml:space="preserve">
+              <Id>2df7a641-d6e8-4795-98cb-b381b5ad84d4</Id>
+              <DisplayName>Select (verify inserted)</DisplayName>
+              <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                <FormattedCode />
+                <HardcodedValue>
+                  <Id>00000000-0000-0000-0000-000000000000</Id>
+                  <ObjectType>RuntimeUser</ObjectType>
+                </HardcodedValue>
+              </RuntimeUserObject>
+              <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+              <ContainingProcessId>4060693d-b3db-4926-9369-587c2cafbb8e</ContainingProcessId>
+              <PermissionLevel>Select</PermissionLevel>
+              <SqlCommandText>
+                <FormattedCode>select LastName, FirstName, Num, Int from Test_Table
+where LastName = 'Яшефдчйклжщэюбвцあかさたなぎゃじゃにゃびゃみゃ理解' and FirstName = '{0}'</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Global Variables.MSsqlDB - Tony-MS-Empty String</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>e5431b41-6334-434f-9afe-01275907c8eb</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </SqlCommandText>
+              <CommandTimeout>
+                <DisplayUnits>Seconds</DisplayUnits>
+                <Period>
+                  <HardcodedValue>0</HardcodedValue>
+                </Period>
+              </CommandTimeout>
+              <Columns />
+              <RowNumberPerPage>
+                <HardcodedValue>100</HardcodedValue>
+              </RowNumberPerPage>
+              <ReturnAllColumns>false</ReturnAllColumns>
+              <RowLimit>
+                <HardcodedValue>200</HardcodedValue>
+              </RowLimit>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>fbd636d4-8f96-4866-a09c-6e31439ced62</Id>
+            <DisplayName>Delete from SQL Server (LastName)</DisplayName>
+            <Children />
+            <Configuration xsi:type="DeleteSQLServerActivityConfiguration" xml:space="preserve">
+              <Id>fbd636d4-8f96-4866-a09c-6e31439ced62</Id>
+              <DisplayName>Delete from SQL Server (LastName)</DisplayName>
+              <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                <FormattedCode />
+                <HardcodedValue>
+                  <Id>00000000-0000-0000-0000-000000000000</Id>
+                  <ObjectType>RuntimeUser</ObjectType>
+                </HardcodedValue>
+              </RuntimeUserObject>
+              <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+                <SingleTargetReference>
+                  <FormattedCode />
+                  <HardcodedValue>
+                    <Id>6bf4907f-66b2-45fe-9fa5-8ce757016756</Id>
+                    <ObjectType>Target</ObjectType>
+                  </HardcodedValue>
+                </SingleTargetReference>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>4060693d-b3db-4926-9369-587c2cafbb8e</ContainingProcessId>
+              <PermissionLevel>Modify</PermissionLevel>
+              <SqlCommandText>
+                <HardcodedValue>delete from Test_Table where LastName = 'Яшефдчйклжщэюбвцあかさたなぎゃじゃにゃびゃみゃ理解'</HardcodedValue>
+              </SqlCommandText>
+              <CommandTimeout>
+                <DisplayUnits>Seconds</DisplayUnits>
+                <Period>
+                  <HardcodedValue>0</HardcodedValue>
+                </Period>
+              </CommandTimeout>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="SwitchNode">
+            <Id>35d98ee9-1a4a-4fa4-9116-7a6f889fa84e</Id>
+            <DisplayName>Condition Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>7e91fa21-e860-411d-8426-3f61494f01a9</Id>
+                <DisplayName>Condition Branch</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>d594fd66-5212-4f56-ae93-3bdbee67089c</Id>
+                    <DisplayName>Passed</DisplayName>
+                    <Children />
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>d594fd66-5212-4f56-ae93-3bdbee67089c</Id>
+                      <DisplayName>Passed</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>4060693d-b3db-4926-9369-587c2cafbb8e</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Status - Passed or Failed</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>7ab542e6-5dea-488d-9fa2-c25f1aea321c</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <HardcodedValue>passed</HardcodedValue>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>dc812be8-93d4-4033-8e12-dfc1fbd50a3c</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>982d9d4a-6c25-498b-b79b-039c9122b9d8</Id>
+                      <Expression xsi:type="SubstitutableBoolean">
+                        <HardcodedValue>false</HardcodedValue>
+                      </Expression>
+                      <Comparison>Equals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Instance Failed</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>InstanceFailed</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectType>ProcessInstance</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>054f2cef-4a3f-4731-97f8-990abbdb6229</Id>
+                      <Expression xsi:type="SubstitutableNumber">
+                        <HardcodedValue>0</HardcodedValue>
+                      </Expression>
+                      <Comparison>Equals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.Select (verify inserted 0 data) .Records Affected</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>RecordsAffected</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>bac5ba14-eb88-4a93-b6e6-d1bf31db852d</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>407729e2-f492-462e-b7a4-45ebb4ebc811</Id>
+                      <Expression xsi:type="SubstitutableNumber">
+                        <HardcodedValue>1</HardcodedValue>
+                      </Expression>
+                      <Comparison>Equals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.Delete from SQL Server (LastName).Records Affected</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>RecordsAffected</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>fbd636d4-8f96-4866-a09c-6e31439ced62</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>efc337e7-c687-4f32-a905-2013e2704996</Id>
+                <DisplayName>Condition Branch</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>8e5923fa-a9bf-4132-a491-702beafcdb58</Id>
+                    <DisplayName>Failed</DisplayName>
+                    <Children />
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>8e5923fa-a9bf-4132-a491-702beafcdb58</Id>
+                      <DisplayName>Failed</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>4060693d-b3db-4926-9369-587c2cafbb8e</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Input.Update-Error Update</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>0b286ae1-8591-4cfa-98bf-37d2f287d4f5</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <HardcodedValue>This process has an error!</HardcodedValue>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>bbabb35c-419d-4d9b-b9eb-e74e33838cf6</Id>
+                  <Conditions />
+                </Condition>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>4060693d-b3db-4926-9369-587c2cafbb8e</ProcessId>
+</WorkflowConfiguration>

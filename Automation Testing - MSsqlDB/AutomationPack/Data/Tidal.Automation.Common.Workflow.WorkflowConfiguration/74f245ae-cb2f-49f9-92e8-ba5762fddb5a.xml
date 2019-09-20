@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>74f245ae-cb2f-49f9-92e8-ba5762fddb5a</Id>
+  <DisplayName>Twn131720c: QE-MSSQL-Select CPO ReportingDB-Positive(Final)</DisplayName>
+  <CreatedTime>2019-09-20T21:16:40.0009772Z</CreatedTime>
+  <ModifiedTime>2019-09-20T21:16:40.0009772Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>327f6f6a-9a66-4160-a516-166cea3f8a36</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>5e101d20-223a-47d2-9665-8e2e15ba0927</Id>
+        <DisplayName>Create Alert</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>94de984d-dac8-4a3c-b74b-d05110bc8d19</Id>
+            <ActivityNodeId>5e101d20-223a-47d2-9665-8e2e15ba0927</ActivityNodeId>
+            <CompletedId>6252cbe6-b6bb-44ad-98ed-b8206ba30bf4</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="AlertActivityConfiguration" xml:space="preserve">
+          <Id>5e101d20-223a-47d2-9665-8e2e15ba0927</Id>
+          <DisplayName>Create Alert</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>53d0b8dd-9383-4b99-8558-ba4207319366</ContainingProcessId>
+          <TaskExpiresPeriod>
+            <DisplayUnits>Days</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Core Functions Adapter.Default Task Expiration Days</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultTaskExpirationDays</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </TaskExpiresPeriod>
+          <TaskAssignees />
+          <TaskPriority>Medium</TaskPriority>
+          <TaskBlock>false</TaskBlock>
+          <TaskXslFileName>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Adapters.Core Functions Adapter.Default Alert Task Transform</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>DefaultAlertTaskTransform</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                <ObjectType>Adapter</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskXslFileName>
+          <TaskName>
+            <HardcodedValue />
+          </TaskName>
+          <TaskDescription>
+            <HardcodedValue />
+          </TaskDescription>
+          <TaskCategoryIds />
+          <TaskInheritCategories>true</TaskInheritCategories>
+          <TaskRelatedIds />
+          <ExternalSystem>
+            <HardcodedValue />
+          </ExternalSystem>
+          <ExternalId>
+            <HardcodedValue />
+          </ExternalId>
+          <TaskOwner>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Target.Owner</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>ResolvedTarget</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Owner</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectType>ProcessInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskOwner>
+          <TaskParameters />
+          <AffectedServices>
+            <HardcodedValue />
+          </AffectedServices>
+          <AffectedOrganizations>
+            <HardcodedValue />
+          </AffectedOrganizations>
+          <AffectedTargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <CreateAutomationSummary>false</CreateAutomationSummary>
+          <DiagnosticReportConfiguration>
+            <ReportStylesheet>SituationReport.xsl</ReportStylesheet>
+            <Formats />
+          </DiagnosticReportConfiguration>
+          <AlertClass>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Global Variables.MSsqlDB - Tony-MS-NumberString</DisplayPath>
+                <LinkChain />
+                <ObjectId>f2cb8cff-53b1-4b40-886f-26d85852b251</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </AlertClass>
+          <MatchingCriteria />
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="SequenceNode">
+        <Id>5f176955-31b7-4124-aa3d-146052b31916</Id>
+        <DisplayName>Positive Sequential Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>5bcf10c3-a991-457f-82fa-cab7bc6178a3</Id>
+            <DisplayName>Select from Cisco Process Orchestrator SQL Server Reporting Database</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>16ab8cd4-9a89-4ea9-898e-eb2e1f6c11e9</Id>
+                <ActivityNodeId>5bcf10c3-a991-457f-82fa-cab7bc6178a3</ActivityNodeId>
+                <CompletedId>272c944b-4b45-4cc7-bb3e-14b4c18801dc</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="SelectFromSQLServerReportDatabaseActivityConfiguration" xml:space="preserve">
+              <Id>5bcf10c3-a991-457f-82fa-cab7bc6178a3</Id>
+              <DisplayName>Select from Cisco Process Orchestrator SQL Server Reporting Database</DisplayName>
+              <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                <FormattedCode />
+                <HardcodedValue>
+                  <Id>00000000-0000-0000-0000-000000000000</Id>
+                  <ObjectType>RuntimeUser</ObjectType>
+                </HardcodedValue>
+              </RuntimeUserObject>
+              <ContainingProcessId>53d0b8dd-9383-4b99-8558-ba4207319366</ContainingProcessId>
+              <PermissionLevel>Select</PermissionLevel>
+              <SqlCommandText>
+                <HardcodedValue>select AlertClass from Alert
+where AlertClass = 123456
+</HardcodedValue>
+              </SqlCommandText>
+              <CommandTimeout>
+                <DisplayUnits>Seconds</DisplayUnits>
+                <Period>
+                  <HardcodedValue>0</HardcodedValue>
+                </Period>
+              </CommandTimeout>
+              <Columns>
+                <TableSchemaColumn>
+                  <Name>AlertClass</Name>
+                  <DataType>System.String</DataType>
+                </TableSchemaColumn>
+              </Columns>
+              <RowNumberPerPage>
+                <HardcodedValue>100</HardcodedValue>
+              </RowNumberPerPage>
+              <ReturnAllColumns>false</ReturnAllColumns>
+              <RowLimit>
+                <HardcodedValue>200</HardcodedValue>
+              </RowLimit>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="SwitchNode">
+            <Id>7f259cc4-aa00-4bc1-9b48-c4fe2138d00d</Id>
+            <DisplayName>Condition Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>9b072668-d056-4c13-988a-d5d8786a30ca</Id>
+                <DisplayName>Condition Branch</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>9de5789f-2abb-4a6e-ae7c-1c1074e684e1</Id>
+                    <DisplayName>Passed</DisplayName>
+                    <Children />
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>9de5789f-2abb-4a6e-ae7c-1c1074e684e1</Id>
+                      <DisplayName>Passed</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>53d0b8dd-9383-4b99-8558-ba4207319366</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Status - Passed or Failed</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>f1d97fcd-69b9-466b-b4d7-901d914919b5</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <HardcodedValue>passed</HardcodedValue>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>6a0b886b-fe2a-41be-a61a-cd2cbc576d1e</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>751a3f1f-2885-47c2-972f-1ed0805fb45c</Id>
+                      <Expression xsi:type="SubstitutableNumber">
+                        <HardcodedValue>0</HardcodedValue>
+                      </Expression>
+                      <Comparison>GreaterThanOrEquals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.Select from Cisco Process Orchestrator SQL Server Reporting Database.Records Affected</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>RecordsAffected</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>5bcf10c3-a991-457f-82fa-cab7bc6178a3</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>6e90e92a-cf2f-4f9b-85ad-a454bd7aabb2</Id>
+                <DisplayName>Condition Branch</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>a747468e-bfcc-48db-8d6c-bd9422d853dc</Id>
+                    <DisplayName>Failed</DisplayName>
+                    <Children />
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>a747468e-bfcc-48db-8d6c-bd9422d853dc</Id>
+                      <DisplayName>Failed</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>53d0b8dd-9383-4b99-8558-ba4207319366</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Input.Update-Error Update</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>c8ff8f3b-ae19-4510-b402-cf3af7162f18</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <HardcodedValue>This process has an error!</HardcodedValue>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>ccbba6d0-1f3c-4920-8f90-07032daa5b0a</Id>
+                  <Conditions />
+                </Condition>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>53d0b8dd-9383-4b99-8558-ba4207319366</ProcessId>
+</WorkflowConfiguration>

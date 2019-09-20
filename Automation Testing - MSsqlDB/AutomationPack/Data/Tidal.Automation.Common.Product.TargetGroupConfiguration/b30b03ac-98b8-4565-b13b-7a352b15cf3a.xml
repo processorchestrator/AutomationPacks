@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<TargetGroupConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ByTypeTargetGroupConfiguration" xml:space="preserve">
+  <Id>b30b03ac-98b8-4565-b13b-7a352b15cf3a</Id>
+  <DisplayName>SQL Target Group</DisplayName>
+  <CreatedTime>2019-09-20T21:16:38.7352799Z</CreatedTime>
+  <ModifiedTime>2019-09-20T21:16:38.7352799Z</ModifiedTime>
+  <Enabled>true</Enabled>
+  <TargetType>Tidal.Automation.Sql.Common.SqlServerInstanceTargetConfiguration, Tidal.Automation.Sql.Common</TargetType>
+  <TargetTypeExtensionId>b4cfceaf-65fb-f719-6b63-20f99c59cde1</TargetTypeExtensionId>
+  <TargetCriteria>
+    <ConditionDefinition xsi:type="VariableConditionDefinition">
+      <Id>981df934-0747-43ed-aac3-268534defe03</Id>
+      <Expression xsi:type="SubstitutableWildcard">
+        <HardcodedValue>cpo*</HardcodedValue>
+      </Expression>
+      <Comparison>Wildcard</Comparison>
+      <VariableReference xsi:type="PropertyReference">
+        <DisplayPath>SQL Server Database.Name</DisplayPath>
+        <LinkChain>
+          <Link xsi:type="PropertyNameLink">
+            <PropertyName>DisplayName</PropertyName>
+          </Link>
+        </LinkChain>
+        <ObjectType>Target</ObjectType>
+      </VariableReference>
+    </ConditionDefinition>
+  </TargetCriteria>
+</TargetGroupConfiguration>

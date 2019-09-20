@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<RuntimeUserConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GenericRuntimeUserConfiguration" xml:space="preserve">
+  <Id>18edb086-0e13-4d6a-af87-3c305d8a1776</Id>
+  <DisplayName>tony-sqlDB</DisplayName>
+  <Description>Username: sa
+Password: Control01</Description>
+  <CreatedTime>2019-09-20T21:16:41.4541286Z</CreatedTime>
+  <ModifiedTime>2019-09-20T21:16:41.4541286Z</ModifiedTime>
+  <EncryptedPassword>
+    <EncryptedForm />
+  </EncryptedPassword>
+</RuntimeUserConfiguration>

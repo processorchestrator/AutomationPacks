@@ -1,0 +1,2468 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>74e6e993-9193-47ef-a348-37e362c7825b</Id>
+  <DisplayName>Twn139738c: QE-MSSQL-StoreProcedure-Positive(Final)</DisplayName>
+  <CreatedTime>2019-09-20T21:16:38.5597756Z</CreatedTime>
+  <ModifiedTime>2019-09-20T21:16:38.5597756Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>832fbdd2-4f45-486b-881a-a717d1be71e7</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>1efe8267-0a79-4c51-926e-3bffc805a219</Id>
+        <DisplayName>Delete GroomArchiveTables</DisplayName>
+        <Children />
+        <Configuration xsi:type="ExecSQLServerCommandActivityConfiguration" xml:space="preserve">
+          <Id>1efe8267-0a79-4c51-926e-3bffc805a219</Id>
+          <DisplayName>Delete GroomArchiveTables</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>321e8306-bd06-4de5-91d5-21fb08069158</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>095188dc-2144-4dd6-9eba-30be14fa594c</ContainingProcessId>
+          <PermissionLevel>DDL</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>drop proc GroomArchiveTables;
+drop proc DBOUT;</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <Columns />
+          <RowNumberPerPage>
+            <HardcodedValue>100</HardcodedValue>
+          </RowNumberPerPage>
+          <ReturnAllColumns>false</ReturnAllColumns>
+          <RowLimit>
+            <HardcodedValue>200</HardcodedValue>
+          </RowLimit>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>93926ae0-441d-43e5-b21a-eecdc1e2230c</Id>
+        <DisplayName>Create Execute SQL Server  SQL Script</DisplayName>
+        <Children />
+        <Configuration xsi:type="ExecSQLServerCommandActivityConfiguration" xml:space="preserve">
+          <Id>93926ae0-441d-43e5-b21a-eecdc1e2230c</Id>
+          <DisplayName>Create Execute SQL Server  SQL Script</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>321e8306-bd06-4de5-91d5-21fb08069158</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>095188dc-2144-4dd6-9eba-30be14fa594c</ContainingProcessId>
+          <PermissionLevel>DDL</PermissionLevel>
+          <SqlCommandText>
+            <FormattedCode>USE [master]
+GO
+
+/****** Object:  Database [tony]    Script Date: 02/09/2009 13:35:15 ******/
+IF  EXISTS (SELECT name FROM sys.databases WHERE name = N'tony')
+DROP DATABASE [tony]
+GO
+
+USE [master]
+GO
+
+DECLARE @TIADATAFILENAME nvarchar(50)
+DECLARE @TIALOGFILENAME nvarchar(50)
+DECLARE @TIADATAPATH nvarchar(1024)
+DECLARE @TIALOGPATH nvarchar(1024)
+DECLARE @TIADATASIZE int
+DECLARE @TIALOGSIZE int
+DECLARE @TIAARCHIVEDATASIZE int
+DECLARE @TIAARCHIVEDATAFILENAME nvarchar(50)
+DECLARE @TIAARCHIVEDATAPATH nvarchar(1024)
+
+SET @TIADATAFILENAME = N'tony'
+SET @TIALOGFILENAME = N'tony_Log'
+SET @TIADATAPATH =N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\tony.mdf'
+SET @TIALOGPATH = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\tony_log.ldf'
+SET @TIADATASIZE = 13  -- Default is MB
+SET @TIALOGSIZE = 7 -- Default is MB
+SET @TIAARCHIVEDATAFILENAME = N'OrchestratorArchiveData'
+SET @TIAARCHIVEDATAPATH = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\tony.ndf'
+SET @TIAARCHIVEDATASIZE = 50  -- Default is MB
+
+--Install will replace the following lines with the user specified values for variables (DO NOT DELETE)
+--INSTALL_TIADATAFILENAME
+--INSTALL_TIALOGFILENAME
+--INSTALL_TIADATAPATH
+--INSTALL_TIALOGPATH
+--INSTALL_TIADATASIZE
+--INSTALL_TIALOGSIZE
+--INSTALL_TIAARCHIVEDATAFILENAME
+--INSTALL_TIAARCHIVEDATAPATH
+--INSTALL_TIAARCHIVEDATASIZE
+
+/****** Object:  Database [tony]    Script Date: 02/09/2009 13:35:15 ******/
+EXECUTE ('CREATE DATABASE [tony] ON  PRIMARY 
+( NAME = ''' + @TIADATAFILENAME + ''', FILENAME = ''' + @TIADATAPATH + ''', SIZE = ' + @TIADATASIZE + ', MAXSIZE = UNLIMITED, FILEGROWTH = 10MB ),
+FILEGROUP OrchestratorArchiveFileGroup 
+( NAME = ''' + @TIAARCHIVEDATAFILENAME + ''', FILENAME = ''' + @TIAARCHIVEDATAPATH + ''', SIZE = ' + @TIAARCHIVEDATASIZE + ', MAXSIZE = UNLIMITED, FILEGROWTH = 100MB )
+ LOG ON 
+( NAME = ''' + @TIALOGFILENAME + ''', FILENAME = ''' + @TIALOGPATH + ''', SIZE = ' + @TIALOGSIZE + ', MAXSIZE = 2048GB, FILEGROWTH = 100MB )
+COLLATE SQL_Latin1_General_CP1_CI_AS')
+GO
+ALTER DATABASE [tony] 
+  MODIFY FILEGROUP OrchestratorArchiveFileGroup DEFAULT;
+GO
+
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [tony].[dbo].[sp_fulltext_database] @action = 'disable'
+end
+GO
+
+ALTER DATABASE [tony] SET ANSI_NULL_DEFAULT OFF 
+GO
+
+ALTER DATABASE [tony] SET ANSI_NULLS OFF 
+GO
+
+ALTER DATABASE [tony] SET ANSI_PADDING OFF 
+GO
+
+ALTER DATABASE [tony] SET ANSI_WARNINGS OFF 
+GO
+
+ALTER DATABASE [tony] SET ARITHABORT OFF 
+GO
+
+ALTER DATABASE [tony] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [tony] SET AUTO_CREATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [tony] SET AUTO_SHRINK OFF 
+GO
+
+ALTER DATABASE [tony] SET AUTO_UPDATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [tony] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+
+ALTER DATABASE [tony] SET CURSOR_DEFAULT  GLOBAL 
+GO
+
+ALTER DATABASE [tony] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+
+ALTER DATABASE [tony] SET NUMERIC_ROUNDABORT OFF 
+GO
+
+ALTER DATABASE [tony] SET QUOTED_IDENTIFIER OFF 
+GO
+
+ALTER DATABASE [tony] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [tony] SET  ENABLE_BROKER 
+GO
+
+ALTER DATABASE [tony] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+
+ALTER DATABASE [tony] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+
+ALTER DATABASE [tony] SET TRUSTWORTHY OFF 
+GO
+
+ALTER DATABASE [tony] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+
+ALTER DATABASE [tony] SET PARAMETERIZATION SIMPLE 
+GO
+
+ALTER DATABASE [tony] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+
+ALTER DATABASE [tony] SET  READ_WRITE 
+GO
+
+ALTER DATABASE [tony] SET RECOVERY FULL 
+GO
+
+ALTER DATABASE [tony] SET  MULTI_USER 
+GO
+
+ALTER DATABASE [tony] SET PAGE_VERIFY CHECKSUM  
+GO
+
+ALTER DATABASE [tony] SET DB_CHAINING OFF 
+GO
+
+/****************************** CREATE CPO SCHEMA *****************************************/
+USE [tony]
+GO
+
+--#region Create Lookup Tables
+/****** Object:  Table [dbo].[InstanceStateType]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[InstanceStateType]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[InstanceStateType](
+	[InstanceStateTypeId] [int] NOT NULL,
+	[InstanceStateTypeName] [nvarchar](50) NOT NULL,
+	[InstanceStateTypeDesc] [nvarchar](128) NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ActivityInstnaceStateType] PRIMARY KEY CLUSTERED 
+(
+	[InstanceStateTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[ConfigurationType]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ConfigurationType]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ConfigurationType](
+	[ConfigurationTypeId] [int] NOT NULL,
+	[ConfigurationTypeName] [nvarchar](50) NOT NULL,
+	[Active] [bit] NOT NULL,
+	[ConfigurationTypeDesc] [nvarchar](1024) NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ConfigurationType] PRIMARY KEY CLUSTERED 
+(
+	[ConfigurationTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[ChangeType]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ChangeType]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ChangeType](
+	[ChangeTypeId] [int] NOT NULL,
+	[ChangeTypeName] [nvarchar](50) NOT NULL,
+	[ChangeTypeDesc] [nvarchar](128) NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ChangeType] PRIMARY KEY CLUSTERED 
+(
+	[ChangeTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[AuditType]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[AuditType]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[AuditType](
+	[AuditTypeId] [int] NOT NULL,
+	[AuditTypeName] [nvarchar](50) NOT NULL,
+	[AuditTypeDesc] [nvarchar](1024) NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_AuditType] PRIMARY KEY CLUSTERED 
+(
+	[AuditTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+/****** Object:  Table [dbo].[TaskStatusType]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TaskStatusType]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[TaskStatusType](
+	[TaskStatusTypeId] [int] NOT NULL,
+	[TaskStatusTypeName] [nvarchar](50) NOT NULL,
+	[TaskStatusTypeDesc] [nvarchar](128) NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_TaskStatusType] PRIMARY KEY CLUSTERED 
+(
+	[TaskStatusTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[TaskPriorityType]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TaskPriorityType]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[TaskPriorityType](
+	[TaskPriorityTypeId] [int] NOT NULL,
+	[TaskPriorityTypeName] [nvarchar](50) NOT NULL,
+	[TaskPriorityTypeDesc] [nvarchar](128) NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_TaskPriorityType] PRIMARY KEY CLUSTERED 
+(
+	[TaskPriorityTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[StartType]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[StartType]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[StartType](
+	[StartTypeId] [int] NOT NULL,
+	[StartTypeName] [nvarchar](50) NOT NULL,
+	[StartTypeDesc] [nvarchar](128) NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_StartType] PRIMARY KEY CLUSTERED 
+(
+	[StartTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+--#endregion
+
+
+--#region Create Definiton Tables
+/****** Object:  Table [dbo].[Configuration]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Configuration]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[Configuration](
+	[ConfigurationId] [uniqueidentifier] NOT NULL,
+	[ConfigurationName] [nvarchar](255) NOT NULL,
+	[ConfigurationDesc] [nvarchar](max) NULL,
+	[ConfigurationTypeId] [int] NOT NULL,
+	[ConfigurationData] [xml] NOT NULL,
+	[Enabled] [bit] NOT NULL,
+	[Active] [bit] NOT NULL,
+	[LockedBy] [nvarchar](50) NULL,
+	[LockedTime] [datetime2] NULL,
+	[CreatedBy] [nvarchar](50) NOT NULL,
+	[CreatedTime] [datetime2] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_Configuration] PRIMARY KEY CLUSTERED 
+(
+	[ConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+/****** Object:  Table [dbo].[ItilConfigurationItem]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ItilConfigurationItem]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ItilConfigurationItem](
+	[ItilConfigurationItemId] [uniqueidentifier] NOT NULL,
+	[ItilConfigurationItemType] [nvarchar](128) NOT NULL,
+	[ItilConfigurationSource] [nvarchar](128) NULL,
+	[ObjectName] [nvarchar](128) NULL,
+	[ObjectKey] [nvarchar](128) NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ItilConfigurationItem] PRIMARY KEY CLUSTERED 
+(
+	[ItilConfigurationItemId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+/****** Object:  Table [dbo].[ServerPrerequisites]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ServerPrerequisites]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ServerPrerequisites](
+	[ServerPrerequisitesId] [uniqueidentifier] NOT NULL,
+	[ApplicationServerId] [uniqueidentifier] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ServerPrerequisites] PRIMARY KEY CLUSTERED 
+(
+	[ServerPrerequisitesId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+/****** Object:  Table [dbo].[ConfigurationRevision]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ConfigurationRevision]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ConfigurationRevision](
+	[ConfigurationId] [uniqueidentifier] NOT NULL,
+	[VersionId] [int] NOT NULL CONSTRAINT DF_CR_VersionId DEFAULT (1),
+	[ConfigurationData] [xml] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NOT NULL,
+ CONSTRAINT [PK_ConfigurationRevision] PRIMARY KEY CLUSTERED 
+(
+	[ConfigurationId] ASC,
+	[VersionId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[ProcessConfiguration]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ProcessConfiguration]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ProcessConfiguration](
+	[ProcessConfigurationId] [uniqueidentifier] NOT NULL,
+	[WorkflowId] [uniqueidentifier] NOT NULL,
+	[TriggerOwnerId] [uniqueidentifier] NULL,
+	[ProcessStatisticData] [xml] NULL,
+	[ManualExecutionTimeInHours] [decimal](18, 2) NOT NULL,
+	[ManualExecutionHourlyRate] [decimal](18, 2) NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ProcessConfiguration] PRIMARY KEY CLUSTERED 
+(
+	[ProcessConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[TargetConfiguration]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TargetConfiguration]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[TargetConfiguration](
+	[TargetConfigurationId] [uniqueidentifier] NOT NULL,
+	[TargetStatusData] [xml] NULL,
+	[ExtendedRuntimeData] [xml] NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_TargetConfiguration] PRIMARY KEY CLUSTERED 
+(
+	[TargetConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[ConfigurationDependency]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ConfigurationDependency]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ConfigurationDependency](
+	[ConfigurationId] [uniqueidentifier] NOT NULL,
+	[UsedByConfigurationId] [uniqueidentifier] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ConfigurationDependency] PRIMARY KEY CLUSTERED 
+(
+	[UsedByConfigurationId] ASC,
+	[ConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[ConfigurationCategory]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ConfigurationCategory]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ConfigurationCategory](
+	[ConfigurationId] [uniqueidentifier] NOT NULL,
+	[CategoryId] [uniqueidentifier] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ConfigurationCategory] PRIMARY KEY CLUSTERED 
+(
+	[CategoryId] ASC,
+	[ConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[PropertyExtensionValue]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PropertyExtensionValue]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[PropertyExtensionValue](
+	[PropertyExtensionValueId] [uniqueidentifier] NOT NULL,
+	[PropertyExtensionId] [uniqueidentifier] NOT NULL,
+	[ConfigurationId] [uniqueidentifier] NOT NULL,
+	[PropertyExtensionValueData] [xml] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_PropertyExtensionValue] PRIMARY KEY CLUSTERED 
+(
+	[PropertyExtensionValueId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
+ CONSTRAINT [UC_PropertyExtensionValue] UNIQUE NONCLUSTERED 
+(
+	[PropertyExtensionId] ASC,
+	[ConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[BaselineConfiguration]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[BaselineConfiguration]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[BaselineConfiguration](
+	[ConfigurationId] [uniqueidentifier] NOT NULL,
+	[ConfigurationData] [xml] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_BaselineConfiguration] PRIMARY KEY CLUSTERED 
+(
+	[ConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+--#endregion
+
+--#region Create Support Tables
+
+/****** Object:  Table [dbo].[GroomingSettings]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GroomingSettings]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[GroomingSettings](
+	[SettingId] [int] NOT NULL,
+	[TableName] [nvarchar](50) NOT NULL,
+	[DaysToKeep] [int] NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_GroomingSettings] PRIMARY KEY CLUSTERED 
+(
+	[SettingId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[Version]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Version]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[Version](
+	[VersionId] [decimal](5, 2) NOT NULL,
+	[VersionDesc] [nvarchar](1024) NOT NULL,
+	[XmlDataSchemaVersion] [nvarchar](50) NULL,
+	[CheckinFrequencyInSeconds] [int] NOT NULL CONSTRAINT DF_V_CheckinFreqInSeconds DEFAULT (0),
+	[MaxCheckinDelayInSeconds] [int] NOT NULL CONSTRAINT DF_V_MaxCheckinDelayInSeconds DEFAULT (0),
+    [GroomingInProgress] [bit] NOT NULL CONSTRAINT DF_V_GroomingInProgress DEFAULT (0),
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_Version] PRIMARY KEY CLUSTERED 
+(
+	[VersionId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+--#endregion
+
+--#region Create Audit Tables
+/****** Object:  Table [dbo].[TaskAudit]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TaskAudit]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[TaskAudit](
+	[AuditId] [uniqueidentifier] NOT NULL,
+	[TaskInstanceId] [uniqueidentifier] NOT NULL,
+    [Succeeded] [bit] NOT NULL,
+    [ChangeTypeId] [int] NOT NULL,
+	[ProcessName] [nvarchar](255) NULL,
+	[TaskType] [nvarchar](255) NULL,
+	[InstanceState] [nvarchar](255) NULL,
+    [ExceptionType] [nvarchar](255) NULL,
+    [ExceptionDesc] [nvarchar](MAX) NULL,
+    [StartedBy] [nvarchar](50) NULL,
+	[ApplicationServerName] [nvarchar](100) NOT NULL CONSTRAINT DF_TA_ApplicationServerName DEFAULT 'CPO Server',
+	[CompletedBy] [nvarchar](50) NULL,
+	[CompletedTime] [datetime2] NULL,
+	[CreatedBy] [nvarchar](50) NOT NULL,
+	[CreatedTime] [datetime2] NOT NULL,
+ CONSTRAINT [PK_TaskAudit] PRIMARY KEY CLUSTERED 
+(
+	[AuditId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[SystemAudit]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SystemAudit]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[SystemAudit](
+	[AuditId] [uniqueidentifier] NOT NULL,
+	[AuditTypeId] [int] NOT NULL,
+	[MessageId] [int] NOT NULL,
+	[CategoryId] [int] NOT NULL,
+	[Category] [nvarchar](255) NULL,
+	[Message] [nvarchar](max) NULL,
+	[ApplicationServerName] [nvarchar](100) NOT NULL CONSTRAINT DF_SA_ApplicationServerName DEFAULT 'CPO Server',
+	[CreatedBy] [nvarchar](50) NOT NULL,
+	[CreatedTime] [datetime2] NOT NULL,
+ CONSTRAINT [PK_SystemAudit] PRIMARY KEY CLUSTERED 
+(
+	[AuditId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[ConfigurationAudit]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ConfigurationAudit]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ConfigurationAudit](
+      [ConfigurationAuditId] [uniqueidentifier] NOT NULL,
+      [Succeeded] [bit] NOT NULL,
+      [ConfigurationId] [uniqueidentifier] NOT NULL,
+	  [ConfigurationType] [nvarchar](255) NOT NULL,
+      [ConfigurationDisplayName] [nvarchar](255) NOT NULL,
+      [ChangeTypeId] [int] NOT NULL,
+      [ChangeSource] [xml] NULL,
+	  [ApplicationServerName] [nvarchar](100) NOT NULL CONSTRAINT DF_CA_ApplicationServerName DEFAULT 'CPO Server',
+      [ExceptionType] [nvarchar](255) NULL,
+      [ExceptionDesc] [nvarchar](MAX) NULL,
+      [CreatedBy] [nvarchar](50) NOT NULL,
+      [CreatedTime] [datetime2] NOT NULL,
+ CONSTRAINT [PK_ConfigurationAudit] PRIMARY KEY CLUSTERED 
+(
+	[ConfigurationAuditId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[ConfigurationAuditDetail]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ConfigurationAuditDetail]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ConfigurationAuditDetail](
+      [ConfigurationAuditId] [uniqueidentifier] NOT NULL,
+      [ConfigurationAuditDetailId] [int] NOT NULL,
+      [FieldName] [nvarchar](255) NOT NULL,
+      [OldValue] [nvarchar](MAX) NULL,
+      [NewValue] [nvarchar](MAX) NULL,
+      [CreatedBy] [nvarchar](50) NOT NULL,
+      [CreatedTime] [datetime2] NOT NULL,
+ CONSTRAINT [PK_ConfigurationAuditDetail] PRIMARY KEY CLUSTERED 
+(
+	[ConfigurationAuditId] ASC,
+	[ConfigurationAuditDetailId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+/****** Object:  Table [dbo].[ConfigurationSnapshot]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ConfigurationSnapshot]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ConfigurationSnapshot](
+	[ConfigurationSnapshotId] [int] NOT NULL,
+	[Notes]  [nvarchar](1024) NULL,
+	[CreatedBy] [nvarchar](50) NOT NULL,
+	[CreatedTime] [datetime2] NOT NULL,
+ CONSTRAINT [PK_ConfigurationSnapshot] PRIMARY KEY CLUSTERED 
+(
+	[ConfigurationSnapshotId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+/****** Object:  Table [dbo].[ConfigurationSnapshotDetails]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ConfigurationSnapshotDetails]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ConfigurationSnapshotDetails](
+	[ConfigurationSnapshotId] [int] NOT NULL,
+	[ConfigurationId] [uniqueidentifier] NOT NULL,
+	[ConfigurationVersionId] [int] NOT NULL,
+	[CreatedBy] [nvarchar](50) NOT NULL,
+	[CreatedTime] [datetime2] NOT NULL,
+ CONSTRAINT [PK_ConfigurationSnapshotDtls] PRIMARY KEY CLUSTERED 
+(
+	[ConfigurationSnapshotId] ASC,
+	[ConfigurationId] ASC,
+	[ConfigurationVersionId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+--#endregion
+
+--#region Create Instance tables
+/****** Object:  Table [dbo].[VariableInstance]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[VariableInstance]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[VariableInstance](
+	[VariableInstanceId] [uniqueidentifier] NOT NULL,
+	[ControllingItemId] [uniqueidentifier] NOT NULL,
+	[VariableInstanceData] [xml] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_VariableInstance] PRIMARY KEY CLUSTERED 
+(
+	[VariableInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[ProcessInstance]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ProcessInstance]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ProcessInstance](
+	[ProcessInstanceId] [uniqueidentifier] NOT NULL,
+	[ProcessConfigurationId] [uniqueidentifier] NULL,
+	[WorkflowInstanceId] [uniqueidentifier] NULL,
+	[ParentProcessInstanceId] [uniqueidentifier] NULL,
+	[InstanceStateTypeId] [int] NOT NULL,
+	[TriggerEventData] [xml] NOT NULL CONSTRAINT DF_PI_TriggerEventData DEFAULT ' ',
+	[ProcessInstanceData] [xml] NOT NULL,
+	[StartTypeId] [int] NOT NULL,
+	[AdHocStartedBy] [nvarchar](50) NULL,
+	[TargetConfigurationId] [uniqueidentifier] NULL,
+	[TargetName] [nvarchar](255) NULL,
+	[StartTime] [datetime2] NULL,
+	[EndTime] [datetime2] NULL,
+	[ApplicationServerId] [uniqueidentifier] NULL,
+	[AssignedTime] [datetime2] NULL,
+	[CostSaving] [decimal](18, 2) NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ProcessInstance] PRIMARY KEY CLUSTERED 
+(
+	[ProcessInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+/****** Object:  Table [dbo].[ActivityInstance]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ActivityInstance]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ActivityInstance](
+	[ActivityInstanceId] [uniqueidentifier] NOT NULL,
+	[WorkflowInstanceId] [uniqueidentifier] NOT NULL,
+	[InstanceStateTypeId] [int] NOT NULL,
+	[ActivityConfigurationData] [xml] NOT NULL CONSTRAINT DF_AI_ActivityConfData DEFAULT ' ',
+	[ActivityInstanceData] [xml] NOT NULL,
+	[ApplicationServerId] [uniqueidentifier] NULL,
+	[AssignedTime] [datetime2] NULL,
+	[CreatedBy] [nvarchar](50) NOT NULL,
+	[CreatedTime] [datetime2] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ActivityInstance] PRIMARY KEY CLUSTERED 
+(
+	[ActivityInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[PagedOutput]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PagedOutput]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[PagedOutput](
+	[ActivityInstanceId] [uniqueidentifier] NOT NULL,
+	[OutputType] [nvarchar](50) NOT NULL CONSTRAINT DF_PO_OutputType DEFAULT ' ',
+	[PageNumber] [int] NOT NULL,
+	[PagedOutputData] [xml] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_PagedOutput] PRIMARY KEY CLUSTERED 
+(
+	[ActivityInstanceId] ASC,
+	[OutputType] ASC,
+	[PageNumber] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[WorkflowInstance]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[WorkflowInstance]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[WorkflowInstance](
+	[WorkflowInstanceId] [uniqueidentifier] NOT NULL,
+	[DefinitionId] [uniqueidentifier] NOT NULL,
+	[DefinitionVersionId] [int] NOT NULL,
+	[WorkflowInstanceData] [xml] NOT NULL,
+	[WorkflowStateData] [xml] NULL,
+	[CreatedBy] [nvarchar](50) NOT NULL,
+	[CreatedTime] [datetime2] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_WorkflowInstance] PRIMARY KEY CLUSTERED 
+(
+	[WorkflowInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[ActivityInstanceArchive]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ActivityInstanceArchive]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ActivityInstanceArchive](
+	[ActivityInstanceId] [uniqueidentifier] NOT NULL,
+	[WorkflowInstanceId] [uniqueidentifier] NOT NULL,
+	[InstanceStateTypeId] [int] NOT NULL,
+	[ActivityConfigurationData] [xml] NOT NULL CONSTRAINT DF_AIA_ActivityConfData DEFAULT ' ',
+	[ActivityInstanceData] [xml] NOT NULL,
+	[ApplicationServerId] [uniqueidentifier] NULL,
+	[AssignedTime] [datetime2] NULL,
+	[CreatedBy] [nvarchar](50) NOT NULL,
+	[CreatedTime] [datetime2] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NOT NULL,
+ CONSTRAINT [PK_ActivityInstanceArchive] PRIMARY KEY CLUSTERED 
+(
+	[ModifiedTime] ASC,
+	[ActivityInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT],
+ CONSTRAINT [UC_ActivityInstanceArchive] UNIQUE NONCLUSTERED 
+(
+	[ActivityInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+) ON [DEFAULT]
+END
+GO
+/****** Object:  Table [dbo].[PagedOutputArchive]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PagedOutputArchive]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[PagedOutputArchive](
+	[ActivityInstanceId] [uniqueidentifier] NOT NULL,
+	[OutputType] [nvarchar](50) NOT NULL CONSTRAINT DF_POA_OutputType DEFAULT ' ',
+	[PageNumber] [int] NOT NULL,
+	[PagedOutputData] [xml] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NOT NULL,
+ CONSTRAINT [PK_PagedOutputArchive] PRIMARY KEY CLUSTERED 
+(
+	[ModifiedTime] ASC,
+	[ActivityInstanceId] ASC,
+	[OutputType] ASC,
+	[PageNumber] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT],
+ CONSTRAINT [UC_PagedOutputArchive] UNIQUE NONCLUSTERED 
+(
+	[ActivityInstanceId] ASC,
+	[OutputType] ASC,
+	[PageNumber] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+) ON [DEFAULT]
+END
+GO
+/****** Object:  Table [dbo].[ProcessInstanceArchive]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ProcessInstanceArchive]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ProcessInstanceArchive](
+	[ProcessInstanceId] [uniqueidentifier] NOT NULL,
+	[ProcessConfigurationId] [uniqueidentifier] NULL,
+	[WorkflowInstanceId] [uniqueidentifier] NULL,
+	[ParentProcessInstanceId] [uniqueidentifier] NULL,
+	[InstanceStateTypeId] [int] NOT NULL,
+	[TriggerEventData] [xml] NOT NULL CONSTRAINT DF_PIA_TriggerEventData DEFAULT ' ',
+	[ProcessInstanceData] [xml] NOT NULL,
+	[StartTypeId] [int] NOT NULL,
+	[AdHocStartedBy] [nvarchar](50) NULL,
+	[TargetConfigurationId] [uniqueidentifier] NULL,
+	[TargetName] [nvarchar](255) NULL,
+	[StartTime] [datetime2] NULL,
+	[EndTime] [datetime2] NULL,
+	[ApplicationServerId] [uniqueidentifier] NULL,
+	[AssignedTime] [datetime2] NULL,
+	[CostSaving] [decimal](18, 2) NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NOT NULL,
+ CONSTRAINT [PK_ProcessInstanceArchive] PRIMARY KEY CLUSTERED 
+(
+	[ModifiedTime] ASC,
+	[ProcessInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT],
+ CONSTRAINT [UC_ProcessInstanceArchive] UNIQUE NONCLUSTERED 
+(
+	[ProcessInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+) ON [DEFAULT]
+END
+GO
+/****** Object:  Table [dbo].[WorkflowInstanceArchive]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[WorkflowInstanceArchive]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[WorkflowInstanceArchive](
+	[WorkflowInstanceId] [uniqueidentifier] NOT NULL,
+	[DefinitionId] [uniqueidentifier] NOT NULL,
+	[DefinitionVersionId] [int] NOT NULL,
+	[WorkflowInstanceData] [xml] NOT NULL,
+	[WorkflowStateData] [xml] NULL,
+	[CreatedBy] [nvarchar](50) NOT NULL,
+	[CreatedTime] [datetime2] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NOT NULL,
+ CONSTRAINT [PK_WorkflowInstanceArchive] PRIMARY KEY CLUSTERED 
+(
+	[ModifiedTime] ASC,
+	[WorkflowInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT],
+ CONSTRAINT [UC_WorkflowInstanceArchive] UNIQUE NONCLUSTERED 
+(
+	[WorkflowInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+) ON [DEFAULT]
+END
+GO
+/****** Object:  Table [dbo].[TaskInstance]    Script Date: 02/18/2009 10:16:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[TaskInstance]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[TaskInstance](
+	[TaskInstanceId] [uniqueidentifier] NOT NULL,
+	[TaskStatusTypeId] [int] NOT NULL,
+	[TaskPriorityTypeId] [int] NOT NULL,
+	[DeclaredPastDue] [bit] NOT NULL,
+	[DueDate] [datetime2] NULL,
+	[DeclaredExpired] [bit] NOT NULL,
+	[ExpirationDate] [datetime2] NULL,
+	[TaskTypeName] [varchar](50) NOT NULL,
+	[TaskInstanceData] [xml] NOT NULL,
+	[ItilClass] [int] NULL,
+	[CreatedBy] [nvarchar](50) NOT NULL,
+	[CreatedTime] [datetime2] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_TaskInstance] PRIMARY KEY CLUSTERED 
+(
+	[TaskInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+--High Availability Tables
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ApplicationServer]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ApplicationServer](
+	[ApplicationServerId] [uniqueidentifier] NOT NULL,
+	[ServerName] [nvarchar](100) NOT NULL,
+	[ServerUrl] [nvarchar](255) NOT NULL,
+	[ServerStatusTypeId] [int] NOT NULL,
+	[ProcessInstanceLoad] [int] NOT NULL,
+	[WorkCapacity] [decimal](3, 2) NOT NULL,
+	[NumberOfTriggers] [int] NOT NULL,
+	[LastRevisionSequence] [bigint] NULL,
+	[LastCheckinTime] [datetime2] NULL,
+	[LocalCheckinTime] [datetime2] NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ApplicationServer] PRIMARY KEY CLUSTERED 
+(
+	[ApplicationServerId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO 
+
+/****** Object:  Table [dbo].[RevisionSequence]    Script Date: 7/9/2012 7:57:37 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RevisionSequence]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[RevisionSequence](
+	[SequenceNumber] [bigint] IDENTITY(1,1) NOT NULL,
+	[ConfigurationId] [uniqueidentifier] NOT NULL,
+	[ConfigurationTypeId] [int] NOT NULL,
+	[Deleted] [bit] NOT NULL,
+ CONSTRAINT [PK_RevisionSequence] PRIMARY KEY CLUSTERED 
+(
+	[SequenceNumber] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ResponsibilityAssignment]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ResponsibilityAssignment](
+	[ResponsibilityAssignmentId] [uniqueidentifier] NOT NULL,
+	[ResponsibilityId] [uniqueidentifier] NOT NULL,
+	[ApplicationServerId] [uniqueidentifier] NOT NULL,
+	[TargetAffinityId] [uniqueidentifier] NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ResponsibilityAssignment] PRIMARY KEY CLUSTERED 
+(
+	[ResponsibilityAssignmentId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
+ CONSTRAINT [UC_ResponsibilityAssignment] UNIQUE NONCLUSTERED 
+(
+	[ResponsibilityId] ASC,
+	[TargetAffinityId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO 
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ServerStatusType]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ServerStatusType](
+	[ServerStatusTypeId] [int] NOT NULL,
+	[ServerStatusTypeName] [nvarchar](50) NOT NULL,
+	[ServerStatusTypeDesc] [nvarchar](128) NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ServerStatusType] PRIMARY KEY CLUSTERED 
+(
+	[ServerStatusTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ApplicationServerHotfix]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ApplicationServerHotfix](
+	[ApplicationServerId] [uniqueidentifier] NOT NULL,
+	[HotfixName] [nvarchar](50) NOT NULL,
+	[HotfixDesc] [nvarchar](255) NULL,
+	[Version] [varchar](20) NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+ CONSTRAINT [PK_ApplicationServerHotfix] PRIMARY KEY CLUSTERED 
+(
+	[ApplicationServerId] ASC,
+	[HotfixName] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PerformanceMetric]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[PerformanceMetric](
+	[ObjectName] [nvarchar](128) NOT NULL,
+	[CounterName] [nvarchar](128) NOT NULL,
+	[InstanceName] [nvarchar](128) NOT NULL,
+	[ConfigurationItemKey] [uniqueidentifier] NOT NULL,
+	[AffectedTargetItemKey] [uniqueidentifier] NOT NULL,
+	[ConfigurationItemName]	[nvarchar](255) NULL,
+	[ConfigurationItemType]	[nvarchar](255) NULL,
+	[ConfigurationItemSource]	[nvarchar](255) NULL,
+	[AffectedTargetItemName] [nvarchar](255) NULL,
+	[AffectedTargetItemType] [nvarchar](255) NULL,
+	[AffectedTargetItemSource]	[nvarchar](255) NULL,
+	[Value] [decimal](18, 5) NOT NULL CONSTRAINT DF_PM_VALUE DEFAULT (0.0),
+	[TimeRaised] [datetime2] NOT NULL,
+	[ApplicationServerId] [uniqueidentifier] NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+CONSTRAINT [PK_PerformanceMetric] PRIMARY KEY CLUSTERED 
+(
+	[ObjectName] ASC,
+	[CounterName] ASC,
+	[InstanceName] ASC,
+	[ConfigurationItemKey] ASC,
+	[AffectedTargetItemKey] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ResourceAllocation]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ResourceAllocation](
+	[ResourceAllocationId] [uniqueidentifier] NOT NULL,
+	[ResourceId] [uniqueidentifier] NOT NULL,
+	[ProcessInstanceId] [uniqueidentifier] NOT NULL,
+	[ActivityInstanceId] [uniqueidentifier] NOT NULL,
+	[TargetId] [uniqueidentifier] NULL,
+	[ApplicationServerId] [uniqueidentifier] NULL,
+	[RuntimeUserId] [uniqueidentifier] NULL,
+	[AllocationState] [smallint] NOT NULL,
+	[Quantity] [decimal](18, 2) NOT NULL,
+	[ModifiedBy] [nvarchar](50) NULL,
+	[ModifiedTime] [datetime2] NULL,
+CONSTRAINT [PK_ResourceAllocation] PRIMARY KEY CLUSTERED 
+(
+	[ResourceAllocationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+--#endregion
+
+--#region Create Default Constraints
+ALTER TABLE [dbo].[RevisionSequence] ADD  CONSTRAINT [DF_RS_Deleted]  DEFAULT ((0)) FOR [Deleted]
+GO
+
+ALTER TABLE [dbo].[BaselineConfiguration] ADD  CONSTRAINT [DF_BC_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[ConfigurationRevision] ADD  CONSTRAINT [DF_CR_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[TaskInstance] ADD  CONSTRAINT [DF_TI_CreatedTime]  DEFAULT (getutcdate()) FOR [CreatedTime]
+GO
+
+ALTER TABLE [dbo].[InstanceStateType] ADD  CONSTRAINT [DF_AIST_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[ConfigurationType] ADD  CONSTRAINT [DF_ConfigurationType_Active]  DEFAULT ((1)) FOR [Active]
+GO
+
+ALTER TABLE [dbo].[ConfigurationType] ADD  CONSTRAINT [DF_CT_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[ChangeType] ADD  CONSTRAINT [DF_ChangeType_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[AuditType] ADD  CONSTRAINT [DF_AuditType_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[ItilConfigurationItem] ADD  CONSTRAINT [DF_ICI_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[ServerPrerequisites] ADD  CONSTRAINT [DF_SPR_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[GroomingSettings] ADD  CONSTRAINT [DF_GS_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[WorkflowInstance] ADD  CONSTRAINT [DF_WI_CreatedTime]  DEFAULT (getutcdate()) FOR [CreatedTime]
+GO
+
+ALTER TABLE [dbo].[Version] ADD  CONSTRAINT [DF_Version_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[TaskStatusType] ADD  CONSTRAINT [DF_TaskStatusType_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[TaskPriorityType] ADD  CONSTRAINT [DF_TPT_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[StartType] ADD  CONSTRAINT [DF_StartType_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[TaskAudit] ADD  CONSTRAINT [DF_TaskAudit_CreatedTime]  DEFAULT (getutcdate()) FOR [CreatedTime]
+GO
+
+ALTER TABLE [dbo].[ActivityInstance] ADD  CONSTRAINT [DF_AI_InstanceStateTypeId]  DEFAULT ((0)) FOR [InstanceStateTypeId]
+GO
+
+ALTER TABLE [dbo].[ActivityInstance] ADD  CONSTRAINT [DF_AI_CreatedTime]  DEFAULT (getutcdate()) FOR [CreatedTime]
+GO
+
+ALTER TABLE [dbo].[Configuration] ADD  CONSTRAINT [DF_Configuration_Enabled]  DEFAULT ((1)) FOR [Enabled]
+GO
+
+ALTER TABLE [dbo].[Configuration] ADD  CONSTRAINT [DF_Configuration_Active]  DEFAULT ((1)) FOR [Active]
+GO
+
+ALTER TABLE [dbo].[Configuration] ADD  CONSTRAINT [DF_Configuration_CreatedTime]  DEFAULT (getutcdate()) FOR [CreatedTime]
+GO
+
+ALTER TABLE [dbo].[SystemAudit] ADD  CONSTRAINT [DF_SystemAudit_CreatedTime]  DEFAULT (getutcdate()) FOR [CreatedTime]
+GO
+
+ALTER TABLE [dbo].[ProcessConfiguration] ADD  CONSTRAINT [DF_PC_ManualExecutionTimeInHours]  DEFAULT ((1.0)) FOR [ManualExecutionTimeInHours]
+GO
+
+ALTER TABLE [dbo].[ProcessConfiguration] ADD  CONSTRAINT [DF_PC_DefaultHourlyRate]  DEFAULT ((25.0)) FOR [ManualExecutionHourlyRate]
+GO
+
+ALTER TABLE [dbo].[TaskInstance] ADD  CONSTRAINT [DF_TI_TaskStatusTypeId]  DEFAULT ((0)) FOR [TaskStatusTypeId]
+GO
+
+ALTER TABLE [dbo].[ApplicationServer] ADD  CONSTRAINT [DF_AS_ServerStatusTypeId]  DEFAULT ((0)) FOR [ServerStatusTypeId]
+GO
+
+ALTER TABLE [dbo].[TaskInstance] ADD  CONSTRAINT [DF_TI_TaskPriorityTypeId]  DEFAULT ((0)) FOR [TaskPriorityTypeId]
+GO
+
+ALTER TABLE [dbo].[PagedOutput] ADD  CONSTRAINT [DF_PagedOutput_PageNumber]  DEFAULT ((1)) FOR [PageNumber]
+GO
+
+ALTER TABLE [dbo].[ConfigurationAudit] ADD  CONSTRAINT [DF_CA_CreatedTime]  DEFAULT (getutcdate()) FOR [CreatedTime]
+GO
+
+ALTER TABLE [dbo].[ConfigurationAudit] ADD  CONSTRAINT [DF_CA_Succeeded]  DEFAULT ((1)) FOR [Succeeded]
+GO
+
+ALTER TABLE [dbo].[TaskAudit] ADD  CONSTRAINT [DF_TA_Succeeded]  DEFAULT ((1)) FOR [Succeeded]
+GO
+
+ALTER TABLE [dbo].[ProcessInstance] ADD  CONSTRAINT [DF_PI_InstanceStateTypeId]  DEFAULT ((0)) FOR [InstanceStateTypeId]
+GO
+
+ALTER TABLE [dbo].[ProcessInstance] ADD  CONSTRAINT [DF_PI_CreatedTime]  DEFAULT (getutcdate()) FOR [StartTime]
+GO
+
+ALTER TABLE [dbo].[ProcessInstance] ADD  CONSTRAINT [DF_PI_StartTime]  DEFAULT (getutcdate()) FOR [EndTime]
+GO
+
+ALTER TABLE [dbo].[ProcessInstance] ADD  CONSTRAINT [DF_PI_CostSaving]  DEFAULT ((0.0)) FOR [CostSaving]
+GO
+
+ALTER TABLE [dbo].[TaskInstance] ADD  CONSTRAINT [DF_TI_DeclaredPastDue]  DEFAULT ((0)) FOR [DeclaredPastDue]
+GO
+
+ALTER TABLE [dbo].[TaskInstance] ADD  CONSTRAINT [DF_TI_DeclaredExpired]  DEFAULT ((0)) FOR [DeclaredExpired]
+GO
+
+ALTER TABLE [dbo].[ConfigurationSnapshot] ADD CONSTRAINT [DF_CS_CreatedTime]  DEFAULT (getutcdate()) FOR [CreatedTime]
+GO
+
+ALTER TABLE [dbo].[ConfigurationSnapshotDetails] ADD CONSTRAINT [DF_CSD_CreatedTime]  DEFAULT (getutcdate()) FOR [CreatedTime]
+GO
+
+ALTER TABLE [dbo].[ApplicationServer] ADD  CONSTRAINT [DF_AS_WorkCapacity]  DEFAULT ((1)) FOR [WorkCapacity]
+GO
+
+ALTER TABLE [dbo].[ResourceAllocation] ADD  CONSTRAINT [DF_RA_ModifiedTime]  DEFAULT (getutcdate()) FOR [ModifiedTime]
+GO
+
+ALTER TABLE [dbo].[WorkflowInstance] ADD  CONSTRAINT DF_WI_DefinitionVersionId  DEFAULT ((1)) FOR [DefinitionVersionId]
+GO
+--#endregion 
+
+--#region Create Foreign Keys
+
+ALTER TABLE [dbo].[ActivityInstance]  WITH CHECK ADD CONSTRAINT [FK_AI_InstanceStateType] FOREIGN KEY([InstanceStateTypeId])
+REFERENCES [dbo].[InstanceStateType] ([InstanceStateTypeId])
+GO
+
+ALTER TABLE [dbo].[Configuration]  WITH CHECK ADD  CONSTRAINT [FK_C_ConfigurationType] FOREIGN KEY([ConfigurationTypeId])
+REFERENCES [dbo].[ConfigurationType] ([ConfigurationTypeId])
+GO
+
+ALTER TABLE [dbo].[SystemAudit]  WITH CHECK ADD  CONSTRAINT [FK_SystemAudit_AuditType] FOREIGN KEY([AuditTypeId])
+REFERENCES [dbo].[AuditType] ([AuditTypeId])
+GO
+
+ALTER TABLE [dbo].[ProcessConfiguration]  WITH CHECK ADD  CONSTRAINT [FK_PC_Configuration] FOREIGN KEY([ProcessConfigurationId])
+REFERENCES [dbo].[Configuration] ([ConfigurationId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ApplicationServer]  WITH CHECK ADD  CONSTRAINT [FK_AS_Configuration] FOREIGN KEY([ApplicationServerId])
+REFERENCES [dbo].[Configuration] ([ConfigurationId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ResponsibilityAssignment]  WITH CHECK ADD  CONSTRAINT [FK_RA_Configuration] FOREIGN KEY([ResponsibilityAssignmentId])
+REFERENCES [dbo].[Configuration] ([ConfigurationId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[TargetConfiguration]  WITH CHECK ADD  CONSTRAINT [FK_TC_Configuration] FOREIGN KEY([TargetConfigurationId])
+REFERENCES [dbo].[Configuration] ([ConfigurationId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ItilConfigurationItem]  WITH CHECK ADD  CONSTRAINT [FK_ICI_Configuration] FOREIGN KEY([ItilConfigurationItemId])
+REFERENCES [dbo].[Configuration] ([ConfigurationId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ServerPrerequisites]  WITH CHECK ADD  CONSTRAINT [FK_SPR_Configuration] FOREIGN KEY([ServerPrerequisitesId])
+REFERENCES [dbo].[Configuration] ([ConfigurationId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ConfigurationDependency]  WITH CHECK ADD  CONSTRAINT [FK_CD_Configuration] FOREIGN KEY([UsedByConfigurationId])
+REFERENCES [dbo].[Configuration] ([ConfigurationId])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ConfigurationCategory]  WITH CHECK ADD  CONSTRAINT [FK_CC_Configuration] FOREIGN KEY([CategoryId])
+REFERENCES [dbo].[Configuration] ([ConfigurationId])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[PropertyExtensionValue]  WITH CHECK ADD  CONSTRAINT [FK_PEV_Configuration] FOREIGN KEY([PropertyExtensionId])
+REFERENCES [dbo].[Configuration] ([ConfigurationId])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[TaskInstance]  WITH CHECK ADD  CONSTRAINT [FK_TI_TaskPriorityType] FOREIGN KEY([TaskPriorityTypeId])
+REFERENCES [dbo].[TaskPriorityType] ([TaskPriorityTypeId])
+GO
+
+ALTER TABLE [dbo].[TaskInstance]  WITH CHECK ADD  CONSTRAINT [FK_TI_TaskStatusType] FOREIGN KEY([TaskStatusTypeId])
+REFERENCES [dbo].[TaskStatusType] ([TaskStatusTypeId])
+GO
+
+ALTER TABLE [dbo].[PagedOutput]  WITH CHECK ADD  CONSTRAINT [FK_PO_ActivityInstance] FOREIGN KEY([ActivityInstanceId])
+REFERENCES [dbo].[ActivityInstance] ([ActivityInstanceId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ConfigurationAudit]  WITH CHECK ADD  CONSTRAINT [FK_CA_ChangeType] FOREIGN KEY([ChangeTypeId])
+REFERENCES [dbo].[ChangeType] ([ChangeTypeId])
+GO
+
+ALTER TABLE [dbo].[TaskAudit]  WITH CHECK ADD  CONSTRAINT [FK_TaskAudit_ChangeType] FOREIGN KEY([ChangeTypeId])
+REFERENCES [dbo].[ChangeType] ([ChangeTypeId])
+GO
+
+ALTER TABLE [dbo].[ProcessInstance]  WITH CHECK ADD  CONSTRAINT [FK_PI_ProcessConfiguration] FOREIGN KEY([ProcessConfigurationId])
+REFERENCES [dbo].[ProcessConfiguration] ([ProcessConfigurationId])
+ON DELETE SET NULL
+GO
+
+ALTER TABLE [dbo].[ProcessInstance]  WITH CHECK ADD  CONSTRAINT [FK_PI_StartType] FOREIGN KEY([StartTypeId])
+REFERENCES [dbo].[StartType] ([StartTypeId])
+GO
+
+ALTER TABLE [dbo].[ProcessInstance]  WITH CHECK ADD  CONSTRAINT [FK_PI_InstanceStateType] FOREIGN KEY([InstanceStateTypeId])
+REFERENCES [dbo].[InstanceStateType] ([InstanceStateTypeId])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[ApplicationServer] WITH CHECK ADD  CONSTRAINT [FK_AS_ServerStatusType] FOREIGN KEY([ServerStatusTypeId])
+REFERENCES [dbo].[ServerStatusType] ([ServerStatusTypeId])
+GO
+
+ALTER TABLE [dbo].[ProcessInstance]  WITH CHECK ADD  CONSTRAINT [FK_PI_ApplicationServer] FOREIGN KEY([ApplicationServerId])
+REFERENCES [dbo].[ApplicationServer] ([ApplicationServerId])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[ActivityInstance]  WITH CHECK ADD  CONSTRAINT [FK_AI_ApplicationServer] FOREIGN KEY([ApplicationServerId])
+REFERENCES [dbo].[ApplicationServer] ([ApplicationServerId])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[ApplicationServerHotfix]  WITH CHECK ADD  CONSTRAINT [FK_ASHF_ApplicationServer] FOREIGN KEY([ApplicationServerId])
+REFERENCES [dbo].[ApplicationServer] ([ApplicationServerId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ConfigurationAuditDetail]  WITH CHECK ADD  CONSTRAINT [FK_CAD_ConfigurationAudit] FOREIGN KEY([ConfigurationAuditId])
+REFERENCES [dbo].[ConfigurationAudit] ([ConfigurationAuditId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ConfigurationSnapshotDetails]  WITH CHECK ADD  CONSTRAINT [FK_CSD_ConfigurationRevision] FOREIGN KEY([ConfigurationId], [ConfigurationVersionId])
+REFERENCES [dbo].[ConfigurationRevision] ([ConfigurationId], [VersionId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ConfigurationSnapshotDetails]  WITH CHECK ADD  CONSTRAINT [FK_CSD_ConfigurationSnapshot] FOREIGN KEY([ConfigurationSnapshotId])
+REFERENCES [dbo].[ConfigurationSnapshot] ([ConfigurationSnapshotId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ConfigurationRevision]  WITH CHECK ADD  CONSTRAINT [FK_CR_Configuration] FOREIGN KEY([ConfigurationId])
+REFERENCES [dbo].[Configuration] ([ConfigurationId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[WorkflowInstance]  WITH CHECK ADD  CONSTRAINT [FK_WI_ConfigurationRevision] FOREIGN KEY([DefinitionId], [DefinitionVersionId])
+REFERENCES [dbo].[ConfigurationRevision] ([ConfigurationId], [VersionId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ResourceAllocation]  WITH CHECK ADD  CONSTRAINT [FK_RSA_Configuration] FOREIGN KEY([ResourceId])
+REFERENCES [dbo].[Configuration] ([ConfigurationId])
+ON UPDATE NO ACTION
+ON DELETE NO ACTION
+GO
+
+--#endregion 
+
+--#region Create Indexes
+
+CREATE NONCLUSTERED INDEX [IX_SA_CreatedTime] ON [dbo].[SystemAudit]
+(
+	[CreatedTime] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_CC_ConfigurationId] ON [dbo].[ConfigurationCategory]
+(
+	[ConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_CC_CategoryId] ON [dbo].[ConfigurationCategory]
+(
+	[CategoryId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_AI_InstanceStateTypeId] ON [dbo].[ActivityInstance] 
+(
+	[InstanceStateTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_AI_WorkflowInstanceId] ON [dbo].[ActivityInstance] 
+(
+	[WorkflowInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_AI_ModifiedTime] ON [dbo].[ActivityInstance] 
+(
+	[ModifiedTime] DESC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PI_InstanceStateTypeId] ON [dbo].[ProcessInstance] 
+(
+	[InstanceStateTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PI_TargetConfigurationId] ON [dbo].[ProcessInstance] 
+(
+	[TargetConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PI_ModifiedTime] ON [dbo].[ProcessInstance] 
+(
+	[ModifiedTime] DESC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PI_StartTime] ON [dbo].[ProcessInstance] 
+(
+	[StartTime] DESC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_TI_TaskStatusTypeId] ON [dbo].[TaskInstance] 
+(
+	[TaskStatusTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_TI_TaskTypeName] ON [dbo].[TaskInstance] 
+(
+	[TaskTypeName] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_TI_PastDue] ON [dbo].[TaskInstance] 
+(
+	[DeclaredPastDue] ASC,
+	[DueDate] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_TI_Expired] ON [dbo].[TaskInstance] 
+(
+	[DeclaredExpired] ASC,
+	[ExpirationDate] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_TA_TaskInstanceId] ON [dbo].[TaskAudit] 
+(
+	[TaskInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_TI_CreatedTime] ON [dbo].[TaskInstance] 
+(
+	[CreatedTime] DESC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_TI_ItilClass] ON [dbo].[TaskInstance] 
+(
+	[ItilClass] DESC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_RSA_ResourceId] ON [dbo].[ResourceAllocation]
+(
+	[ResourceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_RSA_ProcessInstanceId] ON [dbo].[ResourceAllocation]
+(
+	[ProcessInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_RSA_ActivityInstanceId] ON [dbo].[ResourceAllocation]
+(
+	[ActivityInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_RSA_TargetId] ON [dbo].[ResourceAllocation]
+(
+	[TargetId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_CA_ConfigurationId] ON [dbo].[ConfigurationAudit]
+(
+	[ConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_CA_CreatedTime] ON [dbo].[ConfigurationAudit]
+(
+	[CreatedTime] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_RS_ConfigurationId] ON [dbo].[RevisionSequence]
+(
+	[ConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_VI_ControllingItemId] ON [dbo].[VariableInstance]
+(
+	[ControllingItemId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PI_ApplicationServerId] ON [dbo].[ProcessInstance]
+(
+	[ApplicationServerId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PI_ProcessConfigurationId] ON [dbo].[ProcessInstance]
+(
+	[ProcessConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PI_ParentProcInstanceId] ON [dbo].[ProcessInstance]
+(
+	[ParentProcessInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PI_AssignedTime] ON [dbo].[ProcessInstance]
+(
+	[AssignedTime] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_AI_ApplicationServerId] ON [dbo].[ActivityInstance]
+(
+	[ApplicationServerId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_AI_AssignedTime] ON [dbo].[ActivityInstance]
+(
+	[AssignedTime] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_CD_ConfigurationId] ON [dbo].[ConfigurationDependency]
+(
+	[UsedByConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+--#endregion 
+
+--#region Create Archive Table Indexes
+
+CREATE NONCLUSTERED INDEX [IX_POA_ActivityInstanceId] ON [dbo].[PagedOutputArchive]
+(
+	[ActivityInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+GO	
+
+CREATE NONCLUSTERED INDEX [IX_AIA_WorkflowInstanceId] ON [dbo].[ActivityInstanceArchive] 
+(
+	[WorkflowInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PIA_StartTime] ON [dbo].[ProcessInstanceArchive] 
+(
+	[StartTime] DESC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PIA_StartTypeId] ON [dbo].[ProcessInstanceArchive] 
+(
+	[StartTypeId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PIA_AdHocStartedBy] ON [dbo].[ProcessInstanceArchive] 
+(
+	[AdHocStartedBy] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PIA_ProcessConfigurationId] ON [dbo].[ProcessInstanceArchive] 
+(
+	[ProcessConfigurationId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PIA_ParentProcInstanceId] ON [dbo].[ProcessInstanceArchive] 
+(
+	[ParentProcessInstanceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PC_TriggerOwnerId] ON [dbo].[ProcessConfiguration] 
+(
+	[TriggerOwnerId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_RA_ApplicationServerId] ON [dbo].[ResponsibilityAssignment] 
+(
+	[ApplicationServerId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [DEFAULT]
+GO
+
+CREATE NONCLUSTERED INDEX [IX_WI_ConfigurationRevision] ON [dbo].[WorkflowInstance] 
+(
+	[DefinitionId] ASC,
+	[DefinitionVersionId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+--#endregion 
+
+--#region FILL LOOK UP TABLES
+USE [tony]
+GO
+SET NUMERIC_ROUNDABORT OFF
+GO
+SET XACT_ABORT, ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT, QUOTED_IDENTIFIER, ANSI_NULLS, NOCOUNT ON
+GO
+SET DATEFORMAT YMD
+GO
+-- Pointer used for text / image updates. This might not be needed, but is declared here just in case
+DECLARE @pv binary(16)
+
+BEGIN TRANSACTION
+
+-- Add 8 rows to GroomingSettings
+INSERT INTO GroomingSettings (SettingId, TableName, DaysToKeep, ModifiedBy, ModifiedTime) VALUES (1, N'ProcessInstance', 15, N'Cisco PO Server', getutcdate());
+INSERT INTO GroomingSettings (SettingId, TableName, DaysToKeep, ModifiedBy, ModifiedTime) VALUES (2, N'WorkflowInstance', 15, N'Cisco PO Server', getutcdate());
+INSERT INTO GroomingSettings (SettingId, TableName, DaysToKeep, ModifiedBy, ModifiedTime) VALUES (3, N'ActivityInstance', 15, N'Cisco PO Server', getutcdate());
+INSERT INTO GroomingSettings (SettingId, TableName, DaysToKeep, ModifiedBy, ModifiedTime) VALUES (4, N'TaskInstance', 30, N'Cisco PO Server', getutcdate());
+INSERT INTO GroomingSettings (SettingId, TableName, DaysToKeep, ModifiedBy, ModifiedTime) VALUES (5, N'ConfigurationAudit', NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO GroomingSettings (SettingId, TableName, DaysToKeep, ModifiedBy, ModifiedTime) VALUES (6, N'SystemAudit', NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO GroomingSettings (SettingId, TableName, DaysToKeep, ModifiedBy, ModifiedTime) VALUES (7, N'TaskAudit', NULL, N'Cisco PO Server', getutcdate());
+
+-- Add 5 rows to AuditType
+INSERT INTO AuditType (AuditTypeId, AuditTypeName, AuditTypeDesc, ModifiedBy, ModifiedTime) VALUES (1, N'Error', N'System Errors', N'Cisco PO Server', getutcdate());
+INSERT INTO AuditType (AuditTypeId, AuditTypeName, AuditTypeDesc, ModifiedBy, ModifiedTime) VALUES (2, N'Warning', N'System Warnings', N'Cisco PO Server', getutcdate());
+INSERT INTO AuditType (AuditTypeId, AuditTypeName, AuditTypeDesc, ModifiedBy, ModifiedTime) VALUES (4, N'Information', N'System Information', N'Cisco PO Server', getutcdate());
+INSERT INTO AuditType (AuditTypeId, AuditTypeName, AuditTypeDesc, ModifiedBy, ModifiedTime) VALUES (8, N'Succeeded', N'Succeeded Audit', N'Cisco PO Server', getutcdate());
+INSERT INTO AuditType (AuditTypeId, AuditTypeName, AuditTypeDesc, ModifiedBy, ModifiedTime) VALUES (16, N'Failed', N'Failed Audit', N'Cisco PO Server', getutcdate());
+
+-- Add 3 rows to ChangeType
+INSERT INTO ChangeType (ChangeTypeId, ChangeTypeName, ChangeTypeDesc, ModifiedBy, ModifiedTime) VALUES (1, N'Created', N'Configuration (any one of variable, target, process etc...) is  Created', N'Cisco PO Server', getutcdate());
+INSERT INTO ChangeType (ChangeTypeId, ChangeTypeName, ChangeTypeDesc, ModifiedBy, ModifiedTime) VALUES (2, N'Updated', N'Configuration (any one of variable, target, process etc...) is Updated', N'Cisco PO Server', getutcdate());
+INSERT INTO ChangeType (ChangeTypeId, ChangeTypeName, ChangeTypeDesc, ModifiedBy, ModifiedTime) VALUES (3, N'Deleted', N'Configuration (any one of variable, target, process etc...) is Deleted', N'Cisco PO Server', getutcdate());
+
+-- Add 37 rows to ConfigurationType
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (1, N'Process', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (2, N'WorkFlow', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (3, N'Variable', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (4, N'TargetGroup', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (5, N'Calendar', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (6, N'Adapter', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (7, N'AllocationConstraint', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (8, N'Category', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (9, N'CustomActivity', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (10, N'FilterView', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (11, N'KnowledgeBase', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (12, N'PriorityClass', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (13, N'Resource', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (14, N'Task', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (15, N'RuntimeUser', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (16, N'ServerSettings', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (17, N'Target', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (18, N'TimeZone', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (19, N'WorkflowState', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (20, N'SecurityAuthority', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (21, N'SecurityRule', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (22, N'ProcessStatisticTable', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (23, N'ReportDatabase', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (24, N'ActivityInstance', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (25, N'ProcessInstance', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (26, N'WorkflowInstance', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (27, N'PagedOutput', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (28, N'AutomationPack', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (29, N'ItilConfigurationItem', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (30, N'TargetRuntimeInfo', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (31, N'Rule', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (32, N'AdapterSettings', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (33, N'PropertyExtension', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (34, N'PropertyExtensionValue', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (35, N'TypeExtension', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (36, N'OrchestrationServer', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (37, N'License', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (38, N'ServerResponsibility', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (39, N'ResponsibilityAssignment', 1, NULL, N'Cisco PO Server', getutcdate());
+INSERT INTO ConfigurationType (ConfigurationTypeId, ConfigurationTypeName, Active, ConfigurationTypeDesc, ModifiedBy, ModifiedTime) VALUES (40, N'AdapterPrerequisites', 1, NULL, N'Cisco PO Server', getutcdate());
+
+-- Add 12 rows to InstanceStateType
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (0, N'Unknown', N'The activity is in an unknown state (which should never happen)', N'Cisco PO Server', getutcdate());
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (1, N'Running', N'The activity/process/workflow is currently running.', N'Cisco PO Server', getutcdate());
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (2, N'Stopped', N'The activity/process/workflow is permanently stopped.', N'Cisco PO Server', getutcdate());
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (3, N'Paused', N'The activity/process/workflow is temporarily paused, but may be resumed later.', N'Cisco PO Server', getutcdate());
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (4, N'Succeeded', N'The activity/process/workflow has completed successfully.', N'Cisco PO Server', getutcdate());
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (5, N'FailedCompleted', N'The activity/process/workflow has completed, but with important errors.', N'Cisco PO Server', getutcdate());
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (6, N'FailedNotCompleted', N'The activity/process/workflow has failed without completing.', N'Cisco PO Server', getutcdate());
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (7, N'Scheduled', N'The activity/process/workflow is scheduled to run.', N'Cisco PO Server', getutcdate());
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (8, N'Missed', N'The activity/process/workflow was scheduled to run in the past.', N'Cisco PO Server', getutcdate());
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (9, N'Launched', N'The activity/process/workflow has been launched and will soon begin running', N'Cisco PO Server', getutcdate());
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (10, N'WaitingOnResourcesAndConditions', N'The activity/process/workflow is currently waiting on resources and conditions.', N'Cisco PO Server', getutcdate());
+INSERT INTO InstanceStateType (InstanceStateTypeId, InstanceStateTypeName, InstanceStateTypeDesc, ModifiedBy, ModifiedTime) VALUES (11, N'Cancelled', N'This is a variant of FailedNotCompleted where the user has manually cancelled the instance.', N'Cisco PO Server', getutcdate());
+
+-- Add 3 row to StartType
+INSERT INTO StartType (StartTypeId, StartTypeName, StartTypeDesc, ModifiedBy, ModifiedTime) VALUES (0, N'Triggered', N'Triggered', N'Cisco PO Server', getutcdate());
+INSERT INTO StartType (StartTypeId, StartTypeName, StartTypeDesc, ModifiedBy, ModifiedTime) VALUES (1, N'ParentProcessInstance', N'Parent process instance', N'Cisco PO Server', getutcdate());
+INSERT INTO StartType (StartTypeId, StartTypeName, StartTypeDesc, ModifiedBy, ModifiedTime) VALUES (2, N'Adhoc', N'Adhoc', N'Cisco PO Server', getutcdate());
+INSERT INTO StartType (StartTypeId, StartTypeName, StartTypeDesc, ModifiedBy, ModifiedTime) VALUES (3, N'Schedule', N'Schedule', N'Cisco PO Server', getutcdate());
+
+-- Add 3 row to TaskPriorityType
+INSERT INTO TaskPriorityType (TaskPriorityTypeId, TaskPriorityTypeName, TaskPriorityTypeDesc, ModifiedBy, ModifiedTime) VALUES (0, N'Low', N'Low', N'Cisco PO Server', getutcdate());
+INSERT INTO TaskPriorityType (TaskPriorityTypeId, TaskPriorityTypeName, TaskPriorityTypeDesc, ModifiedBy, ModifiedTime) VALUES (1, N'Medium', N'Medium', N'Cisco PO Server', getutcdate());
+INSERT INTO TaskPriorityType (TaskPriorityTypeId, TaskPriorityTypeName, TaskPriorityTypeDesc, ModifiedBy, ModifiedTime) VALUES (2, N'High', N'High', N'Cisco PO Server', getutcdate());
+
+-- Add 5 row to TaskStatusType
+INSERT INTO TaskStatusType (TaskStatusTypeId, TaskStatusTypeName, TaskStatusTypeDesc, ModifiedBy, ModifiedTime) VALUES (0, N'NotStarted', N'Not Started', N'Cisco PO Server', getutcdate());
+INSERT INTO TaskStatusType (TaskStatusTypeId, TaskStatusTypeName, TaskStatusTypeDesc, ModifiedBy, ModifiedTime) VALUES (1, N'InProgress', N'In progress', N'Cisco PO Server', getutcdate());
+INSERT INTO TaskStatusType (TaskStatusTypeId, TaskStatusTypeName, TaskStatusTypeDesc, ModifiedBy, ModifiedTime) VALUES (2, N'Completed', N'Completed', N'Cisco PO Server', getutcdate());
+INSERT INTO TaskStatusType (TaskStatusTypeId, TaskStatusTypeName, TaskStatusTypeDesc, ModifiedBy, ModifiedTime) VALUES (3, N'WaitingOnPerson', N'Waiting on person', N'Cisco PO Server', getutcdate());
+INSERT INTO TaskStatusType (TaskStatusTypeId, TaskStatusTypeName, TaskStatusTypeDesc, ModifiedBy, ModifiedTime) VALUES (4, N'Deferred', N'Deferred', N'Cisco PO Server', getutcdate());
+
+-- Add 3 row to ServerStatusType
+INSERT INTO ServerStatusType (ServerStatusTypeId, ServerStatusTypeName, ServerStatusTypeDesc, ModifiedBy, ModifiedTime) VALUES (0, N'Healthy', N'Healthy', N'Cisco PO Server', getutcdate());
+INSERT INTO ServerStatusType (ServerStatusTypeId, ServerStatusTypeName, ServerStatusTypeDesc, ModifiedBy, ModifiedTime) VALUES (1, N'Unhealthy', N'Not Healthy', N'Cisco PO Server', getutcdate());
+INSERT INTO ServerStatusType (ServerStatusTypeId, ServerStatusTypeName, ServerStatusTypeDesc, ModifiedBy, ModifiedTime) VALUES (2, N'Under Maintenance', N'Under Maintenance(either system or orchestration server upgrade', N'Cisco PO Server', getutcdate());
+
+-- Add 1 row to Version
+INSERT INTO [Version] (VersionId, VersionDesc, XmlDataSchemaVersion, CheckinFrequencyInSeconds, MaxCheckinDelayInSeconds, ModifiedBy, ModifiedTime) VALUES (3.0, N'Orchestrator 3.0 Compatible', '3.0.0', 3, 15, N'Cisco PO Server', getutcdate());
+
+-- Add Process DB setting to the configuration table
+Insert into "Configuration" ("ConfigurationId", "ConfigurationName", "ConfigurationDesc", "ConfigurationTypeId", "ConfigurationData", "Enabled", "Active", "CreatedBy", "CreatedTime", "ModifiedBy", "ModifiedTime")
+Values ('421acafa-a320-4d4b-982d-412727932780', 'Process Database', 'Process Database', 23,
+ '&lt;DatabaseSettingsConfiguration xmlns:p1="http://www.w3.org/2001/XMLSchema-instance" p1:type="AutomationDatabaseSettingsConfiguration" xml:space="preserve"&gt;
+  &lt;Id&gt;421acafa-a320-4d4b-982d-412727932780&lt;/Id&gt;
+  &lt;DisplayName&gt;Process Database&lt;/DisplayName&gt;
+  &lt;CreatedTime&gt;2012-09-16T02:47:03.6434083Z&lt;/CreatedTime&gt;
+  &lt;CreatedBy p1:type="SidIdentity"&gt;
+    &lt;SecurityIdentifier&gt;S-1-5-18&lt;/SecurityIdentifier&gt;
+    &lt;TranslatedName&gt;NT AUTHORITY\SYSTEM&lt;/TranslatedName&gt;
+  &lt;/CreatedBy&gt;
+  &lt;ModifiedTime&gt;2012-09-16T02:47:03.6434083Z&lt;/ModifiedTime&gt;
+  &lt;ModifiedBy p1:type="SidIdentity"&gt;
+    &lt;SecurityIdentifier&gt;S-1-5-21-209125451-689648040-410060929-7559&lt;/SecurityIdentifier&gt;
+    &lt;TranslatedName&gt;NT AUTHORITY\SYSTEM&lt;/TranslatedName&gt;
+  &lt;/ModifiedBy&gt;
+  &lt;Owner p1:type="SidIdentity"&gt;
+    &lt;SecurityIdentifier&gt;S-1-5-18&lt;/SecurityIdentifier&gt;
+    &lt;TranslatedName&gt;NT AUTHORITY\SYSTEM&lt;/TranslatedName&gt;
+  &lt;/Owner&gt;
+  &lt;DBType&gt;SQLServer&lt;/DBType&gt;
+  &lt;User&gt;&lt;/User&gt;
+  &lt;Domain&gt;&lt;/Domain&gt;
+  &lt;Host&gt;&lt;/Host&gt;
+  &lt;Sid&gt;&lt;/Sid&gt;
+  &lt;Port&gt;&lt;/Port&gt;
+  &lt;DBName&gt;&lt;/DBName&gt;
+  &lt;DBServerVersion&gt;&lt;/DBServerVersion&gt;
+  &lt;EncryptedPassword&gt;
+    &lt;EncryptedForm&gt;&lt;/EncryptedForm&gt;
+  &lt;/EncryptedPassword&gt;
+  &lt;Enabled&gt;true&lt;/Enabled&gt;
+  &lt;ReadOnly&gt;false&lt;/ReadOnly&gt;
+  &lt;ConnectionString&gt;server={{S}}; database={{D}}; user id={{U}}; password={{P}}; Pooling=false; Connection Timeout=60&lt;/ConnectionString&gt;
+  &lt;GroomingSettings&gt;
+    &lt;DaysToKeepProcessInstances&gt;15&lt;/DaysToKeepProcessInstances&gt;
+    &lt;DaysToKeepWorkflowInstances&gt;15&lt;/DaysToKeepWorkflowInstances&gt;
+    &lt;DaysToKeepActivityInstances&gt;15&lt;/DaysToKeepActivityInstances&gt;
+    &lt;DaysToKeepConfigurationAudits&gt;0&lt;/DaysToKeepConfigurationAudits&gt;
+    &lt;DaysToKeepTaskAudits&gt;0&lt;/DaysToKeepTaskAudits&gt;
+    &lt;DaysToKeepCompletedTasks&gt;30&lt;/DaysToKeepCompletedTasks&gt;
+  &lt;/GroomingSettings&gt;
+&lt;/DatabaseSettingsConfiguration&gt;', 
+1, 1, 'NT AUTHORITY\SYSTEM', '2012-09-16T02:47:03.6434083Z', 'NT AUTHORITY\SYSTEM', '2012-09-16T02:47:03.6434083Z')
+
+COMMIT TRANSACTION
+GO
+--#endregion 
+
+USE [tony]
+GO
+
+--#region Stored Procs</FormattedCode>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <Columns />
+          <RowNumberPerPage>
+            <HardcodedValue>100</HardcodedValue>
+          </RowNumberPerPage>
+          <ReturnAllColumns>false</ReturnAllColumns>
+          <RowLimit>
+            <HardcodedValue>200</HardcodedValue>
+          </RowLimit>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>c498c4b2-94c6-4883-b09c-a58a28c8a13a</Id>
+        <DisplayName>Create SP Input</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>a32c33c4-f23e-4542-8471-f9bb225a2483</Id>
+            <ActivityNodeId>c498c4b2-94c6-4883-b09c-a58a28c8a13a</ActivityNodeId>
+            <CompletedId>046ab41b-5c9e-4804-913a-3b8760034abc</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="ExecSQLServerCommandActivityConfiguration" xml:space="preserve">
+          <Id>c498c4b2-94c6-4883-b09c-a58a28c8a13a</Id>
+          <DisplayName>Create SP Input</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>321e8306-bd06-4de5-91d5-21fb08069158</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>095188dc-2144-4dd6-9eba-30be14fa594c</ContainingProcessId>
+          <PermissionLevel>DDL</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>/****** Object:  StoredProcedure [dbo].[GroomArchiveTables]   Script Date: 04/15/2010 20:18:36 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GroomArchiveTables]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GroomArchiveTables]
+GO
+
+CREATE PROCEDURE [dbo].[GroomArchiveTables] 
+(
+@Result int out
+)
+AS
+BEGIN
+    Set @Result = 0;
+END
+GO
+--#endregion</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <Columns />
+          <RowNumberPerPage>
+            <HardcodedValue>100</HardcodedValue>
+          </RowNumberPerPage>
+          <ReturnAllColumns>false</ReturnAllColumns>
+          <RowLimit>
+            <HardcodedValue>200</HardcodedValue>
+          </RowLimit>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>696f43d4-ef4d-4468-bb5d-d0b73beacb42</Id>
+        <DisplayName>Create Data Output</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>a5c5d2f0-1529-47a7-bf8f-a388fc5b8a5e</Id>
+            <ActivityNodeId>696f43d4-ef4d-4468-bb5d-d0b73beacb42</ActivityNodeId>
+            <CompletedId>8a31a6d1-a655-43e4-9f9e-06be431fb456</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="ExecSQLServerCommandActivityConfiguration" xml:space="preserve">
+          <Id>696f43d4-ef4d-4468-bb5d-d0b73beacb42</Id>
+          <DisplayName>Create Data Output</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>321e8306-bd06-4de5-91d5-21fb08069158</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>095188dc-2144-4dd6-9eba-30be14fa594c</ContainingProcessId>
+          <PermissionLevel>DDL</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>CREATE PROCEDURE DBOUT
+AS
+select * from  ChangeType</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <Columns />
+          <RowNumberPerPage>
+            <HardcodedValue>100</HardcodedValue>
+          </RowNumberPerPage>
+          <ReturnAllColumns>false</ReturnAllColumns>
+          <RowLimit>
+            <HardcodedValue>200</HardcodedValue>
+          </RowLimit>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>1724372d-697d-41bd-924e-5a72793a58c3</Id>
+        <DisplayName>Run Script (FailedRequiredInput)</DisplayName>
+        <Children />
+        <Configuration xsi:type="ExecSQLServerCommandActivityConfiguration" xml:space="preserve">
+          <Id>1724372d-697d-41bd-924e-5a72793a58c3</Id>
+          <DisplayName>Run Script (FailedRequiredInput)</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>321e8306-bd06-4de5-91d5-21fb08069158</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>095188dc-2144-4dd6-9eba-30be14fa594c</ContainingProcessId>
+          <PermissionLevel>DDL</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>exec GroomArchiveTables</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <Columns />
+          <RowNumberPerPage>
+            <HardcodedValue>100</HardcodedValue>
+          </RowNumberPerPage>
+          <ReturnAllColumns>false</ReturnAllColumns>
+          <RowLimit>
+            <HardcodedValue>200</HardcodedValue>
+          </RowLimit>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>9b1b26e0-8d37-4650-be39-9d4c6daec233</Id>
+        <DisplayName>Run DBOUT</DisplayName>
+        <Children />
+        <Configuration xsi:type="ExecSQLServerCommandActivityConfiguration" xml:space="preserve">
+          <Id>9b1b26e0-8d37-4650-be39-9d4c6daec233</Id>
+          <DisplayName>Run DBOUT</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>321e8306-bd06-4de5-91d5-21fb08069158</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>095188dc-2144-4dd6-9eba-30be14fa594c</ContainingProcessId>
+          <PermissionLevel>DDL</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>exec DBOUT</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <Columns />
+          <RowNumberPerPage>
+            <HardcodedValue>100</HardcodedValue>
+          </RowNumberPerPage>
+          <ReturnAllColumns>false</ReturnAllColumns>
+          <RowLimit>
+            <HardcodedValue>200</HardcodedValue>
+          </RowLimit>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>c8c22e3e-3414-45b2-aa89-6cb9d4ecedd3</Id>
+        <DisplayName>Run DBOUT (Manual)</DisplayName>
+        <Children />
+        <Configuration xsi:type="ExecSQLServerCommandActivityConfiguration" xml:space="preserve">
+          <Id>c8c22e3e-3414-45b2-aa89-6cb9d4ecedd3</Id>
+          <DisplayName>Run DBOUT (Manual)</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>321e8306-bd06-4de5-91d5-21fb08069158</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>095188dc-2144-4dd6-9eba-30be14fa594c</ContainingProcessId>
+          <PermissionLevel>DDL</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>USE [OrchestratorProcess]
+GO
+
+DECLARE	@return_value int
+
+EXEC	@return_value = [dbo].[DBOUT]
+
+SELECT	'Return Value' = @return_value
+
+GO</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <Columns />
+          <RowNumberPerPage>
+            <HardcodedValue>100</HardcodedValue>
+          </RowNumberPerPage>
+          <ReturnAllColumns>false</ReturnAllColumns>
+          <RowLimit>
+            <HardcodedValue>200</HardcodedValue>
+          </RowLimit>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>a4bae205-25fd-49db-ba05-623a49884d1a</Id>
+        <DisplayName>Select 2 Store Procedure Created</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>52c2411b-ad4c-49dc-bfc2-4c74278b85d1</Id>
+            <ActivityNodeId>a4bae205-25fd-49db-ba05-623a49884d1a</ActivityNodeId>
+            <CompletedId>1229a3c5-2f2c-491e-bb03-3c295f7546d0</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="ExecSQLServerCommandActivityConfiguration" xml:space="preserve">
+          <Id>a4bae205-25fd-49db-ba05-623a49884d1a</Id>
+          <DisplayName>Select 2 Store Procedure Created</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>321e8306-bd06-4de5-91d5-21fb08069158</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>095188dc-2144-4dd6-9eba-30be14fa594c</ContainingProcessId>
+          <PermissionLevel>DDL</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>SELECT * FROM sys.procedures</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <Columns />
+          <RowNumberPerPage>
+            <HardcodedValue>100</HardcodedValue>
+          </RowNumberPerPage>
+          <ReturnAllColumns>false</ReturnAllColumns>
+          <RowLimit>
+            <HardcodedValue>200</HardcodedValue>
+          </RowLimit>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="SwitchNode">
+        <Id>1ef858a5-e1f2-4afd-bee3-8e197cf280b9</Id>
+        <DisplayName>Condition Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>b0a5f905-ce8a-473b-96ac-320405ea9e52</Id>
+            <DisplayName>Condition Branch</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="CompletedNode">
+                <Id>b80bc1af-4737-4ce4-b2b5-8fe104f06c56</Id>
+                <CompletedType>Succeeded</CompletedType>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>1f6dd47f-f795-4a09-9174-f3e573ce3bdb</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>6c8bd018-061c-48ee-b222-82be6ec63b3c</Id>
+                  <Expression xsi:type="SubstitutableBoolean">
+                    <HardcodedValue>false</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Create Store Procedure.Instance Failed</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>InstanceFailed</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c498c4b2-94c6-4883-b09c-a58a28c8a13a</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>b61829c0-e253-4c03-84f6-4286e7165d33</Id>
+                  <Expression xsi:type="SubstitutableBoolean">
+                    <HardcodedValue>false</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Create Data Output.Instance Failed</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>InstanceFailed</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>696f43d4-ef4d-4468-bb5d-d0b73beacb42</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>be133d87-6f83-4ba0-83da-fe4eb5db69d2</Id>
+                  <Expression xsi:type="SubstitutableString">
+                    <HardcodedValue>Procedure or function 'GroomArchiveTables' expects parameter '@Result', which was not supplied.</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Run Script (FailedRequiredInput).Error Information</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>ErrorInformation</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>1724372d-697d-41bd-924e-5a72793a58c3</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>cb600d74-6185-4365-a051-d4ec3587a4aa</Id>
+                  <Expression xsi:type="SubstitutableWildcard">
+                    <HardcodedValue>*Created* *Updated* *Deleted*</HardcodedValue>
+                  </Expression>
+                  <Comparison>Wildcard</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Run DBOUT.Result Table.Table Data XML</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>ResultTable</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>TableDataXml</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>9b1b26e0-8d37-4650-be39-9d4c6daec233</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>683f52b3-94b3-4a51-80aa-610926b384b8</Id>
+                  <Expression xsi:type="SubstitutableWildcard">
+                    <HardcodedValue>*GroomArchiveTables* *DBOUT*</HardcodedValue>
+                  </Expression>
+                  <Comparison>Wildcard</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Select 2 Store Procedure Created.Result Table.Table Data XML</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>ResultTable</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>TableDataXml</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>a4bae205-25fd-49db-ba05-623a49884d1a</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>b0afe235-2602-49de-8581-bf0dc930d5e4</Id>
+                  <Expression xsi:type="SubstitutableWildcard">
+                    <HardcodedValue>*Created* *Updated* *Deleted*</HardcodedValue>
+                  </Expression>
+                  <Comparison>Wildcard</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Run DBOUT (Manual).Result Table.Table Data XML</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>ResultTable</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>TableDataXml</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>c8c22e3e-3414-45b2-aa89-6cb9d4ecedd3</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>79d1edf4-00b8-46ba-a73d-e28996227429</Id>
+            <DisplayName>Condition Branch</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="CompletedNode">
+                <Id>94163529-37de-4210-825b-b146ef173890</Id>
+                <CompletedType>FailedNotCompleted</CompletedType>
+                <ResultMessage>
+                  <HardcodedValue>This might not be failing to due to activities failure but some setting from the Create Procedure might need to be change on the DB path or Target.</HardcodedValue>
+                </ResultMessage>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>19dc932e-b69a-4028-9a36-7da3a5afd0ad</Id>
+              <Conditions />
+            </Condition>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>095188dc-2144-4dd6-9eba-30be14fa594c</ProcessId>
+</WorkflowConfiguration>

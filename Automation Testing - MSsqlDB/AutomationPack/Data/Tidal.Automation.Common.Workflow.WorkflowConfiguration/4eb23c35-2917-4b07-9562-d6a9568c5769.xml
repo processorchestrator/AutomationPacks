@@ -1,0 +1,756 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>4eb23c35-2917-4b07-9562-d6a9568c5769</Id>
+  <DisplayName>Twn131712c: QE-MSSQL-Bulk (Variables Enhancement)</DisplayName>
+  <CreatedTime>2019-09-20T21:16:40.6415635Z</CreatedTime>
+  <ModifiedTime>2019-09-20T21:16:40.6415635Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>6a6ff527-1683-429e-a61d-df41c73570c1</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>7da49404-b8fa-4496-b93a-4e283208b051</Id>
+        <DisplayName>Bulk Insert Into SQL Server</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>f14e5362-32fa-469b-85a1-76902026c766</Id>
+            <ActivityNodeId>7da49404-b8fa-4496-b93a-4e283208b051</ActivityNodeId>
+            <CompletedId>1ff6055d-672b-4ef1-9b25-b102bafcd4f2</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="BulkInsertIntoSQLServerActivityConfiguration" xml:space="preserve">
+          <Id>7da49404-b8fa-4496-b93a-4e283208b051</Id>
+          <DisplayName>Bulk Insert Into SQL Server</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>74e7176f-a0d8-4f05-bcbd-5a26986bf948</ContainingProcessId>
+          <PermissionLevel>Modify</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>insert into table values(v1,v2)</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <TableSource xsi:type="PropertyReference">
+            <DisplayPath>Global Variables.Names</DisplayPath>
+            <LinkChain />
+            <ObjectId>377ab4f5-e95e-4da5-823a-3d9b2e5f0bc1</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </TableSource>
+          <Columns>
+            <DataMapRelation>
+              <FormattedCode>FName</FormattedCode>
+              <TargetName>[Global Variables.FName1]</TargetName>
+              <TargetReference>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Global Variables.FName1</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>2c83b680-1cfb-42d0-991f-0facc46ba48c</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </TargetReference>
+              <DataType>System.String</DataType>
+              <DisplayName>FName</DisplayName>
+            </DataMapRelation>
+            <DataMapRelation>
+              <FormattedCode>LName</FormattedCode>
+              <TargetName>[Global Variables.LName2]</TargetName>
+              <TargetReference>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Global Variables.LName2</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>0fc7fd08-dc0a-4854-86aa-99acc752ad03</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </TargetReference>
+              <DataType>System.String</DataType>
+              <DisplayName>LName</DisplayName>
+            </DataMapRelation>
+          </Columns>
+          <TargetTableName>
+            <HardcodedValue>Names</HardcodedValue>
+          </TargetTableName>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>e2dd4346-73bc-437a-b107-a7ccd51dd7a9</Id>
+        <DisplayName>Bulk Insert Into SQL Server (2)</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>d0235ff7-bd49-4593-945a-c96bd253f7d8</Id>
+            <ActivityNodeId>e2dd4346-73bc-437a-b107-a7ccd51dd7a9</ActivityNodeId>
+            <CompletedId>89066e77-fe81-46bf-947f-a4cc399843df</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="BulkInsertIntoSQLServerActivityConfiguration" xml:space="preserve">
+          <Id>e2dd4346-73bc-437a-b107-a7ccd51dd7a9</Id>
+          <DisplayName>Bulk Insert Into SQL Server (2)</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>74e7176f-a0d8-4f05-bcbd-5a26986bf948</ContainingProcessId>
+          <PermissionLevel>Modify</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>insert into table values(v1,v2)</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <TableSource xsi:type="PropertyReference">
+            <DisplayPath>Global Variables.Names</DisplayPath>
+            <LinkChain />
+            <ObjectId>377ab4f5-e95e-4da5-823a-3d9b2e5f0bc1</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </TableSource>
+          <Columns>
+            <DataMapRelation>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Global Variables.FName1</DisplayPath>
+                  <LinkChain />
+                  <ObjectId>2c83b680-1cfb-42d0-991f-0facc46ba48c</ObjectId>
+                  <ObjectType>GlobalVariable</ObjectType>
+                </VariableReference>
+              </References>
+              <TargetName>FName</TargetName>
+              <TargetReference>
+                <HardcodedValue>FName</HardcodedValue>
+              </TargetReference>
+              <DataType>System.String</DataType>
+              <DisplayName>[Global Variables.FName1]</DisplayName>
+            </DataMapRelation>
+            <DataMapRelation>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Global Variables.LName2</DisplayPath>
+                  <LinkChain />
+                  <ObjectId>0fc7fd08-dc0a-4854-86aa-99acc752ad03</ObjectId>
+                  <ObjectType>GlobalVariable</ObjectType>
+                </VariableReference>
+              </References>
+              <TargetName>LName</TargetName>
+              <TargetReference>
+                <HardcodedValue>LName</HardcodedValue>
+              </TargetReference>
+              <DataType>System.String</DataType>
+              <DisplayName>[Global Variables.LName2]</DisplayName>
+            </DataMapRelation>
+          </Columns>
+          <TargetTableName>
+            <HardcodedValue>Names</HardcodedValue>
+          </TargetTableName>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>a8a9e151-fa8b-46ef-899f-dc393af574e9</Id>
+        <DisplayName>Bulk Insert Into SQL Server (3)</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>5ff0c7ad-b585-46aa-b5af-a30ba6252fd2</Id>
+            <ActivityNodeId>a8a9e151-fa8b-46ef-899f-dc393af574e9</ActivityNodeId>
+            <CompletedId>5bf5ad8f-2f29-408e-be9c-bc49150cd481</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="BulkInsertIntoSQLServerActivityConfiguration" xml:space="preserve">
+          <Id>a8a9e151-fa8b-46ef-899f-dc393af574e9</Id>
+          <DisplayName>Bulk Insert Into SQL Server (3)</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>74e7176f-a0d8-4f05-bcbd-5a26986bf948</ContainingProcessId>
+          <PermissionLevel>Modify</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>insert into table values(v1,v2)</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <TableSource xsi:type="PropertyReference">
+            <DisplayPath>Global Variables.Names</DisplayPath>
+            <LinkChain />
+            <ObjectId>377ab4f5-e95e-4da5-823a-3d9b2e5f0bc1</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </TableSource>
+          <Columns>
+            <DataMapRelation>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Global Variables.FName1</DisplayPath>
+                  <LinkChain />
+                  <ObjectId>2c83b680-1cfb-42d0-991f-0facc46ba48c</ObjectId>
+                  <ObjectType>GlobalVariable</ObjectType>
+                </VariableReference>
+              </References>
+              <TargetName>FName</TargetName>
+              <TargetReference>
+                <HardcodedValue>FName</HardcodedValue>
+              </TargetReference>
+              <DataType>System.String</DataType>
+              <DisplayName>[Global Variables.FName1]</DisplayName>
+            </DataMapRelation>
+            <DataMapRelation>
+              <FormattedCode>LName</FormattedCode>
+              <TargetName>[Global Variables.LName2]</TargetName>
+              <TargetReference>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Global Variables.LName2</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>0fc7fd08-dc0a-4854-86aa-99acc752ad03</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </TargetReference>
+              <DataType>System.String</DataType>
+              <DisplayName>LName</DisplayName>
+            </DataMapRelation>
+          </Columns>
+          <TargetTableName>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Local.Names</DisplayPath>
+                <LinkChain />
+                <ObjectId>3fcfab52-1113-406f-b16d-9900615843d2</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </TargetTableName>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="WhileNode">
+        <Id>48699d52-2a52-4018-a0a3-a8171f07d80b</Id>
+        <DisplayName>While Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>1d4e458a-74ca-4e04-b02b-4db7f6791ba2</Id>
+            <DisplayName>Bulk Insert Into SQL Server (Mutiple Rows)</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>74b80f50-5f73-40c0-b2a2-1299238cf397</Id>
+                <ActivityNodeId>1d4e458a-74ca-4e04-b02b-4db7f6791ba2</ActivityNodeId>
+                <CompletedId>15ab4e0c-50dc-469e-97c3-63928e0938fe</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="BulkInsertIntoSQLServerActivityConfiguration" xml:space="preserve">
+              <Id>1d4e458a-74ca-4e04-b02b-4db7f6791ba2</Id>
+              <DisplayName>Bulk Insert Into SQL Server (Mutiple Rows)</DisplayName>
+              <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                <FormattedCode />
+                <HardcodedValue>
+                  <Id>00000000-0000-0000-0000-000000000000</Id>
+                  <ObjectType>RuntimeUser</ObjectType>
+                </HardcodedValue>
+              </RuntimeUserObject>
+              <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+              <ContainingProcessId>74e7176f-a0d8-4f05-bcbd-5a26986bf948</ContainingProcessId>
+              <PermissionLevel>Modify</PermissionLevel>
+              <SqlCommandText>
+                <HardcodedValue>insert into table values(v1,v2)</HardcodedValue>
+              </SqlCommandText>
+              <CommandTimeout>
+                <DisplayUnits>Seconds</DisplayUnits>
+                <Period>
+                  <HardcodedValue>0</HardcodedValue>
+                </Period>
+              </CommandTimeout>
+              <TableSource xsi:type="PropertyReference">
+                <DisplayPath>Global Variables.Names</DisplayPath>
+                <LinkChain />
+                <ObjectId>377ab4f5-e95e-4da5-823a-3d9b2e5f0bc1</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </TableSource>
+              <Columns>
+                <DataMapRelation>
+                  <FormattedCode>FName</FormattedCode>
+                  <TargetName>[Global Variables.FName1]</TargetName>
+                  <TargetReference>
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Global Variables.FName1</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>2c83b680-1cfb-42d0-991f-0facc46ba48c</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </TargetReference>
+                  <DataType>System.String</DataType>
+                  <DisplayName>FName</DisplayName>
+                </DataMapRelation>
+                <DataMapRelation>
+                  <FormattedCode>LName</FormattedCode>
+                  <TargetName>[Global Variables.LName2]</TargetName>
+                  <TargetReference>
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Global Variables.LName2</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>0fc7fd08-dc0a-4854-86aa-99acc752ad03</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </TargetReference>
+                  <DataType>System.String</DataType>
+                  <DisplayName>LName</DisplayName>
+                </DataMapRelation>
+              </Columns>
+              <TargetTableName>
+                <HardcodedValue>Names</HardcodedValue>
+              </TargetTableName>
+            </Configuration>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>8db5997e-eb0b-4faf-ad56-27474826d00e</Id>
+            <DisplayName>Set Variable</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>adc7cdf1-c3ff-4a69-b2c8-8992d31ab86b</Id>
+                <ActivityNodeId>8db5997e-eb0b-4faf-ad56-27474826d00e</ActivityNodeId>
+                <CompletedId>dc50a94e-ca2e-4aba-9e0c-b27132946e5a</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+              <Id>8db5997e-eb0b-4faf-ad56-27474826d00e</Id>
+              <DisplayName>Set Variable</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>74e7176f-a0d8-4f05-bcbd-5a26986bf948</ContainingProcessId>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Local.Counter</DisplayPath>
+                <LinkChain />
+                <ObjectId>5644da4c-fd8e-4804-bb23-b05284845ddd</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableNumber">
+                <FormattedCode>{0}+1</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Local.Counter</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>5644da4c-fd8e-4804-bb23-b05284845ddd</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <Condition>
+          <Id>1e598975-8a22-43d9-a7ba-7d79f06af3f4</Id>
+          <Operator>Or</Operator>
+          <Conditions>
+            <ConditionDefinition xsi:type="VariableConditionDefinition">
+              <Id>49f690e0-0562-42f6-8e50-b65b5848d056</Id>
+              <Expression xsi:type="SubstitutableNumber">
+                <HardcodedValue>997</HardcodedValue>
+              </Expression>
+              <Comparison>LessThan</Comparison>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Local.Counter</DisplayPath>
+                <LinkChain />
+                <ObjectId>5644da4c-fd8e-4804-bb23-b05284845ddd</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </ConditionDefinition>
+          </Conditions>
+        </Condition>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>947c45a5-1cf6-463d-8263-a4bcbef6ee73</Id>
+        <DisplayName>Select from SQL Server (BULK Insert Mutiple Rows)</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>7b8ce947-9919-4370-8c92-f22aa9e2a362</Id>
+            <ActivityNodeId>947c45a5-1cf6-463d-8263-a4bcbef6ee73</ActivityNodeId>
+            <CompletedId>eca599ae-f1e7-48a1-b752-54b5caa82d5e</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SelectFromSqlServerActivityConfiguration" xml:space="preserve">
+          <Id>947c45a5-1cf6-463d-8263-a4bcbef6ee73</Id>
+          <DisplayName>Select from SQL Server (BULK Insert Mutiple Rows)</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>74e7176f-a0d8-4f05-bcbd-5a26986bf948</ContainingProcessId>
+          <PermissionLevel>Select</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>select * from names</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <Columns />
+          <RowNumberPerPage>
+            <HardcodedValue>100</HardcodedValue>
+          </RowNumberPerPage>
+          <ReturnAllColumns>false</ReturnAllColumns>
+          <RowLimit>
+            <HardcodedValue>1005</HardcodedValue>
+          </RowLimit>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>272b508f-587a-43d8-9023-594cbce663b9</Id>
+        <DisplayName>Bulk Insert Into SQL Server (Mutiple Rows 1000)</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>2a03ee7f-1aa1-43b4-a390-db75c6c22fcf</Id>
+            <ActivityNodeId>272b508f-587a-43d8-9023-594cbce663b9</ActivityNodeId>
+            <CompletedId>57f22551-e079-4ea6-b7a0-041af21737ad</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="BulkInsertIntoSQLServerActivityConfiguration" xml:space="preserve">
+          <Id>272b508f-587a-43d8-9023-594cbce663b9</Id>
+          <DisplayName>Bulk Insert Into SQL Server (Mutiple Rows 1000)</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>74e7176f-a0d8-4f05-bcbd-5a26986bf948</ContainingProcessId>
+          <PermissionLevel>Modify</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>insert into table values(v1,v2)</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <TableSource xsi:type="PropertyReference">
+            <DisplayPath>Workflow.Select from SQL Server (BULK Insert Mutiple Rows).Result Table</DisplayPath>
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>ResultTable</PropertyName>
+              </Link>
+            </LinkChain>
+            <ObjectId>947c45a5-1cf6-463d-8263-a4bcbef6ee73</ObjectId>
+            <ObjectType>ActivityInstance</ObjectType>
+          </TableSource>
+          <Columns>
+            <DataMapRelation>
+              <FormattedCode>FName</FormattedCode>
+              <TargetName>[Global Variables.FName1]</TargetName>
+              <TargetReference>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Global Variables.FName1</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>2c83b680-1cfb-42d0-991f-0facc46ba48c</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </TargetReference>
+              <DataType>System.String</DataType>
+              <DisplayName>FName</DisplayName>
+            </DataMapRelation>
+            <DataMapRelation>
+              <FormattedCode>LName</FormattedCode>
+              <TargetName>[Global Variables.LName2]</TargetName>
+              <TargetReference>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Global Variables.LName2</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>0fc7fd08-dc0a-4854-86aa-99acc752ad03</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </TargetReference>
+              <DataType>System.String</DataType>
+              <DisplayName>LName</DisplayName>
+            </DataMapRelation>
+          </Columns>
+          <TargetTableName>
+            <HardcodedValue>Names</HardcodedValue>
+          </TargetTableName>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="SwitchNode">
+        <Id>09c7a4c3-4404-41d3-a4aa-3b753d5ed158</Id>
+        <DisplayName>Verify 1 Rows is Insert from Bulk Insert</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>a5b8e3c1-93df-442e-940f-97530e76afac</Id>
+            <DisplayName>Condition Branch</DisplayName>
+            <Children />
+            <Condition>
+              <Id>eb2b6598-7918-45f0-9372-92b43a850dd3</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>cfa78721-7bb7-4fbb-a84d-bec5f8edb794</Id>
+                  <Expression xsi:type="SubstitutableNumber">
+                    <HardcodedValue>1</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Bulk Insert Into SQL Server.Records Affected</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>RecordsAffected</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>7da49404-b8fa-4496-b93a-4e283208b051</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>7b23c790-75d2-40ff-8832-df346172a528</Id>
+                  <Expression xsi:type="SubstitutableNumber">
+                    <HardcodedValue>1</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Bulk Insert Into SQL Server (2).Records Affected</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>RecordsAffected</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>e2dd4346-73bc-437a-b107-a7ccd51dd7a9</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>8bafc4f0-2649-42e6-85e9-18b29828ebe2</Id>
+                  <Expression xsi:type="SubstitutableNumber">
+                    <HardcodedValue>1</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Bulk Insert Into SQL Server (3).Records Affected</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>RecordsAffected</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>a8a9e151-fa8b-46ef-899f-dc393af574e9</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>7a6a7ae0-9d0a-4169-9e80-1fc7e809a655</Id>
+                  <Expression xsi:type="SubstitutableNumber">
+                    <HardcodedValue>1000</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Bulk Insert Into SQL Server (Mutiple Rows 1000).Records Affected</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>RecordsAffected</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>272b508f-587a-43d8-9023-594cbce663b9</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>77941b3e-8fd1-48bb-83d6-bc03b7160ac8</Id>
+            <DisplayName>Condition Branch</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="CompletedNode">
+                <Id>8903c0a5-47ba-43b7-b88a-83159b463505</Id>
+                <CompletedType>FailedNotCompleted</CompletedType>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>932eae28-13e3-4591-8004-189b1dc6a672</Id>
+              <Conditions />
+            </Condition>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>d8879479-d6e5-4490-946f-8f11dd061473</Id>
+        <DisplayName>Execute SQL Server SQL Script</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>980dd5b2-594f-47d5-8775-a1f8dbf2df6a</Id>
+            <ActivityNodeId>d8879479-d6e5-4490-946f-8f11dd061473</ActivityNodeId>
+            <CompletedId>1b73cd48-7f4a-41cf-9ee5-7167e6f0a30b</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="ExecSQLServerCommandActivityConfiguration" xml:space="preserve">
+          <Id>d8879479-d6e5-4490-946f-8f11dd061473</Id>
+          <DisplayName>Execute SQL Server SQL Script</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>74e7176f-a0d8-4f05-bcbd-5a26986bf948</ContainingProcessId>
+          <PermissionLevel>DDL</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>truncate table names</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <Columns />
+          <RowNumberPerPage>
+            <HardcodedValue>100</HardcodedValue>
+          </RowNumberPerPage>
+          <ReturnAllColumns>false</ReturnAllColumns>
+          <RowLimit>
+            <HardcodedValue>200</HardcodedValue>
+          </RowLimit>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>11cd7489-9f74-46c1-b9c7-d7e60da53105</Id>
+        <DisplayName>Select from SQL Server</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>d489786e-aaa2-41dc-a7d1-81e5c75282b8</Id>
+            <ActivityNodeId>11cd7489-9f74-46c1-b9c7-d7e60da53105</ActivityNodeId>
+            <CompletedId>4e26f7d0-2d33-48ca-b275-4acdd881df8b</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SelectFromSqlServerActivityConfiguration" xml:space="preserve">
+          <Id>11cd7489-9f74-46c1-b9c7-d7e60da53105</Id>
+          <DisplayName>Select from SQL Server</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>74e7176f-a0d8-4f05-bcbd-5a26986bf948</ContainingProcessId>
+          <PermissionLevel>Select</PermissionLevel>
+          <SqlCommandText>
+            <HardcodedValue>select * from names</HardcodedValue>
+          </SqlCommandText>
+          <CommandTimeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>0</HardcodedValue>
+            </Period>
+          </CommandTimeout>
+          <Columns />
+          <RowNumberPerPage>
+            <HardcodedValue>100</HardcodedValue>
+          </RowNumberPerPage>
+          <ReturnAllColumns>false</ReturnAllColumns>
+          <RowLimit>
+            <HardcodedValue>200</HardcodedValue>
+          </RowLimit>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="SwitchNode">
+        <Id>3b9e79af-435a-40e4-80cb-a9417c79c372</Id>
+        <DisplayName>Condition Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>f3c1f1f3-6c8a-4757-9b98-60f77f6b746e</Id>
+            <DisplayName>Condition Branch</DisplayName>
+            <Children />
+            <Condition>
+              <Id>0866ec25-1ed0-4bac-8ffb-4c68925b31f7</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>de827462-338f-439a-99f0-c7c8e1e9e162</Id>
+                  <Expression xsi:type="SubstitutableNumber">
+                    <HardcodedValue>0</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Select from SQL Server.Records Affected</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>RecordsAffected</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>11cd7489-9f74-46c1-b9c7-d7e60da53105</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>2f569968-cf2b-4eff-a562-5a6f96941043</Id>
+            <DisplayName>Condition Branch</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="CompletedNode">
+                <Id>1e625d9f-b24d-4556-9b11-1d28b59b4135</Id>
+                <CompletedType>Failed</CompletedType>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>96425f55-b594-4765-800b-20b07a9b5add</Id>
+              <Conditions />
+            </Condition>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>74e7176f-a0d8-4f05-bcbd-5a26986bf948</ProcessId>
+</WorkflowConfiguration>
