@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>2ee0e558-3fd3-48a5-a5ad-c2e90938a264</Id>
+  <DisplayName>Twn189922c: Test Windows Event</DisplayName>
+  <CreatedTime>2019-09-20T17:23:30.0690674Z</CreatedTime>
+  <ModifiedTime>2019-09-20T17:23:30.0690674Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>6c5bd2a3-7693-4816-abc9-225906c0f479</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>392595da-f702-4b50-9eb4-36ac98af9c65</Id>
+        <DisplayName>Create Event Entries</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>4467b486-0e19-4212-8cbd-8cde09673943</Id>
+            <ActivityNodeId>392595da-f702-4b50-9eb4-36ac98af9c65</ActivityNodeId>
+            <CompletedId>c286d34a-26b6-4486-8c09-4bd22f3c1e76</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="WindowsPowerShellScriptActivityConfiguration" xml:space="preserve">
+          <Id>392595da-f702-4b50-9eb4-36ac98af9c65</Id>
+          <DisplayName>Create Event Entries</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>4a61cc26-4ebb-40df-8418-61c9d35e1fe0</ContainingProcessId>
+          <WorkingDirectory>
+            <HardcodedValue />
+          </WorkingDirectory>
+          <FailReturnCodeNonZero>true</FailReturnCodeNonZero>
+          <UseTaskScheduler>false</UseTaskScheduler>
+          <TimeWindow>
+            <Milliseconds>300000</Milliseconds>
+            <Units>Minutes</Units>
+          </TimeWindow>
+          <Script>
+            <HardcodedValue>$ProcessInstanceId = $args[0]
+
+New-EventLog "Application" "$ProcessInstanceId"
+
+Write-EventLog -LogName "Application" -Source "$ProcessInstanceId" -eventID 1111 -EntryType "Information" -Message "Event#1111 created by process instance ($ProcessInstanceId)"
+Write-EventLog -LogName "Application" -Source "$ProcessInstanceId" -eventID 2222 -EntryType "Warning" -Message "Event#2222 created by process instance ($ProcessInstanceId)"
+Write-EventLog -LogName "Application" -Source "$ProcessInstanceId" -eventID 3333 -EntryType "Error" -Message "Event#3333 created by process instance ($ProcessInstanceId)"
+
+Remove-EventLog -Source "$ProcessInstanceId"
+</HardcodedValue>
+          </Script>
+          <Arguments>
+            <SubstitutableObject xsi:type="SubstitutableString">
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Process.Process Instance Id</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>Id</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectType>ProcessInstance</ObjectType>
+                </VariableReference>
+              </References>
+            </SubstitutableObject>
+          </Arguments>
+          <Use32BitPowerShell>false</Use32BitPowerShell>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>24576d3a-9a9c-4f53-be75-937446bec57c</Id>
+        <DisplayName>Query Windows Events</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>f98b2c7f-93d0-4ffa-bfc0-32347a0ce285</Id>
+            <ActivityNodeId>24576d3a-9a9c-4f53-be75-937446bec57c</ActivityNodeId>
+            <CompletedId>76c93feb-a9dd-4dff-8ba7-6e373b600990</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="WindowsFindEventLogEntriesActivityConfiguration" xml:space="preserve">
+          <Id>24576d3a-9a9c-4f53-be75-937446bec57c</Id>
+          <DisplayName>Query Windows Events</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>4a61cc26-4ebb-40df-8418-61c9d35e1fe0</ContainingProcessId>
+          <EventTypes>Error Warning Information</EventTypes>
+          <EventSearchPeriod>
+            <DisplayUnits>Minutes</DisplayUnits>
+            <Period>
+              <HardcodedValue>30</HardcodedValue>
+            </Period>
+          </EventSearchPeriod>
+          <EventSourceName>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Process Instance Id</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Id</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectType>ProcessInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </EventSourceName>
+          <EventLogfileName>
+            <HardcodedValue>Application</HardcodedValue>
+          </EventLogfileName>
+          <LatestEventOnly>false</LatestEventOnly>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ConditionBranchNode">
+        <Id>6b866a41-8305-48c3-ac53-8d35f74842c5</Id>
+        <DisplayName>If Number Events Found &lt;&gt; 3</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="CompletedNode">
+            <Id>9effdf50-f686-422e-a499-579d2e278c10</Id>
+            <CompletedType>Failed</CompletedType>
+            <ResultMessage>
+              <FormattedCode>Expected 3 events;
+Received {0} events.</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Workflow.Query Windows Events.Event Count</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>EventCount</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>24576d3a-9a9c-4f53-be75-937446bec57c</ObjectId>
+                  <ObjectType>ActivityInstance</ObjectType>
+                </VariableReference>
+              </References>
+            </ResultMessage>
+          </ActivityNode>
+        </Children>
+        <Condition>
+          <Id>79067ec9-1830-4209-a3d0-a868ccce95b5</Id>
+          <Conditions>
+            <ConditionDefinition xsi:type="VariableConditionDefinition">
+              <Id>8cf5c3ab-bad0-40de-8a40-7046e6eccfd9</Id>
+              <Expression xsi:type="SubstitutableNumber">
+                <HardcodedValue>3</HardcodedValue>
+              </Expression>
+              <Comparison>NotEquals</Comparison>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Query Windows Events.Event Count</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>EventCount</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>24576d3a-9a9c-4f53-be75-937446bec57c</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </ConditionDefinition>
+          </Conditions>
+        </Condition>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>71bac5f2-292b-42f3-bfe3-446b2fba2d00</Id>
+        <DisplayName>Sleep 2 Minutes</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>46d14871-a706-43cf-8458-5e6af0a64cae</Id>
+            <ActivityNodeId>71bac5f2-292b-42f3-bfe3-446b2fba2d00</ActivityNodeId>
+            <CompletedId>3005b460-95fe-4632-91e1-517a025cdea2</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SleepActivityConfiguration" xml:space="preserve">
+          <Id>71bac5f2-292b-42f3-bfe3-446b2fba2d00</Id>
+          <DisplayName>Sleep 2 Minutes</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>4a61cc26-4ebb-40df-8418-61c9d35e1fe0</ContainingProcessId>
+          <Seconds>
+            <HardcodedValue>120</HardcodedValue>
+          </Seconds>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>6cc279ef-638a-4e6e-aaae-dbdebe77dc86</Id>
+        <DisplayName>Find Alerts</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>ded48229-89d8-4b96-a4fc-c578a55c4d8c</Id>
+            <ActivityNodeId>6cc279ef-638a-4e6e-aaae-dbdebe77dc86</ActivityNodeId>
+            <CompletedId>4c8d94ec-b803-4d67-a4ef-2697a039ee21</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="FindAlertsActivityConfiguration" xml:space="preserve">
+          <Id>6cc279ef-638a-4e6e-aaae-dbdebe77dc86</Id>
+          <DisplayName>Find Alerts</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>4a61cc26-4ebb-40df-8418-61c9d35e1fe0</ContainingProcessId>
+          <CreatedTimePeriod>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>300</HardcodedValue>
+            </Period>
+          </CreatedTimePeriod>
+          <MatchingCriteria>
+            <GenericCriteria xsi:type="WildcardCriteria">
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>Description</PropertyName>
+                </Link>
+              </LinkChain>
+              <MatchingWildcard>
+                <FormattedCode>*{0}*</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Process Instance Id</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Id</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>ProcessInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </MatchingWildcard>
+            </GenericCriteria>
+          </MatchingCriteria>
+          <MatchingStatus>All</MatchingStatus>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ForEachNode">
+        <Id>2f1d0874-b488-4a64-abc5-b513609218e9</Id>
+        <DisplayName>For Each Alert</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>4841d992-8eea-4e4f-b199-41c44362fc51</Id>
+            <DisplayName>Update Alert</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>ceda5e2d-d4af-4d73-98b6-0b8bb609b26c</Id>
+                <ActivityNodeId>4841d992-8eea-4e4f-b199-41c44362fc51</ActivityNodeId>
+                <CompletedId>8b9a7201-408f-419f-a39d-e442ae71f339</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="UpdateAlertActivityConfiguration" xml:space="preserve">
+              <Id>4841d992-8eea-4e4f-b199-41c44362fc51</Id>
+              <DisplayName>Update Alert</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>4a61cc26-4ebb-40df-8418-61c9d35e1fe0</ContainingProcessId>
+              <TaskId>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.For Each Alert.Item.Task Id</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>GetReferencedObject</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Id</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>2f1d0874-b488-4a64-abc5-b513609218e9</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </TaskId>
+              <ModificationGroup>
+                <ObjectId>00000000-0000-0000-0000-000000000000</ObjectId>
+                <ObjectType>Task</ObjectType>
+                <Modifications>
+                  <PropertyModification>
+                    <DisplayPath>Task Status.Closed</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Closed</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <Action>Set</Action>
+                    <Value xsi:type="SubstitutableBoolean">
+                      <HardcodedValue>true</HardcodedValue>
+                    </Value>
+                  </PropertyModification>
+                </Modifications>
+              </ModificationGroup>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <ForEachSource xsi:type="PropertyReference">
+          <DisplayPath>Workflow.Find Alerts.Found Tasks.Items</DisplayPath>
+          <LinkChain>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>GetAllFoundTasks</PropertyName>
+            </Link>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>Items</PropertyName>
+            </Link>
+          </LinkChain>
+          <ObjectId>6cc279ef-638a-4e6e-aaae-dbdebe77dc86</ObjectId>
+          <ObjectType>ActivityInstance</ObjectType>
+        </ForEachSource>
+      </ActivityNode>
+      <ActivityNode xsi:type="ConditionBranchNode">
+        <Id>90aa205e-6c5d-4e7e-8d43-e03037fd0606</Id>
+        <DisplayName>If Number Alerts Found &lt;&gt; 3</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="CompletedNode">
+            <Id>4bdf5fda-1f49-4702-935b-8014a3568354</Id>
+            <CompletedType>Failed</CompletedType>
+            <ResultMessage>
+              <FormattedCode>Expected 3 events;
+Received {0} events.</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Workflow.Query Windows Events.Event Count</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>EventCount</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>24576d3a-9a9c-4f53-be75-937446bec57c</ObjectId>
+                  <ObjectType>ActivityInstance</ObjectType>
+                </VariableReference>
+              </References>
+            </ResultMessage>
+          </ActivityNode>
+        </Children>
+        <Condition>
+          <Id>79067ec9-1830-4209-a3d0-a868ccce95b5</Id>
+          <Conditions>
+            <ConditionDefinition xsi:type="VariableConditionDefinition">
+              <Id>8cf5c3ab-bad0-40de-8a40-7046e6eccfd9</Id>
+              <Expression xsi:type="SubstitutableNumber">
+                <HardcodedValue>3</HardcodedValue>
+              </Expression>
+              <Comparison>NotEquals</Comparison>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Find Alerts.Found Tasks.Count</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>GetAllFoundTasks</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>ItemCount</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>6cc279ef-638a-4e6e-aaae-dbdebe77dc86</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </ConditionDefinition>
+          </Conditions>
+        </Condition>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>4a61cc26-4ebb-40df-8418-61c9d35e1fe0</ProcessId>
+</WorkflowConfiguration>
