@@ -2,11 +2,10 @@
 <WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>4d0935b3-ada0-4425-854e-9b209495fed6</Id>
   <DisplayName>Test Server Crash Process</DisplayName>
-  <VersionNumber>2</VersionNumber>
-  <CreatedTime>2020-11-19T19:47:18.9864625Z</CreatedTime>
-  <ModifiedTime>2020-12-16T17:56:54.4064389Z</ModifiedTime>
+  <CreatedTime>2020-12-21T20:45:53.166675Z</CreatedTime>
+  <ModifiedTime>2020-12-21T20:45:53.166675Z</ModifiedTime>
   <FirstActivity xsi:type="RootNode">
-    <Id>8e5cf029-4fd1-4e7d-9eee-8fd718b26adc</Id>
+    <Id>4cddcb94-a1b0-4341-a1e6-5342d6e6d12e</Id>
     <DisplayName />
     <Children>
       <ActivityNode xsi:type="ExecuteActivityNode">
@@ -143,50 +142,6 @@
             </Period>
           </WaitingTimeoutPeriod>
         </Configuration>
-      </ActivityNode>
-      <ActivityNode xsi:type="StartProcessNode">
-        <Id>2722ac2f-c323-49f1-bf3b-ff305a35f4ad</Id>
-        <DisplayName>Child Process</DisplayName>
-        <Children>
-          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
-            <Id>0af03c9c-50a8-4795-aef2-66231b260bba</Id>
-            <ProcessNodeId>2722ac2f-c323-49f1-bf3b-ff305a35f4ad</ProcessNodeId>
-            <CompletedId>4b8c004a-aa84-449c-a23c-5de520ec936e</CompletedId>
-          </ActivityNode>
-        </Children>
-        <ProcessId>d3bbf3a5-18b7-4c78-9706-95a9a4543e49</ProcessId>
-        <InputVariableTable>
-          <VariableAssignmentsAsArray />
-        </InputVariableTable>
-        <Asynchronous>false</Asynchronous>
-        <InheritTarget>false</InheritTarget>
-        <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
-          <SingleTargetReference>
-            <FormattedCode />
-            <HardcodedValue>
-              <Id>dad6bbf6-4247-4afa-ae73-d8d91b229bb4</Id>
-              <ObjectType>Target</ObjectType>
-            </HardcodedValue>
-          </SingleTargetReference>
-        </TargetLoadBalancer>
-        <InheritPriorityClass>true</InheritPriorityClass>
-        <RuntimeUserId>
-          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
-        </RuntimeUserId>
-        <KnowledgeBaseId>00000000-0000-0000-0000-000000000000</KnowledgeBaseId>
-        <StartPointId>
-          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
-        </StartPointId>
-        <StartPointName>
-          <FormattedCode />
-        </StartPointName>
-        <RuntimeUserObject xsi:type="SubstitutableObjectReference">
-          <FormattedCode />
-          <HardcodedValue>
-            <Id>00000000-0000-0000-0000-000000000000</Id>
-            <ObjectType>RuntimeUser</ObjectType>
-          </HardcodedValue>
-        </RuntimeUserObject>
       </ActivityNode>
       <ActivityNode xsi:type="ParallelNode">
         <Id>2af0ecab-6273-45bc-9127-3741534bea04</Id>
