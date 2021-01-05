@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<CategoryConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
-  <Id>03c4afd9-f6b7-42ac-8bb7-ef77c5a5877e</Id>
-  <DisplayName>New Category</DisplayName>
-  <CreatedTime>2020-12-18T21:35:20.2276573Z</CreatedTime>
-  <ModifiedTime>2020-12-18T21:35:20.2276573Z</ModifiedTime>
-  <SubCategories />
-</CategoryConfiguration>
