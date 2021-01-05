@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>7a5059bf-3791-4c7d-ad89-92d650c9c78f</Id>
+  <DisplayName>Delete Variable</DisplayName>
+  <CreatedTime>2020-12-22T22:22:42.1858593Z</CreatedTime>
+  <ModifiedTime>2020-12-22T22:22:42.1858593Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>37ad2798-e6a7-4d6f-9a4d-345c21acfb58</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>ec3296e9-c08b-4d15-9267-3ca5d59bedc9</Id>
+        <DisplayName>Web HTTP Request</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>93d59c1b-688b-4cf1-b870-441344e903ef</Id>
+            <ActivityNodeId>ec3296e9-c08b-4d15-9267-3ca5d59bedc9</ActivityNodeId>
+            <CompletedId>6f9bedd1-bc82-4bf7-9fe8-e79d22b08c8b</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="WebHttpTargetAwareRequestActivityConfiguration" xml:space="preserve">
+          <Id>ec3296e9-c08b-4d15-9267-3ca5d59bedc9</Id>
+          <DisplayName>Web HTTP Request</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>a1227d4d-aac6-46d1-8956-30ff6e2481a1</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>3902ac60-2554-4b14-8b7e-b2796142b18b</ContainingProcessId>
+          <UseCredentials>true</UseCredentials>
+          <RelativeUrl>
+            <FormattedCode>/api/v1/GlobalVariables/{0}/</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Name or ID</DisplayPath>
+                <LinkChain />
+                <ObjectId>7dcf9d51-6d81-4ba7-b339-549eaf5b4c7d</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </RelativeUrl>
+          <ContentType>
+            <HardcodedValue>application/xml; charset=utf-8</HardcodedValue>
+          </ContentType>
+          <Method>
+            <HardcodedValue>DELETE</HardcodedValue>
+          </Method>
+          <UserAgent>
+            <HardcodedValue />
+          </UserAgent>
+          <Request>
+            <FormattedCode />
+          </Request>
+          <ProtocolVersion>Version11</ProtocolVersion>
+          <AllowAutoRedirect>true</AllowAutoRedirect>
+          <Timeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>100</HardcodedValue>
+            </Period>
+          </Timeout>
+          <Accept>
+            <HardcodedValue />
+          </Accept>
+          <AcceptCookies>false</AcceptCookies>
+          <Headers />
+          <OutputFormat>Html</OutputFormat>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>3902ac60-2554-4b14-8b7e-b2796142b18b</ProcessId>
+</WorkflowConfiguration>

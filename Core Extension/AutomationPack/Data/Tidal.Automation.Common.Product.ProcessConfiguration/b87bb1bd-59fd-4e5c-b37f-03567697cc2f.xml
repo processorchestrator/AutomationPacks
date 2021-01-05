@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>b87bb1bd-59fd-4e5c-b37f-03567697cc2f</Id>
+  <DisplayName>Update Category</DisplayName>
+  <Description>Update category</Description>
+  <CreatedTime>2020-12-22T22:23:20.4622634Z</CreatedTime>
+  <ModifiedTime>2020-12-22T22:23:20.4622634Z</ModifiedTime>
+  <CopiedFrom>b1ac9f53-cd15-48aa-9e9a-b2db78f8e06c</CopiedFrom>
+  <CopiedFromAP>3e36001a-ae72-4c2a-b1c6-1aab141fa23b</CopiedFromAP>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+    <SingleTargetReference>
+      <FormattedCode />
+      <HardcodedValue>
+        <Id>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</Id>
+        <ObjectType>Target</ObjectType>
+      </HardcodedValue>
+    </SingleTargetReference>
+  </TargetLoadBalancer>
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>1ec37120-7123-4563-86d9-757a159c5496</WorkflowId>
+  <CategoryIds>
+    <guid>4f5cf7ef-5082-4994-8fcd-944ff039e566</guid>
+  </CategoryIds>
+  <TriggerOwner>a7c27f47-4bf3-4c53-be23-e327cbb2dcee</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="AdHocEventDefinition">
+        <Id>5e2c465b-6e92-40ab-a986-ee27a9b0fac1</Id>
+        <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
+        <Identities />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>d487c51b-b7c4-4939-81ee-5d58b6c639e1</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>e5426153-5310-4ac1-bb6b-3c4b97db35cb</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="StartProcessEventDefinition">
+        <Id>ce4bb6dd-4899-404d-a487-51b9cc8ed052</Id>
+        <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
+        <ProcessIds />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>3f1e929a-8ebf-4f96-ac8c-969cb4fd37d3</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>e84fcea8-b1f5-42e3-aac6-10879917fe09</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>b77a4b6c-8db9-401d-b209-c08548985beb</Id>
+      <DisplayName>New Name</DisplayName>
+      <Description>Specify a new value for the category name.
+Leave the value as "&lt;No Change&gt;" to not change the name.</Description>
+      <ModifiedTime>2020-07-14T14:29:42.0434619Z</ModifiedTime>
+      <string>&lt;No Change&gt;</string>
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>b87bb1bd-59fd-4e5c-b37f-03567697cc2f</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>2</Sequence>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>a8d96750-3cd9-4fc3-9374-fee763bc872c</Id>
+      <DisplayName>Name or ID</DisplayName>
+      <Description>Specify name or ID of the category to update</Description>
+      <ModifiedTime>2020-07-14T14:28:06.0431225Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>b87bb1bd-59fd-4e5c-b37f-03567697cc2f</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>49f8f87f-08b7-47fd-b558-71e751540567</Id>
+      <DisplayName>SubProcesses Payload</DisplayName>
+      <ModifiedTime>2020-07-09T19:46:41.0182318Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>b87bb1bd-59fd-4e5c-b37f-03567697cc2f</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Multiline>true</Multiline>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>804e1214-fff0-4e86-bfbf-48872574ef28</Id>
+      <DisplayName>Url</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>b87bb1bd-59fd-4e5c-b37f-03567697cc2f</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="TableVariableConfiguration" xml:space="preserve">
+      <Id>67d36fc9-1fa6-4f30-ab50-5d88593bf4d7</Id>
+      <DisplayName>New Members</DisplayName>
+      <Description>Specify a list of new members to be included into the category.
+
+Note:
+Existing categories will not be removed.</Description>
+      <ModifiedTime>2020-07-14T14:30:53.4206825Z</ModifiedTime>
+      <FixedSchemaDataTable>
+        <FixedSchema>
+          <Columns>
+            <TableSchemaColumn>
+              <Name>Name</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Type</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+          </Columns>
+        </FixedSchema>
+      </FixedSchemaDataTable>
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>b87bb1bd-59fd-4e5c-b37f-03567697cc2f</ControllingItemId>
+      </Scope>
+      <VariableTypeId>27fc86d1-8ae5-d1a4-8d06-88ee0acd318a</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>4</Sequence>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>b617176a-88c1-4c00-b239-69d953a9b8d8</Id>
+      <DisplayName>New Description</DisplayName>
+      <Description>Specify a new value for the category description
+Leave the value as "&lt;No Change&gt;" to not change the description</Description>
+      <ModifiedTime>2020-07-14T14:30:09.7636438Z</ModifiedTime>
+      <string>&lt;No Change&gt;</string>
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>b87bb1bd-59fd-4e5c-b37f-03567697cc2f</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>3</Sequence>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>cfb62af7-c956-4b4b-92c4-034d4e91cc64</Id>
+      <DisplayName>SubCategories Payload</DisplayName>
+      <ModifiedTime>2020-07-09T19:47:06.7942617Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>b87bb1bd-59fd-4e5c-b37f-03567697cc2f</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Multiline>true</Multiline>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>1fa86ac0-c1fa-49d3-ad95-9aec3d129791</Id>
+      <DisplayName>Payload</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>b87bb1bd-59fd-4e5c-b37f-03567697cc2f</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Multiline>true</Multiline>
+    </VariableConfiguration>
+  </VariableDefinitions>
+  <Notes />
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.BuiltinAdapter.Common.MasterTargetConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>af449107-3bd4-c9a3-e2ab-5f4acf12ac03</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.CloudPortal.Common.User.CloudPortalUserConfiguration, Tidal.Automation.CloudPortal.Common</string>
+    <string>Tidal.Automation.WebService.Common.ClientCertificateUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.CloudCenter.Users.CloudCenterApiAccessCredentialsConfiguration, Tidal.Automation.CloudCenter.Common</string>
+    <string>Tidal.Automation.WebService.Common.OAuthUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.OpenStack.Common.User.OpenStackUserConfiguration, Tidal.Automation.OpenStack.Common</string>
+    <string>Tidal.Automation.Ssh.Common.PublicKeyAdminUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.GitAdapter.Common.GitRepositoryRuntimeUserConfiguration, Tidal.Automation.GitAdapter.Common</string>
+    <string>Tidal.Automation.Ssh.Common.IOSUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.BuiltinAdapter.Common.GenericRuntimeUserConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+    <string>Tidal.Automation.Azure.Common.AzureAccessKeyConfiguration, Tidal.Automation.Azure.Common</string>
+    <string>Tidal.Automation.Snmp.Common.SnmpUserConfiguration, Tidal.Automation.Snmp.Common</string>
+    <string>Tidal.Automation.vCloud.Common.Users.vCloudUserConfiguration, Tidal.Automation.vCloud.Common</string>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+</ProcessConfiguration>

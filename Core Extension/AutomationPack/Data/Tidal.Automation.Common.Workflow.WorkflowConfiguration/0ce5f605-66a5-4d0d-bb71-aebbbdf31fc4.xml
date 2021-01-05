@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>0ce5f605-66a5-4d0d-bb71-aebbbdf31fc4</Id>
+  <DisplayName>Create Active Directory Group</DisplayName>
+  <CreatedTime>2020-12-22T22:23:04.6735458Z</CreatedTime>
+  <ModifiedTime>2020-12-22T22:23:04.6735458Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>19670aa0-edd1-4d26-bc54-55c999313e37</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="StartProcessNode">
+        <Id>a8ec815e-bb3b-41cd-adc5-90bd9393ebce</Id>
+        <DisplayName>Create Active Directory Object</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>c2b0dfde-5311-4e5f-b462-137bd00c10bb</Id>
+            <ProcessNodeId>a8ec815e-bb3b-41cd-adc5-90bd9393ebce</ProcessNodeId>
+            <CompletedId>e9bc52d0-0391-4214-b498-2b79dd5ab30b</CompletedId>
+          </ActivityNode>
+        </Children>
+        <ProcessId>471ef3ad-6db8-4165-827b-ac49814f5679</ProcessId>
+        <InputVariableTable>
+          <VariableAssignmentsAsArray>
+            <InputVariableAssignment>
+              <InputVariableId>1cfa0416-db59-46ea-8783-6ce2be11842e</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <HardcodedValue>ActiveDirectoryGroup</HardcodedValue>
+              </VariableValue>
+            </InputVariableAssignment>
+            <InputVariableAssignment>
+              <InputVariableId>05416b99-a6b5-42b9-960e-775d8c2932f9</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.Domain Target</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>9bf7f807-03b1-4002-b00d-d0305a5212e2</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </VariableValue>
+            </InputVariableAssignment>
+            <InputVariableAssignment>
+              <InputVariableId>fdebcf7a-4bb7-4252-804b-05df03979339</InputVariableId>
+              <VariableValue xsi:type="SubstitutableBoolean">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.Include Subcontainers</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>8baa497a-b1b8-4ba8-9b7b-7bf65c6a6277</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </VariableValue>
+            </InputVariableAssignment>
+            <InputVariableAssignment>
+              <InputVariableId>2401c929-7223-43f5-be3c-80f8e06a80b9</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.Computer Matching</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>75d431c9-38b7-4993-bb9c-4739cf734399</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </VariableValue>
+            </InputVariableAssignment>
+            <InputVariableAssignment>
+              <InputVariableId>3f72d153-2697-4464-8d25-27a5cce74918</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.Canonical Name</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>e357cf06-2652-4bd8-9420-4bc9df7ef74e</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </VariableValue>
+            </InputVariableAssignment>
+            <InputVariableAssignment>
+              <InputVariableId>c0ac4e9c-3686-4d5d-b973-e76388f5f4f5</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.Description</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>d23e7cee-f58e-4275-bfbe-36c4079c3f6d</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </VariableValue>
+            </InputVariableAssignment>
+            <InputVariableAssignment>
+              <InputVariableId>40cdde46-24f4-4a21-8678-5b5342589a62</InputVariableId>
+              <VariableValue xsi:type="SubstitutableBoolean">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.Enabled</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>f48a4891-e7f7-4822-8a78-52b57ed4cb34</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </VariableValue>
+            </InputVariableAssignment>
+            <InputVariableAssignment>
+              <InputVariableId>a40ea6dc-6913-426b-8c3b-6b7ec44a1f1b</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.Name</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>80fbbfe0-3233-460e-b643-2a7e23186702</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </VariableValue>
+            </InputVariableAssignment>
+          </VariableAssignmentsAsArray>
+        </InputVariableTable>
+        <Asynchronous>false</Asynchronous>
+        <InheritTarget>true</InheritTarget>
+        <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+        <InheritPriorityClass>true</InheritPriorityClass>
+        <RuntimeUserId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </RuntimeUserId>
+        <KnowledgeBaseId>00000000-0000-0000-0000-000000000000</KnowledgeBaseId>
+        <StartPointId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </StartPointId>
+        <StartPointName>
+          <FormattedCode />
+        </StartPointName>
+        <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+          <FormattedCode />
+          <HardcodedValue>
+            <Id>00000000-0000-0000-0000-000000000000</Id>
+            <ObjectType>RuntimeUser</ObjectType>
+          </HardcodedValue>
+        </RuntimeUserObject>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>c4b17d5e-5452-4c9e-9c7c-9330f793c1ec</Id>
+        <DisplayName>Set Target Group ID</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>3dfe6d2f-a07f-4a59-a7a7-c4fda1b168be</Id>
+            <ActivityNodeId>c4b17d5e-5452-4c9e-9c7c-9330f793c1ec</ActivityNodeId>
+            <CompletedId>e6e9f051-9463-4b88-aa7b-598c09caf42f</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+          <Id>c4b17d5e-5452-4c9e-9c7c-9330f793c1ec</Id>
+          <DisplayName>Set Target Group ID</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>a4e68abf-ce60-43c4-85eb-8e80635906d4</ContainingProcessId>
+          <VariableToSet>
+            <DisplayPath>Process.Variables.Output.ID</DisplayPath>
+            <LinkChain />
+            <ObjectId>fc8bcee7-a50e-4b3d-b6d7-9c025f70b2d7</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </VariableToSet>
+          <NewValue xsi:type="SubstitutableString">
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Create Active Directory Object.ID</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="ProcessOutputVariableLink">
+                    <LaunchingActivityId>a8ec815e-bb3b-41cd-adc5-90bd9393ebce</LaunchingActivityId>
+                    <OutputVariableId>d0fe10d9-4958-492c-9c06-569aedc47204</OutputVariableId>
+                  </Link>
+                </LinkChain>
+                <ObjectId>a8ec815e-bb3b-41cd-adc5-90bd9393ebce</ObjectId>
+                <ObjectType>WorkflowNode</ObjectType>
+              </VariableReference>
+            </References>
+          </NewValue>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>a4e68abf-ce60-43c4-85eb-8e80635906d4</ProcessId>
+</WorkflowConfiguration>

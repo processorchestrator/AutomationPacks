@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>0f345277-1da3-4044-947c-17ebcc58b9fe</Id>
+  <DisplayName>Create Active Directory Object</DisplayName>
+  <CreatedTime>2020-12-22T22:22:43.5030588Z</CreatedTime>
+  <ModifiedTime>2020-12-22T22:22:43.5030588Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>c37555cc-cd2d-4a5e-8ae8-ff1bd6ee8b3b</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>edc42adf-e83f-4b28-bce3-31620282c25b</Id>
+        <DisplayName>Set Url</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>b3d266a0-e79d-4352-922d-373064aed0a4</Id>
+            <ActivityNodeId>edc42adf-e83f-4b28-bce3-31620282c25b</ActivityNodeId>
+            <CompletedId>b75bcab3-ea4c-4b4f-9a66-08bb45f99989</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+          <Id>edc42adf-e83f-4b28-bce3-31620282c25b</Id>
+          <DisplayName>Set Url</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>471ef3ad-6db8-4165-827b-ac49814f5679</ContainingProcessId>
+          <VariableToSet>
+            <DisplayPath>Process.Variables.Local.Url</DisplayPath>
+            <LinkChain />
+            <ObjectId>98cbbc44-9856-4bfd-8421-3077524bb45f</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </VariableToSet>
+          <NewValue xsi:type="SubstitutableString">
+            <FormattedCode>api/v1/TargetGroups/{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Name</DisplayPath>
+                <LinkChain />
+                <ObjectId>a40ea6dc-6913-426b-8c3b-6b7ec44a1f1b</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </NewValue>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>d2c4c452-de77-4090-b092-0cb90fbac2b4</Id>
+        <DisplayName>Set Payload</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>7fc51059-1367-464b-8074-70c4e51f11a9</Id>
+            <ActivityNodeId>d2c4c452-de77-4090-b092-0cb90fbac2b4</ActivityNodeId>
+            <CompletedId>2ddf52a7-3c1c-4566-bcf0-e698109dcfc7</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+          <Id>d2c4c452-de77-4090-b092-0cb90fbac2b4</Id>
+          <DisplayName>Set Payload</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>471ef3ad-6db8-4165-827b-ac49814f5679</ContainingProcessId>
+          <VariableToSet>
+            <DisplayPath>Process.Variables.Local.Payload</DisplayPath>
+            <LinkChain />
+            <ObjectId>5c17494c-c96e-4074-87bd-80d2b7f9e211</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </VariableToSet>
+          <NewValue xsi:type="SubstitutableString">
+            <FormattedCode>{{
+   "Type" : "ActiveDirectoryGroup",
+   "Description" : "{0}",
+   "Enabled" : {1},
+   "ADDomainTarget" : "{2}",
+   "CanonicalName" : "{3}",
+   "ComputerMatching" : "{4}",
+   "IncludeSubContainers": {5}
+}}
+</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Description</DisplayPath>
+                <LinkChain />
+                <ObjectId>c0ac4e9c-3686-4d5d-b973-e76388f5f4f5</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Enabled</DisplayPath>
+                <LinkChain />
+                <ObjectId>40cdde46-24f4-4a21-8678-5b5342589a62</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Domain Target</DisplayPath>
+                <LinkChain />
+                <ObjectId>05416b99-a6b5-42b9-960e-775d8c2932f9</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Canonical Name</DisplayPath>
+                <LinkChain />
+                <ObjectId>3f72d153-2697-4464-8d25-27a5cce74918</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Computer Matching</DisplayPath>
+                <LinkChain />
+                <ObjectId>2401c929-7223-43f5-be3c-80f8e06a80b9</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Include Subcontainers</DisplayPath>
+                <LinkChain />
+                <ObjectId>fdebcf7a-4bb7-4252-804b-05df03979339</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </NewValue>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>999fd996-956d-4701-96f1-5d9bdb7ede86</Id>
+        <DisplayName>Web HTTP Request - Create Acive Directory Group</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>f7acd4f8-c792-4bea-b9ec-eafc25f5b994</Id>
+            <ActivityNodeId>999fd996-956d-4701-96f1-5d9bdb7ede86</ActivityNodeId>
+            <CompletedId>e7bf50a4-81d6-446c-bf13-95dc0f4b4153</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="WebHttpTargetAwareRequestActivityConfiguration" xml:space="preserve">
+          <Id>999fd996-956d-4701-96f1-5d9bdb7ede86</Id>
+          <DisplayName>Web HTTP Request - Create Acive Directory Group</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+            <SingleTargetReference>
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>a1227d4d-aac6-46d1-8956-30ff6e2481a1</Id>
+                <ObjectType>Target</ObjectType>
+              </HardcodedValue>
+            </SingleTargetReference>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>471ef3ad-6db8-4165-827b-ac49814f5679</ContainingProcessId>
+          <UseCredentials>true</UseCredentials>
+          <RelativeUrl>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Local.Url</DisplayPath>
+                <LinkChain />
+                <ObjectId>98cbbc44-9856-4bfd-8421-3077524bb45f</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </RelativeUrl>
+          <ContentType>
+            <HardcodedValue>application/json</HardcodedValue>
+          </ContentType>
+          <Method>
+            <HardcodedValue>POST</HardcodedValue>
+          </Method>
+          <UserAgent>
+            <HardcodedValue />
+          </UserAgent>
+          <Request>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Local.Payload</DisplayPath>
+                <LinkChain />
+                <ObjectId>5c17494c-c96e-4074-87bd-80d2b7f9e211</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </Request>
+          <ProtocolVersion>Version11</ProtocolVersion>
+          <AllowAutoRedirect>true</AllowAutoRedirect>
+          <Timeout>
+            <DisplayUnits>Seconds</DisplayUnits>
+            <Period>
+              <HardcodedValue>100</HardcodedValue>
+            </Period>
+          </Timeout>
+          <Accept>
+            <HardcodedValue />
+          </Accept>
+          <AcceptCookies>false</AcceptCookies>
+          <Headers />
+          <OutputFormat>Json</OutputFormat>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>53cb4c38-639f-4ecf-b423-cf23cfdaa428</Id>
+        <DisplayName>Match Regular Expression - Target ID</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>9436614b-6067-49b3-aab2-0874f8d64597</Id>
+            <ActivityNodeId>53cb4c38-639f-4ecf-b423-cf23cfdaa428</ActivityNodeId>
+            <CompletedId>b9c38cfe-03e5-47ce-b75b-2ee5eab77c83</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="RegExActivityConfiguration" xml:space="preserve">
+          <Id>53cb4c38-639f-4ecf-b423-cf23cfdaa428</Id>
+          <DisplayName>Match Regular Expression - Target ID</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>471ef3ad-6db8-4165-827b-ac49814f5679</ContainingProcessId>
+          <InputString>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Web HTTP Request - Create Acive Directory Group.Response</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Response</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>999fd996-956d-4701-96f1-5d9bdb7ede86</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </InputString>
+          <MatchCase>false</MatchCase>
+          <RegularExpression>
+            <FormattedCode>with ID '([A-Z0-9]{{8}}-([A-Z0-9]{{4}}-){{3}}[A-Z0-9]{{12}})' is</FormattedCode>
+          </RegularExpression>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>be6a5c7d-bbb3-4b9f-80ca-ef80d19f0064</Id>
+        <DisplayName>Replace String</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>c649eff6-cebf-428a-8443-5f673afbc2b5</Id>
+            <ActivityNodeId>be6a5c7d-bbb3-4b9f-80ca-ef80d19f0064</ActivityNodeId>
+            <CompletedId>a1287b6f-bca0-4f8a-9cc8-6592c77fea0b</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="ReplaceStringActivityConfiguration" xml:space="preserve">
+          <Id>be6a5c7d-bbb3-4b9f-80ca-ef80d19f0064</Id>
+          <DisplayName>Replace String</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>471ef3ad-6db8-4165-827b-ac49814f5679</ContainingProcessId>
+          <InputString>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Match Regular Expression - Target ID.First Match</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>FirstMatch</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>53cb4c38-639f-4ecf-b423-cf23cfdaa428</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </InputString>
+          <ReplaceList>
+            <SubstitutableRepaceItem>
+              <ReplacedString>
+                <HardcodedValue>with ID '</HardcodedValue>
+              </ReplacedString>
+              <ReplacementString>
+                <HardcodedValue />
+              </ReplacementString>
+            </SubstitutableRepaceItem>
+            <SubstitutableRepaceItem>
+              <ReplacedString>
+                <HardcodedValue>' is</HardcodedValue>
+              </ReplacedString>
+              <ReplacementString>
+                <HardcodedValue />
+              </ReplacementString>
+            </SubstitutableRepaceItem>
+          </ReplaceList>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>e1a8413d-2a24-499d-b062-a0c2bffd474b</Id>
+        <DisplayName>Set Target Group ID</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>34999b4d-af27-4542-98ce-4ec4852ac8b7</Id>
+            <ActivityNodeId>e1a8413d-2a24-499d-b062-a0c2bffd474b</ActivityNodeId>
+            <CompletedId>bf65934e-1164-4ad8-81fc-98d230391c77</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+          <Id>e1a8413d-2a24-499d-b062-a0c2bffd474b</Id>
+          <DisplayName>Set Target Group ID</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>471ef3ad-6db8-4165-827b-ac49814f5679</ContainingProcessId>
+          <VariableToSet>
+            <DisplayPath>Process.Variables.Output.ID</DisplayPath>
+            <LinkChain />
+            <ObjectId>d0fe10d9-4958-492c-9c06-569aedc47204</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </VariableToSet>
+          <NewValue xsi:type="SubstitutableString">
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Replace String.Replaced Result</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Result</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>be6a5c7d-bbb3-4b9f-80ca-ef80d19f0064</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </NewValue>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>471ef3ad-6db8-4165-827b-ac49814f5679</ProcessId>
+</WorkflowConfiguration>
