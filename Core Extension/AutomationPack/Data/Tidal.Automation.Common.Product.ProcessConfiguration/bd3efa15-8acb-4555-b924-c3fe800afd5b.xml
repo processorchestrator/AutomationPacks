@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>bd3efa15-8acb-4555-b924-c3fe800afd5b</Id>
+  <DisplayName>Create Target</DisplayName>
+  <CreatedTime>2020-12-22T22:23:25.7637679Z</CreatedTime>
+  <ModifiedTime>2020-12-22T22:23:25.7637679Z</ModifiedTime>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+    <SingleTargetReference>
+      <FormattedCode />
+      <HardcodedValue>
+        <Id>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</Id>
+        <ObjectType>Target</ObjectType>
+      </HardcodedValue>
+    </SingleTargetReference>
+  </TargetLoadBalancer>
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>b5a4e4dd-eb7a-4b27-80e8-7b6120a3d466</WorkflowId>
+  <CategoryIds>
+    <guid>10aca17e-f097-4ee6-9620-1bda739ef6fd</guid>
+  </CategoryIds>
+  <TriggerOwner>a7c27f47-4bf3-4c53-be23-e327cbb2dcee</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="AdHocEventDefinition">
+        <Id>46e34eb6-eb02-4809-995a-27795a8a160f</Id>
+        <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
+        <Identities />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>74e28d8c-3990-47e2-9cf5-530fd916e0ea</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>5f7e508d-126f-49ec-bdf3-186191e8e25a</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="StartProcessEventDefinition">
+        <Id>b1294fa2-7281-48c4-8cae-b0c34fb69ea8</Id>
+        <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
+        <ProcessIds />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>2d58c764-0199-4743-a2df-faa974ca706c</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>53ce75db-bdb7-420c-9941-ea55e22e874d</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>dd6933b3-de80-44a1-88c0-a221c7571cbb</Id>
+      <DisplayName>Name</DisplayName>
+      <Description>Target name</Description>
+      <ModifiedTime>2019-10-16T20:44:01.562523Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>bd3efa15-8acb-4555-b924-c3fe800afd5b</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>c7c2cc6c-3c05-4ee1-8836-8fa05ebf3949</Id>
+      <DisplayName>Type</DisplayName>
+      <Description>Target type</Description>
+      <ModifiedTime>2019-10-16T20:44:07.7544232Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>bd3efa15-8acb-4555-b924-c3fe800afd5b</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>4</Sequence>
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>d53115e0-09af-4b0f-a0d5-3372ca9e70bc</Id>
+      <DisplayName>Id</DisplayName>
+      <Description>Target Id</Description>
+      <ModifiedTime>2019-10-16T20:44:13.275792Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>bd3efa15-8acb-4555-b924-c3fe800afd5b</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>1595b97a-ec90-467e-b7ab-21a827acc553</Id>
+      <DisplayName>Properties</DisplayName>
+      <Description>Target Properties in JSON format</Description>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>bd3efa15-8acb-4555-b924-c3fe800afd5b</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>5</Sequence>
+      <Multiline>true</Multiline>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>54c8ead3-7ad8-4ba6-8cbe-c9b180527a2f</Id>
+      <DisplayName>Payload</DisplayName>
+      <Description>Create target payload</Description>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>bd3efa15-8acb-4555-b924-c3fe800afd5b</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Multiline>true</Multiline>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>858b679b-0660-4281-a6ba-330c6ce9c5ce</Id>
+      <DisplayName>Runtime User</DisplayName>
+      <Description>Runtime user Id or name</Description>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>bd3efa15-8acb-4555-b924-c3fe800afd5b</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>3</Sequence>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>13ad896a-b96e-4bee-a450-544b0b55ec4d</Id>
+      <DisplayName>Url</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>bd3efa15-8acb-4555-b924-c3fe800afd5b</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="BooleanVariableConfiguration" xml:space="preserve">
+      <Id>ba7a1485-4595-48ac-87f5-5726bd189dda</Id>
+      <DisplayName>Enabled</DisplayName>
+      <boolean>true</boolean>
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>bd3efa15-8acb-4555-b924-c3fe800afd5b</ControllingItemId>
+      </Scope>
+      <VariableTypeId>02898bc5-5b13-74d1-53a1-0a5ff4c3ffcb</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>2</Sequence>
+    </VariableConfiguration>
+  </VariableDefinitions>
+  <Notes />
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.BuiltinAdapter.Common.MasterTargetConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>af449107-3bd4-c9a3-e2ab-5f4acf12ac03</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.CloudPortal.Common.User.CloudPortalUserConfiguration, Tidal.Automation.CloudPortal.Common</string>
+    <string>Tidal.Automation.WebService.Common.ClientCertificateUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.CloudCenter.Users.CloudCenterApiAccessCredentialsConfiguration, Tidal.Automation.CloudCenter.Common</string>
+    <string>Tidal.Automation.WebService.Common.OAuthUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.OpenStack.Common.User.OpenStackUserConfiguration, Tidal.Automation.OpenStack.Common</string>
+    <string>Tidal.Automation.Ssh.Common.PublicKeyAdminUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.GitAdapter.Common.GitRepositoryRuntimeUserConfiguration, Tidal.Automation.GitAdapter.Common</string>
+    <string>Tidal.Automation.Ssh.Common.IOSUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.BuiltinAdapter.Common.GenericRuntimeUserConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+    <string>Tidal.Automation.Azure.Common.AzureAccessKeyConfiguration, Tidal.Automation.Azure.Common</string>
+    <string>Tidal.Automation.Snmp.Common.SnmpUserConfiguration, Tidal.Automation.Snmp.Common</string>
+    <string>Tidal.Automation.vCloud.Common.Users.vCloudUserConfiguration, Tidal.Automation.vCloud.Common</string>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+</ProcessConfiguration>

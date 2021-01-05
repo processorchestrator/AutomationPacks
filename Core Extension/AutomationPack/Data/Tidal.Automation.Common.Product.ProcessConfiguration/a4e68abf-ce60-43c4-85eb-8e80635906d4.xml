@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>a4e68abf-ce60-43c4-85eb-8e80635906d4</Id>
+  <DisplayName>Create Active Directory Group</DisplayName>
+  <Description>Create a new active directory group target group</Description>
+  <CreatedTime>2020-12-22T22:23:05.93791Z</CreatedTime>
+  <ModifiedTime>2020-12-22T22:23:05.93791Z</ModifiedTime>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+    <SingleTargetReference>
+      <FormattedCode />
+      <HardcodedValue>
+        <Id>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</Id>
+        <ObjectType>Target</ObjectType>
+      </HardcodedValue>
+    </SingleTargetReference>
+  </TargetLoadBalancer>
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>0ce5f605-66a5-4d0d-bb71-aebbbdf31fc4</WorkflowId>
+  <CategoryIds>
+    <guid>00274395-7b2a-459f-9bf9-a20b2be84c27</guid>
+  </CategoryIds>
+  <TriggerOwner>a7c27f47-4bf3-4c53-be23-e327cbb2dcee</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="AdHocEventDefinition">
+        <Id>e9571d47-3099-4109-ab04-7d7f2c0d37a3</Id>
+        <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
+        <Identities />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>8c102ab8-62fe-4519-b5c1-779d842aec7d</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>5790d0ea-4e7b-43a4-a514-e3aacfcb9540</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="StartProcessEventDefinition">
+        <Id>7f55e868-86d1-4659-af9a-1c29927772b5</Id>
+        <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
+        <ProcessIds />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>ba15efce-4c32-4fde-ab02-6a5fcc28fcba</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>97171e08-cf3c-43b5-8edd-3f6281b0db42</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>80fbbfe0-3233-460e-b643-2a7e23186702</Id>
+      <DisplayName>Name</DisplayName>
+      <Description>Specify a name for the new target group</Description>
+      <ModifiedTime>2020-07-24T12:27:42.5450977Z</ModifiedTime>
+      <CustomizationSetting>Yes</CustomizationSetting>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>a4e68abf-ce60-43c4-85eb-8e80635906d4</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>fc8bcee7-a50e-4b3d-b6d7-9c025f70b2d7</Id>
+      <DisplayName>ID</DisplayName>
+      <Description>ID of the new target group</Description>
+      <ModifiedTime>2020-07-15T11:44:40.5438702Z</ModifiedTime>
+      <CustomizationSetting>Yes</CustomizationSetting>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceOut</Family>
+        <ControllingItemId>a4e68abf-ce60-43c4-85eb-8e80635906d4</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="BooleanVariableConfiguration" xml:space="preserve">
+      <Id>f48a4891-e7f7-4822-8a78-52b57ed4cb34</Id>
+      <DisplayName>Enabled</DisplayName>
+      <Description>Indicate whether the new target group will be enabled</Description>
+      <ModifiedTime>2020-07-15T11:27:06.7473595Z</ModifiedTime>
+      <CustomizationSetting>Yes</CustomizationSetting>
+      <boolean>true</boolean>
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>a4e68abf-ce60-43c4-85eb-8e80635906d4</ControllingItemId>
+      </Scope>
+      <VariableTypeId>02898bc5-5b13-74d1-53a1-0a5ff4c3ffcb</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>4</Sequence>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>d23e7cee-f58e-4275-bfbe-36c4079c3f6d</Id>
+      <DisplayName>Description</DisplayName>
+      <Description>Specify a description for the new target group</Description>
+      <ModifiedTime>2020-07-15T11:46:11.7615065Z</ModifiedTime>
+      <CustomizationSetting>Yes</CustomizationSetting>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>a4e68abf-ce60-43c4-85eb-8e80635906d4</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>3</Sequence>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>e357cf06-2652-4bd8-9420-4bc9df7ef74e</Id>
+      <DisplayName>Canonical Name</DisplayName>
+      <Description>Specify a canonical name for the active directory object</Description>
+      <ModifiedTime>2020-07-17T11:53:24.2280099Z</ModifiedTime>
+      <CustomizationSetting>Yes</CustomizationSetting>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>a4e68abf-ce60-43c4-85eb-8e80635906d4</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>5</Sequence>
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>75d431c9-38b7-4993-bb9c-4739cf734399</Id>
+      <DisplayName>Computer Matching</DisplayName>
+      <Description>Specify a pattern to match against computers to be included
+</Description>
+      <ModifiedTime>2020-07-17T11:16:06.5352819Z</ModifiedTime>
+      <CustomizationSetting>Yes</CustomizationSetting>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>a4e68abf-ce60-43c4-85eb-8e80635906d4</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>6</Sequence>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="BooleanVariableConfiguration" xml:space="preserve">
+      <Id>8baa497a-b1b8-4ba8-9b7b-7bf65c6a6277</Id>
+      <DisplayName>Include Subcontainers</DisplayName>
+      <Description>Indicate whether to mach computers in subcontainers</Description>
+      <ModifiedTime>2020-07-17T11:53:37.4849174Z</ModifiedTime>
+      <CustomizationSetting>Yes</CustomizationSetting>
+      <boolean>false</boolean>
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>a4e68abf-ce60-43c4-85eb-8e80635906d4</ControllingItemId>
+      </Scope>
+      <VariableTypeId>02898bc5-5b13-74d1-53a1-0a5ff4c3ffcb</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>7</Sequence>
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>9bf7f807-03b1-4002-b00d-d0305a5212e2</Id>
+      <DisplayName>Domain Target</DisplayName>
+      <Description>Specify the name or ID of the Active Directory target</Description>
+      <ModifiedTime>2020-07-24T12:27:31.6486906Z</ModifiedTime>
+      <CustomizationSetting>Yes</CustomizationSetting>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>a4e68abf-ce60-43c4-85eb-8e80635906d4</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Sequence>2</Sequence>
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+  </VariableDefinitions>
+  <Notes />
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.BuiltinAdapter.Common.MasterTargetConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>af449107-3bd4-c9a3-e2ab-5f4acf12ac03</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.CloudPortal.Common.User.CloudPortalUserConfiguration, Tidal.Automation.CloudPortal.Common</string>
+    <string>Tidal.Automation.WebService.Common.ClientCertificateUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.CloudCenter.Users.CloudCenterApiAccessCredentialsConfiguration, Tidal.Automation.CloudCenter.Common</string>
+    <string>Tidal.Automation.WebService.Common.OAuthUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.OpenStack.Common.User.OpenStackUserConfiguration, Tidal.Automation.OpenStack.Common</string>
+    <string>Tidal.Automation.Ssh.Common.PublicKeyAdminUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.GitAdapter.Common.GitRepositoryRuntimeUserConfiguration, Tidal.Automation.GitAdapter.Common</string>
+    <string>Tidal.Automation.Ssh.Common.IOSUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.BuiltinAdapter.Common.GenericRuntimeUserConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+    <string>Tidal.Automation.Azure.Common.AzureAccessKeyConfiguration, Tidal.Automation.Azure.Common</string>
+    <string>Tidal.Automation.Snmp.Common.SnmpUserConfiguration, Tidal.Automation.Snmp.Common</string>
+    <string>Tidal.Automation.vCloud.Common.Users.vCloudUserConfiguration, Tidal.Automation.vCloud.Common</string>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+</ProcessConfiguration>
