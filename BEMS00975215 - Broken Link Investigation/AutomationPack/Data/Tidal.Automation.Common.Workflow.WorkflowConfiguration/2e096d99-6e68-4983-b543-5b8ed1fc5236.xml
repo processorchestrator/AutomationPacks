@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>2e096d99-6e68-4983-b543-5b8ed1fc5236</Id>
+  <DisplayName>Perform VM Operation</DisplayName>
+  <CreatedTime>2021-01-08T20:13:47.7119482Z</CreatedTime>
+  <ModifiedTime>2021-01-08T20:13:47.7119482Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>135ee2b7-91ab-491b-956e-6aa519eef6bb</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="StartPointNode">
+        <Id>371a576d-5db6-47a2-826e-edc2be57d48c</Id>
+        <DisplayName>PowerOn</DisplayName>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>93a6963f-40fc-44f4-b1dd-39e42430217c</Id>
+        <DisplayName>Power On</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>ea2ad6ea-5ebe-4ae2-ba10-b727b4680b99</Id>
+            <ActivityNodeId>93a6963f-40fc-44f4-b1dd-39e42430217c</ActivityNodeId>
+            <CompletedId>741bedea-0f5c-4be5-8cdd-664b444f693b</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SleepActivityConfiguration" xml:space="preserve">
+          <Id>93a6963f-40fc-44f4-b1dd-39e42430217c</Id>
+          <DisplayName>Power On</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>ec6ca9b6-970f-4876-8642-e21311fe1c83</ContainingProcessId>
+          <Seconds>
+            <HardcodedValue>60</HardcodedValue>
+          </Seconds>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="CompletedNode">
+        <Id>c4e8ada1-394f-4732-8a4d-59effc2a0fe1</Id>
+        <CompletedType>Succeeded</CompletedType>
+      </ActivityNode>
+      <ActivityNode xsi:type="StartPointNode">
+        <Id>d4d93ca1-6648-4ae6-9cac-b7ae22215147</Id>
+        <DisplayName>PowerOff</DisplayName>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>1a615e81-83a1-491b-9c5a-94f2fb1aff48</Id>
+        <DisplayName>Power Off</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>9687cff2-237c-4b6a-b70c-d59003ccb6af</Id>
+            <ActivityNodeId>1a615e81-83a1-491b-9c5a-94f2fb1aff48</ActivityNodeId>
+            <CompletedId>aca27be4-6d4c-4a08-ba26-eb8d37acd38f</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SleepActivityConfiguration" xml:space="preserve">
+          <Id>1a615e81-83a1-491b-9c5a-94f2fb1aff48</Id>
+          <DisplayName>Power Off</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>ec6ca9b6-970f-4876-8642-e21311fe1c83</ContainingProcessId>
+          <Seconds>
+            <HardcodedValue>60</HardcodedValue>
+          </Seconds>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="CompletedNode">
+        <Id>2e7dd463-20e2-4e71-9e36-e7fac877e757</Id>
+        <CompletedType>Succeeded</CompletedType>
+      </ActivityNode>
+      <ActivityNode xsi:type="StartPointNode">
+        <Id>64750bed-655f-480f-be25-22d26e65fc46</Id>
+        <DisplayName>PowerStatus</DisplayName>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>d3bfc94f-d06a-41e5-99fd-741f98c708de</Id>
+        <DisplayName>Power Status</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>dca4a43a-c3a5-4519-b151-9e74b64bf228</Id>
+            <ActivityNodeId>d3bfc94f-d06a-41e5-99fd-741f98c708de</ActivityNodeId>
+            <CompletedId>75ae5189-417a-4647-8aa4-056ef3d16f49</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SleepActivityConfiguration" xml:space="preserve">
+          <Id>d3bfc94f-d06a-41e5-99fd-741f98c708de</Id>
+          <DisplayName>Power Status</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>ec6ca9b6-970f-4876-8642-e21311fe1c83</ContainingProcessId>
+          <Seconds>
+            <HardcodedValue>60</HardcodedValue>
+          </Seconds>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>ec6ca9b6-970f-4876-8642-e21311fe1c83</ProcessId>
+</WorkflowConfiguration>

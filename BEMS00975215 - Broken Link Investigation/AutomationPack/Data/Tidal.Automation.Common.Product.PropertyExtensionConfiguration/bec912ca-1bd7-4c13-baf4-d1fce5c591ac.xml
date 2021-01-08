@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<PropertyExtensionConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="StringPropertyExtensionConfiguration" xml:space="preserve">
+  <Id>bec912ca-1bd7-4c13-baf4-d1fce5c591ac</Id>
+  <DisplayName>Execution Resume Start Point</DisplayName>
+  <CreatedTime>2021-01-08T20:13:49.5725339Z</CreatedTime>
+  <ModifiedTime>2021-01-08T20:13:49.5725339Z</ModifiedTime>
+  <Owner xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
+  </Owner>
+  <string />
+  <ValidTargetTypeNames>
+    <TypeReference>Tidal.Automation.Common.Product.TargetConfiguration, Tidal.Automation.Common.Product</TypeReference>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>b7962418-e7c5-4272-9ba3-fa220fe1901c</guid>
+  </ValidTargetTypeExtensionIds>
+  <GroupNames>
+    <string>Remediation</string>
+  </GroupNames>
+  <NorthboundName>ExecutionResumeStartPoint</NorthboundName>
+  <Multiline>false</Multiline>
+</PropertyExtensionConfiguration>

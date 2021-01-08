@@ -1,0 +1,598 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>54dc9b6d-67aa-4822-9cb9-74e7b9781450</Id>
+  <DisplayName>VM Operation Handler</DisplayName>
+  <CreatedTime>2021-01-08T20:13:49.1375227Z</CreatedTime>
+  <ModifiedTime>2021-01-08T20:13:49.1375227Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>c631499b-c2e9-4dc5-bd7b-7ad9ec53e748</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="StartProcessNode">
+        <Id>868fa455-ff74-461f-b391-c0e68db3bcc3</Id>
+        <DisplayName>Create Operation Target</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>d46b7ebb-3c44-4e08-9914-c92379a361f7</Id>
+            <ProcessNodeId>868fa455-ff74-461f-b391-c0e68db3bcc3</ProcessNodeId>
+            <CompletedId>3fa0019d-818c-47fc-908c-75fc25da06d9</CompletedId>
+          </ActivityNode>
+        </Children>
+        <ProcessId>efe92ce5-8422-4623-aa25-43676f0a833d</ProcessId>
+        <InputVariableTable>
+          <VariableAssignmentsAsArray>
+            <InputVariableAssignment>
+              <InputVariableId>b348dfb8-8a0b-4483-99a5-811da7c944a9</InputVariableId>
+              <VariableValue xsi:type="SubstitutableString">
+                <FormattedCode>OperationTarget-{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Process Instance Id</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Id</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>ProcessInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </VariableValue>
+            </InputVariableAssignment>
+          </VariableAssignmentsAsArray>
+        </InputVariableTable>
+        <Asynchronous>false</Asynchronous>
+        <InheritTarget>false</InheritTarget>
+        <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+          <SingleTargetReference>
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>0cd634ae-9199-4ec4-8436-8ec3a1d450c0</Id>
+              <ObjectType>Target</ObjectType>
+            </HardcodedValue>
+          </SingleTargetReference>
+        </TargetLoadBalancer>
+        <InheritPriorityClass>true</InheritPriorityClass>
+        <RuntimeUserId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </RuntimeUserId>
+        <KnowledgeBaseId>00000000-0000-0000-0000-000000000000</KnowledgeBaseId>
+        <StartPointId>
+          <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+        </StartPointId>
+        <StartPointName>
+          <FormattedCode />
+        </StartPointName>
+        <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+          <FormattedCode />
+          <HardcodedValue>
+            <Id>00000000-0000-0000-0000-000000000000</Id>
+            <ObjectType>RuntimeUser</ObjectType>
+          </HardcodedValue>
+        </RuntimeUserObject>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>dcedf566-d143-478b-8ada-7660924d981c</Id>
+        <DisplayName>Find Targets</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>3bff702d-4abe-4f1c-b7c8-53857770345a</Id>
+            <ActivityNodeId>dcedf566-d143-478b-8ada-7660924d981c</ActivityNodeId>
+            <CompletedId>a82e4bce-2a31-4197-b7da-ef881c9477bb</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="BuiltinFindTargetsActivityConfiguration" xml:space="preserve">
+          <Id>dcedf566-d143-478b-8ada-7660924d981c</Id>
+          <DisplayName>Find Targets</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>43510ec9-11bf-4ea2-8599-93e98406f8a6</ContainingProcessId>
+          <TargetTypeName>Tidal.Automation.Common.Product.TargetConfiguration, Tidal.Automation.Common.Product</TargetTypeName>
+          <TargetTypeExtensionId>b7962418-e7c5-4272-9ba3-fa220fe1901c</TargetTypeExtensionId>
+          <TargetGroupId>83cc2e12-b48e-41ca-b3f4-3d71c3f94868</TargetGroupId>
+          <MatchingCriteria>
+            <GenericCriteria xsi:type="GuidCriteria">
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>Id</PropertyName>
+                </Link>
+              </LinkChain>
+              <MatchingGuid>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Create Operation Target.Target Id</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="ProcessOutputVariableLink">
+                        <LaunchingActivityId>868fa455-ff74-461f-b391-c0e68db3bcc3</LaunchingActivityId>
+                        <OutputVariableId>ef4e026b-190e-445e-a881-3280fe10468a</OutputVariableId>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>868fa455-ff74-461f-b391-c0e68db3bcc3</ObjectId>
+                    <ObjectType>WorkflowNode</ObjectType>
+                  </VariableReference>
+                </References>
+              </MatchingGuid>
+              <Comparison>Equals</Comparison>
+            </GenericCriteria>
+          </MatchingCriteria>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="WhileNode">
+        <Id>f34050f1-a74d-4ab9-8255-bdbd83e7dd11</Id>
+        <DisplayName>While (Retry = True)</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="StartProcessNode">
+            <Id>c2edaf9a-6630-40e1-aba7-59d4d61290b5</Id>
+            <DisplayName>VM Operation</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ConditionBranchNode">
+                <Id>0dab4d38-7450-4fd0-96a9-31180d95e104</Id>
+                <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                <DisplayName>If Execution Fails</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>df05d356-4aba-42ef-b4ed-4c6bf9af147c</Id>
+                    <DisplayName>Create Alert - Operation Failed</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>e54c4ded-eeb6-432a-bd31-377f44115475</Id>
+                        <ActivityNodeId>df05d356-4aba-42ef-b4ed-4c6bf9af147c</ActivityNodeId>
+                        <CompletedId>dd2f4f1b-56d5-4f7b-8b3f-3ee0a13bdef9</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="AlertActivityConfiguration" xml:space="preserve">
+                      <Id>df05d356-4aba-42ef-b4ed-4c6bf9af147c</Id>
+                      <DisplayName>Create Alert - Operation Failed</DisplayName>
+                      <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                        <FormattedCode />
+                        <HardcodedValue>
+                          <Id>00000000-0000-0000-0000-000000000000</Id>
+                          <ObjectType>RuntimeUser</ObjectType>
+                        </HardcodedValue>
+                      </RuntimeUserObject>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>43510ec9-11bf-4ea2-8599-93e98406f8a6</ContainingProcessId>
+                      <TaskExpiresPeriod>
+                        <DisplayUnits>Days</DisplayUnits>
+                        <Period>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <DisplayPath>Adapters.Core Functions Adapter.Default Task Expiration Days</DisplayPath>
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>DefaultTaskExpirationDays</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                              <ObjectType>Adapter</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </Period>
+                      </TaskExpiresPeriod>
+                      <TaskAssignees />
+                      <TaskPriority>Medium</TaskPriority>
+                      <TaskBlock>true</TaskBlock>
+                      <TaskXslFileName>
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Adapters.Core Functions Adapter.Default Alert Task Transform</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>DefaultAlertTaskTransform</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                            <ObjectType>Adapter</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </TaskXslFileName>
+                      <TaskName>
+                        <FormattedCode>Operation Failed - {0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Input.Operation</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>54c68290-6381-4daa-9298-bd7ef8887dac</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </TaskName>
+                      <TaskDescription>
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Error Information</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ErrorInformation</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectType>ProcessInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </TaskDescription>
+                      <TaskCategoryIds />
+                      <TaskInheritCategories>true</TaskInheritCategories>
+                      <TaskRelatedIds />
+                      <ExternalSystem>
+                        <HardcodedValue />
+                      </ExternalSystem>
+                      <ExternalId>
+                        <HardcodedValue />
+                      </ExternalId>
+                      <TaskOwner>
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Target.Owner</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Owner</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectType>ProcessInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </TaskOwner>
+                      <TaskParameters>
+                        <NamedSubstitutableParameter>
+                          <DisplayName>Parameter 1:</DisplayName>
+                          <Parameter>
+                            <HardcodedValue />
+                          </Parameter>
+                        </NamedSubstitutableParameter>
+                      </TaskParameters>
+                      <AffectedServices>
+                        <HardcodedValue />
+                      </AffectedServices>
+                      <AffectedOrganizations>
+                        <HardcodedValue />
+                      </AffectedOrganizations>
+                      <AffectedTargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+                      <CreateAutomationSummary>false</CreateAutomationSummary>
+                      <DiagnosticReportConfiguration>
+                        <ReportStylesheet>SituationReport.xsl</ReportStylesheet>
+                        <Formats />
+                      </DiagnosticReportConfiguration>
+                      <AlertClass>
+                        <HardcodedValue>123</HardcodedValue>
+                      </AlertClass>
+                      <MatchingCriteria />
+                    </Configuration>
+                  </ActivityNode>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>df0ab918-21b3-424e-bdec-62464be32226</Id>
+                    <DisplayName>Set Remediation Action</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>454ff015-f104-4384-ae70-ac655060bbad</Id>
+                        <ActivityNodeId>df0ab918-21b3-424e-bdec-62464be32226</ActivityNodeId>
+                        <CompletedId>24f09d43-8649-448d-8145-53689fcbec44</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                      <Id>df0ab918-21b3-424e-bdec-62464be32226</Id>
+                      <DisplayName>Set Remediation Action</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>43510ec9-11bf-4ea2-8599-93e98406f8a6</ContainingProcessId>
+                      <VariableToSet>
+                        <DisplayPath>Process.Variables.Local.Remediation Action</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>45728e86-aa45-445a-92a8-be11d726197e</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableToSet>
+                      <NewValue xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Create Alert - Operation Failed.Task.Parameter 1</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Task</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Parameter1</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>df05d356-4aba-42ef-b4ed-4c6bf9af147c</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </NewValue>
+                    </Configuration>
+                  </ActivityNode>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>2c6cd4ee-ccde-4569-8a5e-92e0378869a7</Id>
+                    <DisplayName>Condition Branch</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="ExecuteActivityNode">
+                        <Id>ef20468c-81c2-4da5-908f-ea857e449f8d</Id>
+                        <DisplayName>Delete Target</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                            <Id>b2161962-ffc3-4e7b-9144-2ed2baa4249b</Id>
+                            <ActivityNodeId>ef20468c-81c2-4da5-908f-ea857e449f8d</ActivityNodeId>
+                            <CompletedId>12cc3260-2623-4ef9-8f13-5c2375867c68</CompletedId>
+                          </ActivityNode>
+                        </Children>
+                        <Configuration xsi:type="DeleteTargetActivityConfiguration" xml:space="preserve">
+                          <Id>ef20468c-81c2-4da5-908f-ea857e449f8d</Id>
+                          <DisplayName>Delete Target</DisplayName>
+                          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                            <SingleTargetId>
+                              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                            </SingleTargetId>
+                          </TargetLoadBalancer>
+                          <InheritTarget>false</InheritTarget>
+                          <ContainingProcessId>43510ec9-11bf-4ea2-8599-93e98406f8a6</ContainingProcessId>
+                          <TargetReference xsi:type="SubstitutableGuid">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.Find Targets.Found Targets.First.Target Id</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>GetAllFoundTargets</PropertyName>
+                                  </Link>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>FirstItem</PropertyName>
+                                  </Link>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>GetReferencedObject</PropertyName>
+                                  </Link>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Id</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>dcedf566-d143-478b-8ada-7660924d981c</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </TargetReference>
+                        </Configuration>
+                      </ActivityNode>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>a8187e80-adaf-4d5d-96e5-873c064ec287</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <DisplayPath>Workflow.VM Operation.Error Information</DisplayPath>
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>c2edaf9a-6630-40e1-aba7-59d4d61290b5</ObjectId>
+                              <ObjectType>ProcessInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>97608e24-cf85-448f-8761-ce5f62385c03</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>0a02783a-b5e3-46d8-bbcc-a88e0e572726</Id>
+                          <Expression xsi:type="SubstitutableString">
+                            <HardcodedValue>Exit</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Variables.Local.Remediation Action</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>45728e86-aa45-445a-92a8-be11d726197e</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Condition>
+                  <Id>393619aa-4842-44c1-b03f-56e9715ff83d</Id>
+                  <Conditions>
+                    <ConditionDefinition xsi:type="VariableConditionDefinition">
+                      <Id>ddf1b2f9-0e32-408e-9024-c8d913c69a21</Id>
+                      <Expression xsi:type="SubstitutableBoolean">
+                        <HardcodedValue>true</HardcodedValue>
+                      </Expression>
+                      <Comparison>Equals</Comparison>
+                      <VariableReference xsi:type="PropertyReference">
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>InstanceFailed</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>c2edaf9a-6630-40e1-aba7-59d4d61290b5</ObjectId>
+                        <ObjectType>ProcessInstance</ObjectType>
+                      </VariableReference>
+                    </ConditionDefinition>
+                  </Conditions>
+                </Condition>
+              </ActivityNode>
+            </Children>
+            <ProcessId>efb76b78-b13b-4231-992f-82dbbfa4e696</ProcessId>
+            <InputVariableTable>
+              <VariableAssignmentsAsArray>
+                <InputVariableAssignment>
+                  <InputVariableId>db31a67d-62d8-4510-8e6f-f2d8b5d409ff</InputVariableId>
+                  <VariableValue xsi:type="SubstitutableString">
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Variables.Input.Operation</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>54c68290-6381-4daa-9298-bd7ef8887dac</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </VariableValue>
+                </InputVariableAssignment>
+              </VariableAssignmentsAsArray>
+            </InputVariableTable>
+            <Asynchronous>false</Asynchronous>
+            <InheritTarget>false</InheritTarget>
+            <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+              <SingleTargetReference>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Find Targets.Found Targets.First</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>GetAllFoundTargets</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>FirstItem</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>dcedf566-d143-478b-8ada-7660924d981c</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </SingleTargetReference>
+            </TargetLoadBalancer>
+            <InheritPriorityClass>true</InheritPriorityClass>
+            <RuntimeUserId>
+              <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+            </RuntimeUserId>
+            <KnowledgeBaseId>00000000-0000-0000-0000-000000000000</KnowledgeBaseId>
+            <StartPointId>
+              <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+            </StartPointId>
+            <StartPointName>
+              <FormattedCode />
+            </StartPointName>
+            <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+              <FormattedCode />
+              <HardcodedValue>
+                <Id>00000000-0000-0000-0000-000000000000</Id>
+                <ObjectType>RuntimeUser</ObjectType>
+              </HardcodedValue>
+            </RuntimeUserObject>
+          </ActivityNode>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>0f84ca0a-83ae-4221-9485-fc1a637bbe5a</Id>
+            <DisplayName>Set Remediation Action to Exit</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>43578b6a-32e7-4679-96a9-73c89c1538e2</Id>
+                <ActivityNodeId>0f84ca0a-83ae-4221-9485-fc1a637bbe5a</ActivityNodeId>
+                <CompletedId>5b3382ba-b5b0-480e-85f5-d4ebe95f7ed2</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+              <Id>0f84ca0a-83ae-4221-9485-fc1a637bbe5a</Id>
+              <DisplayName>Set Remediation Action to Exit</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>43510ec9-11bf-4ea2-8599-93e98406f8a6</ContainingProcessId>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Local.Remediation Action</DisplayPath>
+                <LinkChain />
+                <ObjectId>45728e86-aa45-445a-92a8-be11d726197e</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableString">
+                <HardcodedValue>Exit</HardcodedValue>
+              </NewValue>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <Condition>
+          <Id>ef4c2c8c-0480-4af9-99bf-23b4d7beb111</Id>
+          <Operator>Or</Operator>
+          <Conditions>
+            <ConditionDefinition xsi:type="VariableConditionDefinition">
+              <Id>b4b33037-1ecb-4ef9-b078-28e6bb5ca52f</Id>
+              <Expression xsi:type="SubstitutableString">
+                <HardcodedValue>Exit</HardcodedValue>
+              </Expression>
+              <Comparison>NotEquals</Comparison>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Local.Remediation Action</DisplayPath>
+                <LinkChain />
+                <ObjectId>45728e86-aa45-445a-92a8-be11d726197e</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </ConditionDefinition>
+          </Conditions>
+        </Condition>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>ea77fe96-ecde-4fd4-872b-63cdb4511e96</Id>
+        <DisplayName>Delete Target</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>95a79ea1-6212-45ca-9804-7f9d9bff9f35</Id>
+            <ActivityNodeId>ea77fe96-ecde-4fd4-872b-63cdb4511e96</ActivityNodeId>
+            <CompletedId>604b399b-bff6-4154-947c-47f5e6bc8dc2</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="DeleteTargetActivityConfiguration" xml:space="preserve">
+          <Id>ea77fe96-ecde-4fd4-872b-63cdb4511e96</Id>
+          <DisplayName>Delete Target</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>43510ec9-11bf-4ea2-8599-93e98406f8a6</ContainingProcessId>
+          <TargetReference xsi:type="SubstitutableGuid">
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Find Targets.Found Targets.First.Target Id</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>GetAllFoundTargets</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>FirstItem</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>GetReferencedObject</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Id</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>dcedf566-d143-478b-8ada-7660924d981c</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </TargetReference>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>43510ec9-11bf-4ea2-8599-93e98406f8a6</ProcessId>
+</WorkflowConfiguration>

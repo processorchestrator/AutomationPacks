@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<TypeExtensionConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>b7962418-e7c5-4272-9ba3-fa220fe1901c</Id>
+  <DisplayName>Operation Target Type</DisplayName>
+  <CreatedTime>2021-01-08T20:13:47.4560868Z</CreatedTime>
+  <ModifiedTime>2021-01-08T20:13:47.4560868Z</ModifiedTime>
+  <ConfigurationType>Tidal.Automation.Common.Product.TargetConfiguration, Tidal.Automation.Common.Product</ConfigurationType>
+  <BaseTypeExtensionId>b21b034c-ad99-0a4b-c23a-058167087ad9</BaseTypeExtensionId>
+  <Creatable>true</Creatable>
+  <NorthboundName>VMOperationTargetType</NorthboundName>
+  <NorthboundExposed>true</NorthboundExposed>
+</TypeExtensionConfiguration>
